@@ -24,7 +24,7 @@
         }
 
         h1::after {
-            content: "Experiences";
+            content: attr(data-text);
             font-size: 75px;
             position: absolute;
             top: 25%;

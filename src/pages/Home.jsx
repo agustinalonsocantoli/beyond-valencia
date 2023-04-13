@@ -19,19 +19,22 @@ export const Home = () => {
         S1: {
             link: "/experiences",
             img: exp,
+            type: "image",
             h3: "Experiences",
             p: "Carefully selected experiences in Valencia, from just a bike to dinning with a local family in the city centre.",
         },
         S2: {
-            link: "",
+            link: "/daytrips",
             img: day,
+            type: "image",
             h3: "Day trips",
             p: "Day trips for going",
             span: "#beyondthecity"
         },
         S3: {
-            link: "",
+            link: "/food",
             img: food,
+            type: "image",
             h3: "Food and Dinning",
             p: "Best selection of spots and deals in town.",
         },

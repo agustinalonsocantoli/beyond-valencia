@@ -5,7 +5,7 @@ import { TfiMenu } from "react-icons/tfi";
 // Img
 import logo from "../assets/logoW.png";
 
-export const Navbar = ({ title }) => {
+export const Navbar = ({ title, subtitle }) => {
     const navigate = useNavigate()
     
     return(
@@ -14,7 +14,7 @@ export const Navbar = ({ title }) => {
             <img src={logo} alt="img/logo" onClick={() => navigate('/')} />
 
             <div className="nav_title">
-                <h1>{title}</h1>
+                <h1 data-text={subtitle}>{title}</h1>
             </div>
                 
             <div className="nav_menu">

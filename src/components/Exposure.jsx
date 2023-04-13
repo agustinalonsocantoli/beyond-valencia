@@ -4,12 +4,19 @@ export const Exposure = ({ data }) => {
     return(
         <div className="exposure">
             <div className="grid-a">
+                { A.type === "video" &&
                 <video autoPlay muted loop>
                     <source src={A.src} />
                 </video>
+                }
+
+                { A.type === "image" && 
+                <img src={A.src} alt={`img/${A.h1}`} />
+                }
 
                 <div className="content-a">
                     <h3>{A.h3}</h3>
+                    <p>{A.p}</p>
                 </div>
             </div>
 
@@ -32,12 +39,19 @@ export const Exposure = ({ data }) => {
             </div>
 
             <div className="grid-d">
+                { D.type === "video" &&
                 <video autoPlay muted loop>
                     <source src={D.src} />
                 </video>
+                }
+
+                { D.type === "image" && 
+                <img src={D.src} alt={`img/${D.h1}`} />
+                }
 
                 <div className="content-d">
                     <h3>{D.h3}</h3>
+                    <p>{D.p}</p>
                 </div>
             </div>
         </div>

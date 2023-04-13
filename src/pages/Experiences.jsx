@@ -20,20 +20,24 @@ export const Experiences = () => {
         A: {
             src: expA,
             h3: "Wine tasting with a local at home!",
+            type: "video"
         },
         B: {
             src: expB,
             h3: "Street Art",
             p: "3x2 people in regular booking",
+            type: "image"
         },
         C: {
             src: expC,
             h3: "Old town",
             p: "Regular tour everyday",
+            type: "image"
         },
         D: {
             src: expD,
             h3: "Private tour of The Old Town",
+            type: "video"
         },
     }
 
@@ -43,16 +47,19 @@ export const Experiences = () => {
         S1: {
             link: "",
             img: imgS1,
+            type: "image",
             h3: "Regular Tour in city of Art and Ciències",
         },
         S2: {
             link: "",
             img: imgS2,
+            type: "image",
             h3: "Private tour of City of Art and Sciences & Oceanographic",
         },
         S3: {
             link: "",
             img: imgS3,
+            type: "image",
             h3: "Five musuems tour",
             p: "City scape to Albufera including the traditional boat ride.",
         },
@@ -60,13 +67,11 @@ export const Experiences = () => {
 
     return(
         <div>
-            <Navbar title={"Experiences"} />
+            <Navbar title={"Experiences"} subtitle={"Experiences"} />
 
-            <Exposure data={multimedia} />
+            <Exposure data={multimedia}  />
 
-            <Services
-            data={data}
-            />
+            <Services data={data} />
 
             <Events />
 

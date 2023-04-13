@@ -22,8 +22,16 @@ export const Services = ({ data }) => {
                     </div>
                 </Link>
 
-                <Link className="services_img">
+                <Link className="services_img" to={S2.link}>
+                    { S2.type === "video" &&
+                    <video autoPlay muted loop>
+                        <source src={S2.img} />
+                    </video>
+                    }
+
+                    { S2.type === "image" &&
                     <img src={S2.img} alt={`img/${S2.h3}`} />
+                    }
                     
                     <div className="img_content">
                         <h3>{S2.h3}</h3>
@@ -31,7 +39,7 @@ export const Services = ({ data }) => {
                     </div>
                 </Link>
 
-                <Link className="services_img">
+                <Link className="services_img" to={S3.link}>
                     <img src={S3.img} alt={`img/${S3.h3}`} />
                     
                     <div className="img_content">

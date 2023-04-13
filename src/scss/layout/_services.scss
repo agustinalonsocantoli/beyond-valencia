@@ -38,7 +38,7 @@
             height: 500px;
             position: relative;
 
-            img {
+            video, img {
                 object-fit: cover;
                 height: 100%;
                 width: 100%;
@@ -46,7 +46,7 @@
 
             .img_content {
                 position: absolute;
-                top: 55%;
+                bottom: 30px;
                 color: #FFFFFF;
                 z-index: 99;
                 width: 70%;
