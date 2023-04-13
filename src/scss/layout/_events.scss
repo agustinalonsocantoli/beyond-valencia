@@ -1,0 +1,33 @@
+.events {
+    background-color: #FFFFFF;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    margin-top: 80px;
+
+    h1 {
+        font-size: 70px;
+        width: 80%;
+        padding-left: 170px;
+    }
+
+    .events_content {
+        margin-right: 120px;
+
+        h3 {
+            font-size: 32px;
+            margin-bottom: 5px;
+
+            span {
+                color: #868686;
+            }
+        }
+
+        p {
+            width: 80%;
+            font-size: 20px;
+            margin-bottom: 40px;
+            color: #868686;
+            font-weight: 300;
+        }
+    }
+}

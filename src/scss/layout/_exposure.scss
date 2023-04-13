@@ -1,0 +1,102 @@
+.exposure {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    background-color: #000000;
+
+    h3 {
+        font-size: 35px;
+    }
+
+    p {
+        font-size: 25px;
+    }
+
+    .grid-a {
+        grid-column: 1 / 2 ;
+        grid-row: 1 / 3 ;
+        position: relative;
+
+        video {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        .content-a {
+            position: absolute;
+            color: #FFFFFF;
+            top: 25px;
+            left: 25px;
+        }
+
+        h3 {
+            width: 75%;
+        }
+    }
+
+    .grid-b {
+        grid-column: 2 / 3 ;
+        grid-row: 1 / 2 ;
+        height: 275px;
+        position: relative;
+
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        .content-b {
+            position: absolute;
+            color: #FFFFFF;
+            bottom: 15px;
+            right: 10px;
+            text-align: right;
+        }
+    }
+
+    .grid-c {
+        grid-column: 3 / 4 ;
+        grid-row: 1 / 2 ;
+        height: 275px;
+        position: relative;
+
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        .content-c {
+            position: absolute;
+            color: #FFFFFF;
+            bottom: 15px;
+            left: 25px;
+        }
+    }
+
+    .grid-d {
+        grid-column: 2 / 4 ;
+        grid-row: 2 / 3 ;
+        height: 275px;
+        position: relative;
+
+        video {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        .content-d {
+            position: absolute;
+            color: #FFFFFF;
+            bottom: 35px;
+            left: 35px;
+        }
+
+        h3 {
+            width: 65%;
+        }
+    }
+}

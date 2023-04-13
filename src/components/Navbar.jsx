@@ -1,15 +1,18 @@
+// React
+import { useNavigate } from "react-router-dom";
 // Icons
 import { TfiMenu } from "react-icons/tfi";
 // Img
 import logo from "../assets/logoW.png";
 
 export const Navbar = ({ title }) => {
+    const navigate = useNavigate()
+    
     return(
         <div className="nav">
-            <div className="nav_logo">
-                <img src={logo} alt="img/logo" />
-            </div>
-                
+
+            <img src={logo} alt="img/logo" onClick={() => navigate('/')} />
+
             <div className="nav_title">
                 <h1>{title}</h1>
             </div>
