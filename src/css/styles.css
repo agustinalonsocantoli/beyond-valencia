@@ -22,44 +22,47 @@ li {
   list-style: none;
 }
 
-.home_box {
+body {
   font-family: "Poppins", sans-serif;
 }
-.home_box .video_box {
+
+.home .home_video {
   width: 100%;
+  height: 750px;
   position: relative;
 }
-.home_box .video_box .hashtag {
+.home .home_video .video_hashtag {
   position: absolute;
   left: 50px;
   top: 20px;
 }
-.home_box .video_box .hashtag h2 {
+.home .home_video .video_hashtag h2 {
   color: #FFFFFF;
+  font-size: 20px;
 }
-.home_box .video_box .hashtag .iconClick {
+.home .home_video .video_hashtag .hashtag_icon {
   position: absolute;
   color: #FFFFFF;
   font-size: 30px;
   left: 97%;
   top: 55%;
 }
-.home_box .video_box .logo_box {
+.home .home_video .video_logo {
   position: absolute;
   top: 40%;
   left: 0;
   right: 0;
   text-align: center;
 }
-.home_box .video_box .logo_box .home_logo {
+.home .home_video .video_logo div {
   margin-bottom: 50px;
 }
-.home_box .video_box .logo_box .home_logo img {
+.home .home_video .video_logo div img {
   object-fit: cover;
-  width: 30%;
+  width: 28%;
   height: 100%;
 }
-.home_box .video_box .logo_box h2 {
+.home .home_video .video_logo h2 {
   color: #FFFFFF;
   width: 20%;
   margin: auto;
@@ -70,9 +73,179 @@ li {
   font-weight: 600;
   letter-spacing: 1px;
 }
-.home_box .video_box video {
+.home .home_video video {
+  object-fit: cover;
   width: 100%;
   height: 100%;
+}
+.home .home_events {
+  background-color: #FFFFFF;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  margin-top: 80px;
+}
+.home .home_events h1 {
+  font-size: 70px;
+  width: 80%;
+  padding-left: 170px;
+}
+.home .home_events .events_content {
+  margin-right: 120px;
+}
+.home .home_events .events_content h3 {
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+.home .home_events .events_content h3 span {
+  color: #868686;
+}
+.home .home_events .events_content p {
+  width: 80%;
+  font-size: 20px;
+  margin-bottom: 40px;
+  color: #868686;
+  font-weight: 300;
+}
+.home .home_wine {
+  position: relative;
+  margin-bottom: -7px;
+}
+.home .home_wine img {
+  object-fit: cover;
+  width: 100%;
+  height: 770px;
+}
+.home .home_wine .wine_title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  top: 35%;
+  z-index: 99;
+}
+.home .home_wine .wine_title h1 {
+  color: #FFFFFF;
+  font-size: 80px;
+  width: 40%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+.home .home_wine .wine_title h2 {
+  width: 24%;
+  margin: auto;
+  padding: 12px;
+  background-color: #FFFFFF;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.home .home_wine::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 99.2%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.services {
+  background-color: #000000;
+  margin-top: -10px;
+  color: #FFFFFF;
+}
+.services .services_title {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-left: 175px;
+}
+.services .services_title h1 {
+  padding-top: 100px;
+  font-size: 60px;
+}
+.services .services_title h2 {
+  width: 25%;
+  text-align: center;
+  margin-bottom: 60px;
+  background-color: #FFFFFF;
+  color: #000000;
+  border-radius: 50px;
+  padding: 12px 0;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+.services .services_conteiner {
+  display: flex;
+  padding: 0 2%;
+}
+.services .services_conteiner .services_img {
+  display: flex;
+  flex: 1;
+  height: 500px;
+  position: relative;
+}
+.services .services_conteiner .services_img img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.services .services_conteiner .services_img .img_content {
+  position: absolute;
+  top: 55%;
+  color: #FFFFFF;
+  z-index: 99;
+  width: 70%;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.services .services_conteiner .services_img .img_content h3 {
+  font-size: 30px;
+  width: 70%;
+}
+.services .services_conteiner .services_img .img_content p {
+  font-size: 20px;
+  width: 93%;
+}
+.services .services_conteiner .services_img .img_content p span {
+  font-weight: 600;
+}
+.services .services_conteiner .services_img::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.nav {
+  background-color: #000000;
+  display: flex;
+  padding: 0 35px;
+  color: #FFFFFF;
+}
+.nav .nav_logo {
+  width: 400px;
+}
+.nav .nav_logo img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.footer {
+  min-height: 65px;
+  background-color: #000000;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 50px;
+  align-items: center;
+}
+.footer h3 {
+  font-size: 15px;
 }
 
 /*# sourceMappingURL=styles.css.map */
