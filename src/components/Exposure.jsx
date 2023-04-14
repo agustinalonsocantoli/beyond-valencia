@@ -54,6 +54,7 @@ export const Exposure = ({ data }) => {
                     <p>{D.p}</p>
                 </div>
             </div>
+
         </div>
     );
 }

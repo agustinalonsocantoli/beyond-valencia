@@ -1,12 +1,14 @@
 // React
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 // Icons
-import { TfiMenu } from "react-icons/tfi";
+import { TfiMenu, TfiClose } from "react-icons/tfi";
 // Img
 import logo from "../assets/logoW.png";
+import { useState } from "react";
 
 export const Navbar = ({ title, subtitle }) => {
     const navigate = useNavigate()
+    const [ isVisible, setIsVisible ] = useState(false);
     
     return(
         <div className="nav">
@@ -18,8 +20,24 @@ export const Navbar = ({ title, subtitle }) => {
             </div>
                 
             <div className="nav_menu">
-                <TfiMenu />
+                {!isVisible ? 
+                <TfiMenu onClick={() => setIsVisible(true)} /> : 
+                <TfiClose onClick={() => setIsVisible(false)} />
+                }
+
+                { isVisible &&
+                <div className="menu_open">
+                    <ul>
+                        <li><NavLink to={"/"}>Home</NavLink></li>
+                        <li><NavLink to={"/experiences"}>Experiences</NavLink></li>
+                        <li><NavLink to={"/daytrips"}>Day Trips</NavLink></li>
+                        <li><NavLink to={"/food"}>Food & Dinning</NavLink></li>
+                        <li><NavLink to={"/aboutus"}>About Us</NavLink></li>
+                    </ul>
+                </div>
+                }
             </div>
+
         </div>
     );
 }

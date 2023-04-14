@@ -1,3 +1,5 @@
+@use '../base/mixins' as m;
+
 .services {
     background-color: #000000;
     margin-top: -10px;
@@ -9,9 +11,30 @@
         gap: 40px;
         padding-left: 175px;
 
+        @include m.phone {
+            padding-left: 10%;
+        }
+        @include m.tablet {
+            padding-left: 10%;
+        }
+        @include m.desktopS {
+            padding-left: 10%;
+        }
+
         h1 {
             padding-top: 100px;
             font-size: 60px;
+
+
+        @include m.phone {
+            font-size: 18px;
+        }
+        @include m.tablet {
+            font-size: 30px;
+        }
+        @include m.desktopS {
+            font-size: 30px;
+        }
         }
 
         h2 {
@@ -25,12 +48,42 @@
             font-size: 18px;
             font-weight: 600;
             letter-spacing: 1.5px;
+
+            @include m.phone {
+                width: 60%;
+                font-size: 10px;
+            }
+            @include m.tablet {
+                width: 40%;
+                font-size: 15px;
+            }
+            @include m.desktopS {
+                width: 40%;
+                font-size: 15px;
+            }
+            
         }
     }
 
     .services_conteiner {
         display: flex;
         padding: 0 2%;
+
+        @include m.phone {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 10px;
+        }
+        @include m.tablet {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 10px;
+        }
+        @include m.desktopS {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 10px;
+        }
 
         .services_img {
             display: flex;

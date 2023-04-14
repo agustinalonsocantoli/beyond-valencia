@@ -1,9 +1,21 @@
+@use '../base/mixins' as m;
+
 .nav {
     background-color: #000000;
     display: flex;
     justify-content: space-around;
-    padding: 0 35px;
+    padding: 0 35px 10px 35px; 
     color: #FFFFFF;
+
+    @include m.phone {
+        padding: 0 5px 10px 5px;
+    }
+    @include m.tablet {
+        padding: 0 5px 10px 5px;
+    }
+    @include m.desktopS {
+        padding: 0 5px 10px 5px;
+    }
 
         
     img {
@@ -11,6 +23,16 @@
         width: 400px;
         height: 100%;
         cursor: pointer;
+
+        @include m.phone {
+            width: 150px;
+        }
+        @include m.tablet {
+            width: 300px;
+        }
+        @include m.desktopS {
+            width: 300px;
+        }
     }
 
 
@@ -21,6 +43,16 @@
 
         h1 {
             font-size: 120px;
+
+            @include m.phone {
+                font-size: 25px;
+            }
+            @include m.tablet {
+                font-size: 60px;
+            }
+            @include m.desktopS {
+                font-size: 60px;
+            }
         }
 
         h1::after {
@@ -30,14 +62,93 @@
             top: 25%;
             right: 2%;
             color: rgba(255, 255, 255, .5);
+
+            @include m.phone {
+                font-size: 15px;
+            }
+            @include m.tablet {
+                font-size: 40px;
+            }
+            @include m.desktopS {
+                font-size: 40px;
+            }
         }
     }
 
     .nav_menu {
+        position: relative;
+        margin-top: 10px;
 
         svg {
             font-size: 80px;
             cursor: pointer;
+
+            @include m.phone {
+                font-size: 20px;
+            }
+            @include m.tablet {
+                font-size: 30px;
+            }
+            @include m.desktopS {
+                font-size: 30px;
+            }
+        }
+    }
+
+    .menu_open {
+        position: absolute;
+        top: 8%;
+        right: 110%;
+        min-width: 600px;
+        background-color: rgba(255, 255, 255, .8);
+        padding: 8px 0;
+        border-radius: 8px;
+
+        @include m.phone {
+            padding: 5px 0;
+            min-width: 320px;
+        }
+        @include m.tablet {
+            padding: 5px 0;
+            min-width: 320px;
+        }
+        @include m.desktopS {
+            padding: 5px 0;
+            min-width: 320px;
+        }
+
+        ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            li {
+                font-weight: 200;
+                font-size: 20px;
+                padding: 0 8px;
+                border-right: 1px solid #000000;
+
+                @include m.phone {
+                    font-size: 10px;
+                    padding: 0 5px;
+                }
+                @include m.tablet {
+                    font-size: 13px;
+                    padding: 0 5px;
+                }
+                @include m.desktopS {
+                    font-size: 13px;
+                    padding: 0 5px;
+                }
+            }
+
+            li:last-child {
+                border: none;
+            }
+
+            a {
+                color: #000000;
+            }
         }
     }
 

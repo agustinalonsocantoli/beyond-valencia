@@ -5,6 +5,7 @@ import { Home } from '@/pages/Home';
 import { Experiences } from "./pages/Experiences";
 import { Daytrips } from "./pages/Daytrips";
 import { Food } from "./pages/Food";
+import { Payment } from "./pages/Payment";
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/daytrips" element={<Daytrips />} />
           <Route path="/food" element={<Food />} />
           <Route path="/aboutus" element={<div>About Us</div>} />
+          <Route path="/payment" element={<Payment />} />
           <Route path="*" element={<div>Error</div>} />
         </Routes>
       </Router>

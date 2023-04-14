@@ -1,3 +1,5 @@
+@use '../base/mixins' as m;
+
 .footer {
     min-height: 65px;
     background-color: #000000;
@@ -9,5 +11,9 @@
 
     h3 {
         font-size: 15px;
+
+        @include m.phone {
+            font-size: 12px;
+        }
     }
 }

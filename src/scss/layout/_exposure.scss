@@ -1,8 +1,20 @@
+@use '../base/mixins' as m;
+
 .exposure {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     background-color: #000000;
+
+    @include m.phone {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    @include m.tablet {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    @include m.desktopS {
+        grid-template-columns: repeat(1, 1fr);
+    }
 
     h3 {
         font-size: 35px;
@@ -16,6 +28,22 @@
         grid-column: 1 / 2 ;
         grid-row: 1 / 3 ;
         position: relative;
+
+        @include m.phone {
+            grid-column: 1 / 1;
+            grid-row: 1 / 1;
+            height: 550px;
+        }
+        @include m.tablet {
+            grid-column: 1 / 1;
+            grid-row: 1 / 1;
+            height: 550px;
+        }
+        @include m.desktopS {
+            grid-column: 1 / 1;
+            grid-row: 1 / 1;
+            height: 550px;
+        }
 
         video, img {
             object-fit: cover;
@@ -41,6 +69,19 @@
         height: 275px;
         position: relative;
 
+        @include m.phone {
+            grid-column: 1 / 1;
+            grid-row: 2 / 2;
+        }
+        @include m.tablet {
+            grid-column: 1 / 1;
+            grid-row: 2 / 2;
+        }
+        @include m.desktopS {
+            grid-column: 1 / 1;
+            grid-row: 2 / 2;
+        }
+
         video, img {
             object-fit: cover;
             width: 100%;
@@ -62,6 +103,19 @@
         height: 275px;
         position: relative;
 
+        @include m.phone {
+            grid-column: 1 / 1;
+            grid-row: 3 / 3; 
+        }
+        @include m.tablet {
+            grid-column: 1 / 1;
+            grid-row: 3 / 3; 
+        }
+        @include m.desktopS {
+            grid-column: 1 / 1;
+            grid-row: 3 / 3; 
+        }
+
         video, img {
             object-fit: cover;
             width: 100%;
@@ -81,6 +135,19 @@
         grid-row: 2 / 3 ;
         height: 275px;
         position: relative;
+
+        @include m.phone {
+            grid-column: 1 / 1;
+            grid-row: 4 / 4; 
+        }
+        @include m.tablet {
+            grid-column: 1 / 1;
+            grid-row: 4 / 4; 
+        }
+        @include m.desktopS {
+            grid-column: 1 / 1;
+            grid-row: 4 / 4; 
+        }
 
         video, img {
             object-fit: cover;
