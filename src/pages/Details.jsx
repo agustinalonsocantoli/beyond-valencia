@@ -10,7 +10,7 @@ import details4 from "../assets/img/details4.jpg";
 // Icons
 import { HiOutlineUserGroup } from 'react-icons/hi';
 import { BiTimer } from 'react-icons/bi'
-import { FcOvertime } from 'react-icons/fc';
+import { VscCalendar } from 'react-icons/vsc';
 import { BsTicket } from 'react-icons/bs'
 import { TfiWorld } from 'react-icons/tfi';
 import { GrLocation } from 'react-icons/gr';
@@ -69,7 +69,7 @@ export const Details = () => {
                     <div className="information">
                         <p><HiOutlineUserGroup />Age 0 - 99, max of 10 per group</p>
                         <p><BiTimer /> Duration: 1h</p>
-                        <p><FcOvertime /> Start time: Check availability </p>
+                        <p><VscCalendar /> Start time: Check availability </p>
                         <p><BsTicket /> Mobile Ticket</p>
                         <p><TfiWorld /> Spanish</p>
                         <p><GrLocation />Location</p>

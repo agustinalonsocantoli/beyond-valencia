@@ -835,7 +835,7 @@ body {
 }
 
 .details_exposure {
-  padding: 0 5% 0 5%;
+  padding: 0 5% 10px 5%;
   background-color: #000000;
 }
 .details_exposure img {
@@ -843,12 +843,12 @@ body {
 }
 .details_description {
   display: flex;
-  gap: 50px;
+  gap: 100px;
   padding: 0 5% 3% 5%;
   margin-top: 50px;
 }
 .details_description .description {
-  width: 60%;
+  width: 55%;
 }
 .details_description .description h1 {
   font-size: 60px;
@@ -919,10 +919,165 @@ body {
   font-family: "Poppins", sans-serif !important;
   margin: 0 !important;
   width: 400px !important;
+  margin-bottom: 20px !important;
 }
 .book .MuiDateCalendar-root .MuiDayCalendar-header,
 .book .MuiDateCalendar-root .MuiDayCalendar-weekContainer {
   justify-content: space-around !important;
+}
+.book_selected {
+  border: 1px solid rgb(0, 0, 0) !important;
+}
+.book_type {
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  position: relative;
+  min-width: 300px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.book_type h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.book_type h5 {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 300;
+  border: 0.5px solid #000000;
+  padding: 2px 4px;
+  border-radius: 3px;
+  margin-bottom: 30px;
+}
+.book_type h4 {
+  font-size: 17px;
+  font-weight: 400;
+}
+.book_type p {
+  font-size: 10px;
+  font-weight: 200;
+  margin-bottom: 15px;
+}
+.book_type .type_check {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.book_type .type_check .radio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(0, 0, 0, 0.8);
+  border-radius: 100%;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+.book_type .type_check .radio .radio_check {
+  display: flex;
+  background-color: rgb(0, 0, 0);
+  border-radius: 100%;
+  height: 12px;
+  width: 12px;
+}
+.book_type .time {
+  margin-bottom: 10px;
+  opacity: 0.2;
+}
+.book_type .time .disable {
+  border-radius: 20px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 7px 15px;
+  font-size: 15px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.book_type .time .active {
+  border-radius: 20px;
+  background-color: transparent;
+  padding: 7px 15px;
+  font-size: 15px;
+  margin-right: 5px;
+  cursor: pointer;
+  border: 1px solid #000000;
+  color: #000000;
+}
+.book_type .time_selected {
+  opacity: 1;
+}
+.book .amount_conteiner {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.book_amount {
+  display: flex;
+  width: 250px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.book_amount h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+.book_amount p {
+  font-size: 10px;
+  font-weight: 300;
+}
+.book_amount .amount_selector {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 40%;
+}
+.book_amount .amount_selector button {
+  font-size: 18px;
+  font-weight: 300;
+  background-color: #000000;
+  border-radius: 100%;
+  padding: 4px 7px 0 7px;
+  color: #FFFFFF;
+  cursor: pointer;
+  border: none;
+}
+.book_amount .amount_selector button:active {
+  transform: scale(1.1);
+  transition: all 200ms ease;
+}
+.book_amount .amount_selector button:disabled {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
+.book_amount .amount_selector h4 {
+  font-size: 18px;
+  font-weight: 300;
+}
+.book_btn {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.book_btn button {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 7px 15px;
+  border-radius: 12px;
+  width: 60%;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+.book_btn button:active {
+  transform: scale(0.9);
+  transition: all 200ms ease;
+}
+.book_btn button:hover {
+  background-color: rgb(0, 0, 0);
+}
+.book_form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
 }
 
 /*# sourceMappingURL=styles.css.map */
