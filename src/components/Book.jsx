@@ -11,8 +11,9 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export const Book = () => {
+export const Book = (props) => {
     const dateNow = new Date();
+    const { setPaymentVisible, currentOrder, setCurrentOrder } = props;
     const [ date, setDate ] = useState(dayjs(dateNow));
     const [ selectedValue, setSelectedValue ] = useState(null);
     const [ time, setTime ] = useState(null);
@@ -20,8 +21,7 @@ export const Book = () => {
     const [ children, setChildren ] = useState(0);
     const [ infants, setInfants ] = useState(0);
     const [ formVisible, setFormVisible ] = useState(false)
-    const [ currentOrder, setCurrentOrder ] = useState(null);
-
+    
     const handleCheck = () => {
         if(selectedValue !== null) {
             if(time !== null) {
@@ -64,7 +64,7 @@ export const Book = () => {
 
                     notifySuccess('Enviado');
                     e.target.reset();
-                    setFormVisible(false);
+                    setPaymentVisible(true)
                 } else {
                     notifyError("Phone");
                 }
@@ -261,7 +261,7 @@ export const Book = () => {
                 <label>Comment</label>
                 <textarea name="comment" onChange={handleInput}></textarea>
 
-                <button type="submit">SEND</button>
+                <button type="submit">PAY NOW</button>
             </form>
             }
 

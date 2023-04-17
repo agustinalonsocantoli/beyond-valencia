@@ -1,7 +1,11 @@
+// React
+import { useState } from 'react';
 // Components
 import { Navbar } from "@/components/Navbar";
 import { Exposure } from "../components/Exposure";
 import { Book } from "../components/Book";
+import { Payment } from "../components/payment";
+
 // Image
 import details2 from "../assets/img/details1.jpg";
 import details3 from "../assets/img/details2.jpg";
@@ -17,6 +21,8 @@ import { GrLocation } from 'react-icons/gr';
 
 
 export const Details = () => {
+    const [ paymentVisible, setPaymentVisible ] = useState(false);
+    const [ currentOrder, setCurrentOrder ] = useState(null);
 
     const multimedia = {
         A: {
@@ -86,9 +92,19 @@ export const Details = () => {
                     </div>
                 </div>
 
-                <Book />
+                <Book 
+                currentOrder={currentOrder}
+                setCurrentOrder={setCurrentOrder}
+                setPaymentVisible={setPaymentVisible}
+                />
             </div>
             
+            {paymentVisible && 
+            <Payment 
+                currentOrder={currentOrder}
+                setCurrentOrder={setCurrentOrder}
+                setPaymentVisible={setPaymentVisible}
+            />}
 
         </div>
     );
