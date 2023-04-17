@@ -67,7 +67,9 @@
 
     .services_conteiner {
         display: flex;
+        gap: 20px;
         padding: 0 2%;
+
 
         @include m.phone {
             display: grid;
@@ -95,6 +97,7 @@
                 object-fit: cover;
                 height: 100%;
                 width: 100%;
+                border-radius: 12px;
             }
 
             .img_content {

@@ -11,7 +11,7 @@ export const Exposure = ({ data }) => {
                 }
 
                 { A.type === "image" && 
-                <img src={A.src} alt={`img/${A.h1}`} />
+                <img src={A.src} alt={`img`} />
                 }
 
                 <div className="content-a">
@@ -21,7 +21,7 @@ export const Exposure = ({ data }) => {
             </div>
 
             <div className="grid-b">
-                <img src={B.src} alt={`img/${B.h1}`} />
+                <img src={B.src} alt={`img`} />
 
                 <div className="content-b">
                     <h3>{B.h3}</h3>
@@ -30,7 +30,7 @@ export const Exposure = ({ data }) => {
             </div>
 
             <div className="grid-c">
-                <img src={C.src} alt={`img/${C.h1}`} />
+                <img src={C.src} alt={`img`} />
 
                 <div className="content-c">
                     <h3>{C.h3}</h3>
@@ -46,7 +46,7 @@ export const Exposure = ({ data }) => {
                 }
 
                 { D.type === "image" && 
-                <img src={D.src} alt={`img/${D.h1}`} />
+                <img src={D.src} alt={`img`} />
                 }
 
                 <div className="content-d">

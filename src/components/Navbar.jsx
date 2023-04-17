@@ -9,6 +9,7 @@ import { useState } from "react";
 export const Navbar = ({ title, subtitle }) => {
     const navigate = useNavigate()
     const [ isVisible, setIsVisible ] = useState(false);
+    const resposive = window.innerWidth < 1024 ? false : true;
     
     return(
         <div className="nav">

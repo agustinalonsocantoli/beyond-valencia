@@ -1,0 +1,92 @@
+.details {
+
+    &_exposure {
+        padding: 0 5% 0 5%;
+        background-color: #000000;
+
+        img {
+            border-radius: 0 !important;
+        }
+    }
+
+    &_description {
+        display: flex;
+        gap: 50px;
+        padding: 0 5% 3% 5%;
+        margin-top: 50px;
+
+        .description {
+            width: 60%;
+            
+            h1 {
+                font-size: 60px;
+                text-align: center;
+                margin-bottom: 50px;
+            }
+
+            h2 {
+                font-size: 25px;
+                text-decoration: underline;
+                margin-bottom: 20px;
+                font-weight: 400;
+            }
+
+            &_text {
+                font-size: 18px;
+                font-weight: 300;
+                margin-bottom: 50px;
+            }
+
+            h3 {
+                font-size: 22px;
+                margin-bottom: 20px;
+                font-weight: 400;
+            }
+
+            .highlights {
+                margin-bottom: 50px;
+
+                li {
+                    margin-left: 30px;
+                    list-style: disc;
+                    font-size: 18px;
+                    font-weight: 300;
+                }
+            }
+
+            .information {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                column-gap: 50px;
+                row-gap: 20px;
+                width: 80%;
+                margin: auto;
+                margin-bottom: 50px;
+
+                p {
+                    display: flex;
+                    align-items: center;
+                    font-size: 15px;
+                    font-weight: 300;
+                    gap: 10px;
+
+                    svg {
+                        font-size: 55px;
+                    }
+                }
+            }
+
+            &_policy {
+
+                p {
+                    padding: 20px;
+                    margin-bottom: 20px;
+                    font-size: 12px;
+                    font-weight: 300;
+                    border: 1px solid #000000;
+                }
+            }
+        }
+    }
+
+}
