@@ -1,10 +1,10 @@
-export const Payment = (props) => {
+export const Payments = (props) => {
     const { setPaymentVisible, currentOrder, setCurrentOrder } = props;
 
     return(
         <div className="payment" style={{ width: "100%", height: '600px'}}>
             <h1 style={{
-                fontSize: '20px',
+                fontSize: '40px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -14,10 +14,12 @@ export const Payment = (props) => {
             </h1>
 
             {<ul  style={{
-                    fontSize: '10px',
+                    fontSize: '15px',
                     display: 'flex',
                     flexDirection: 'column',
-                    justifyContent: 'center'        
+                    justifyContent: 'center',
+                    margin: 'auto',
+                    width: '25%'       
                 }}>
                 
                     <li>Nombre: {currentOrder.name}</li>

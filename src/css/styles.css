@@ -755,35 +755,66 @@ body {
 }
 .nav .menu_open {
   position: absolute;
-  top: 8%;
-  right: 110%;
+  top: 5%;
+  right: 0;
   min-width: 600px;
   background-color: rgba(255, 255, 255, 0.2);
   padding: 8px 0;
   border-radius: 8px;
+  z-index: 99;
 }
 @media (max-width: 480px) {
   .nav .menu_open {
     padding: 5px 0;
     min-width: 320px;
+    right: 110%;
+    top: 0;
+    min-width: 0;
+    background-color: rgb(255, 255, 255);
   }
 }
 @media (min-width: 481px) and (max-width: 768px) {
   .nav .menu_open {
     padding: 5px 0;
     min-width: 320px;
+    right: 110%;
+    top: 0;
+    min-width: 0;
+    background-color: rgb(255, 255, 255);
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .nav .menu_open {
     padding: 5px 0;
     min-width: 320px;
+    right: 110%;
+    top: 0;
+    min-width: 0;
+    background-color: rgb(255, 255, 255);
   }
 }
 .nav .menu_open ul {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@media (max-width: 480px) {
+  .nav .menu_open ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .nav .menu_open ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .nav .menu_open ul {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 .nav .menu_open ul li {
   font-weight: 200;
@@ -794,19 +825,31 @@ body {
 @media (max-width: 480px) {
   .nav .menu_open ul li {
     font-size: 10px;
-    padding: 0 5px;
+    padding: 5px;
+    border-right: none;
+    border-bottom: 1px solid #000000;
+    width: 100%;
+    text-align: center;
   }
 }
 @media (min-width: 481px) and (max-width: 768px) {
   .nav .menu_open ul li {
     font-size: 13px;
-    padding: 0 5px;
+    padding: 5px;
+    border-right: none;
+    border-bottom: 1px solid #000000;
+    width: 100%;
+    text-align: center;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .nav .menu_open ul li {
     font-size: 13px;
-    padding: 0 5px;
+    padding: 5px;
+    border-right: none;
+    border-bottom: 1px solid #000000;
+    width: 100%;
+    text-align: center;
   }
 }
 .nav .menu_open ul li:last-child {
@@ -814,6 +857,22 @@ body {
 }
 .nav .menu_open ul a {
   color: #FFFFFF;
+  cursor: pointer;
+}
+@media (max-width: 480px) {
+  .nav .menu_open ul a {
+    color: #000000;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .nav .menu_open ul a {
+    color: #000000;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .nav .menu_open ul a {
+    color: #000000;
+  }
 }
 
 .footer {
@@ -847,13 +906,62 @@ body {
   padding: 0 5% 3% 5%;
   margin-top: 50px;
 }
+@media (max-width: 480px) {
+  .details_description {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .details_description {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .details_description {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
 .details_description .description {
   width: 55%;
+}
+@media (max-width: 480px) {
+  .details_description .description {
+    width: 100%;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .details_description .description {
+    width: 100%;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .details_description .description {
+    width: 100%;
+  }
 }
 .details_description .description h1 {
   font-size: 60px;
   text-align: center;
   margin-bottom: 50px;
+}
+@media (max-width: 480px) {
+  .details_description .description h1 {
+    text-align: left;
+    font-size: 40px;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .details_description .description h1 {
+    text-align: left;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .details_description .description h1 {
+    text-align: left;
+  }
 }
 .details_description .description h2 {
   font-size: 25px;
@@ -861,15 +969,30 @@ body {
   margin-bottom: 20px;
   font-weight: 400;
 }
+@media (max-width: 480px) {
+  .details_description .description h2 {
+    font-size: 20px;
+  }
+}
 .details_description .description_text {
   font-size: 18px;
   font-weight: 300;
   margin-bottom: 50px;
 }
+@media (max-width: 480px) {
+  .details_description .description_text {
+    font-size: 15px;
+  }
+}
 .details_description .description h3 {
   font-size: 22px;
   margin-bottom: 20px;
   font-weight: 400;
+}
+@media (max-width: 480px) {
+  .details_description .description h3 {
+    font-size: 20px;
+  }
 }
 .details_description .description .highlights {
   margin-bottom: 50px;
@@ -880,6 +1003,11 @@ body {
   font-size: 18px;
   font-weight: 300;
 }
+@media (max-width: 480px) {
+  .details_description .description .highlights li {
+    font-size: 15px;
+  }
+}
 .details_description .description .information {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -889,6 +1017,15 @@ body {
   margin: auto;
   margin-bottom: 50px;
 }
+@media (max-width: 480px) {
+  .details_description .description .information {
+    column-gap: 30px;
+    row-gap: 15px;
+    width: 95%;
+    margin: auto;
+    margin-bottom: 40px;
+  }
+}
 .details_description .description .information p {
   display: flex;
   align-items: center;
@@ -896,8 +1033,18 @@ body {
   font-weight: 300;
   gap: 10px;
 }
+@media (max-width: 480px) {
+  .details_description .description .information p {
+    font-size: 13px;
+  }
+}
 .details_description .description .information p svg {
   font-size: 55px;
+}
+@media (max-width: 480px) {
+  .details_description .description .information p svg {
+    font-size: 45px;
+  }
 }
 .details_description .description_policy p {
   padding: 20px;
@@ -905,6 +1052,12 @@ body {
   font-size: 12px;
   font-weight: 300;
   border: 1px solid #000000;
+}
+@media (max-width: 480px) {
+  .details_description .description_policy p {
+    font-size: 10px;
+    padding: 15px;
+  }
 }
 
 .book {
@@ -921,12 +1074,30 @@ body {
   width: 400px !important;
   margin-bottom: 20px !important;
 }
+@media (max-width: 480px) {
+  .book .MuiDateCalendar-root {
+    width: 320px !important;
+  }
+}
 .book .MuiDateCalendar-root .MuiDayCalendar-header,
 .book .MuiDateCalendar-root .MuiDayCalendar-weekContainer {
   justify-content: space-around !important;
 }
 .book_selected {
   border: 1px solid rgb(0, 0, 0) !important;
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .book_type-conteiner {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .book_type-conteiner {
+    display: flex;
+    gap: 50px;
+  }
 }
 .book_type {
   padding: 10px;
@@ -1056,16 +1227,19 @@ body {
 .book_btn {
   width: 100%;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 .book_btn button {
   border: none;
-  background-color: rgba(0, 0, 0, 0.8);
-  padding: 7px 15px;
-  border-radius: 12px;
-  width: 60%;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px 15px;
+  border-radius: 20px;
+  width: 30%;
   color: #FFFFFF;
   cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 12px;
 }
 .book_btn button:active {
   transform: scale(0.9);
@@ -1078,6 +1252,53 @@ body {
   display: flex;
   flex-direction: column;
   width: 80%;
+}
+.book_form label {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.book_form span {
+  margin-left: 5px;
+  color: rgba(198, 40, 40, 0.8);
+}
+.book_form input {
+  outline: none;
+  padding: 5px 2px;
+  font-size: 13px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+.book_form textarea {
+  outline: none;
+  resize: none;
+  padding: 5px 2px;
+  font-size: 13px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  margin-bottom: 20px;
+  height: 100px;
+}
+.book_form button {
+  margin: auto;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px 15px;
+  border-radius: 20px;
+  width: 70%;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+}
+.book_form button:active {
+  transform: scale(0.9);
+  transition: all 200ms ease;
+}
+.book_form button:hover {
+  background-color: rgb(0, 0, 0);
 }
 
 /*# sourceMappingURL=styles.css.map */

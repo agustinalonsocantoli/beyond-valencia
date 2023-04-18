@@ -1,3 +1,5 @@
+@use '../base/mixins' as m;
+
 .details {
 
     &_exposure {
@@ -15,13 +17,48 @@
         padding: 0 5% 3% 5%;
         margin-top: 50px;
 
+        @include m.phone {
+            flex-direction: column;
+            gap: 30px;
+        }
+        @include m.tablet {
+            flex-direction: column;
+            gap: 30px;
+        }
+        @include m.desktopS {
+            flex-direction: column;
+            gap: 30px;
+        }
+
         .description {
             width: 55%;
+
+            @include m.phone {
+                width: 100%;
+            }
+            @include m.tablet {
+                width: 100%;
+            }
+            @include m.desktopS {
+                width: 100%;
+            }
             
             h1 {
                 font-size: 60px;
                 text-align: center;
                 margin-bottom: 50px;
+
+
+            @include m.phone {
+                text-align: left;
+                font-size: 40px;
+            }
+            @include m.tablet {
+                text-align: left;
+            }
+            @include m.desktopS {
+                text-align: left;
+            }
             }
 
             h2 {
@@ -29,18 +66,30 @@
                 text-decoration: underline;
                 margin-bottom: 20px;
                 font-weight: 400;
+
+                @include m.phone {
+                    font-size: 20px;
+                }
             }
 
             &_text {
                 font-size: 18px;
                 font-weight: 300;
                 margin-bottom: 50px;
+
+                @include m.phone {
+                    font-size: 15px;
+                }
             }
 
             h3 {
                 font-size: 22px;
                 margin-bottom: 20px;
                 font-weight: 400;
+
+                @include m.phone {
+                    font-size: 20px;
+                }
             }
 
             .highlights {
@@ -51,6 +100,10 @@
                     list-style: disc;
                     font-size: 18px;
                     font-weight: 300;
+
+                    @include m.phone {
+                        font-size: 15px;
+                    }
                 }
             }
 
@@ -63,6 +116,14 @@
                 margin: auto;
                 margin-bottom: 50px;
 
+                @include m.phone {
+                    column-gap: 30px;
+                    row-gap: 15px;
+                    width: 95%;
+                    margin: auto;
+                    margin-bottom: 40px;
+                }
+
                 p {
                     display: flex;
                     align-items: center;
@@ -70,8 +131,16 @@
                     font-weight: 300;
                     gap: 10px;
 
+                    @include m.phone {
+                        font-size: 13px;
+                    }
+
                     svg {
                         font-size: 55px;
+
+                        @include m.phone {
+                            font-size: 45px;
+                        }
                     }
                 }
             }
@@ -84,6 +153,11 @@
                     font-size: 12px;
                     font-weight: 300;
                     border: 1px solid #000000;
+
+                    @include m.phone {
+                        font-size: 10px;
+                        padding: 15px;
+                    }
                 }
             }
         }

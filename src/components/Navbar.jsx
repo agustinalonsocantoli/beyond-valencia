@@ -19,7 +19,8 @@ export const Navbar = ({ title, subtitle }) => {
             <div className="nav_title">
                 <h1 data-text={subtitle}>{title}</h1>
             </div>
-                
+            
+            { !resposive &&
             <div className="nav_menu">
                 {!isVisible ? 
                 <TfiMenu onClick={() => setIsVisible(true)} /> : 
@@ -38,6 +39,22 @@ export const Navbar = ({ title, subtitle }) => {
                 </div>
                 }
             </div>
+            }
+
+            { resposive &&
+            <div className="nav_menu">
+
+                <div className="menu_open">
+                    <ul>
+                        <li><NavLink to={"/"}>Home</NavLink></li>
+                        <li><NavLink to={"/experiences"}>Experiences</NavLink></li>
+                        <li><NavLink to={"/daytrips"}>Day Trips</NavLink></li>
+                        <li><NavLink to={"/food"}>Food & Dinning</NavLink></li>
+                        <li><NavLink to={"/aboutus"}>About Us</NavLink></li>
+                    </ul>
+                </div>
+            </div>
+            }
 
         </div>
     );

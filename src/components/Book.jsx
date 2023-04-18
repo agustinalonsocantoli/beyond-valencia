@@ -13,14 +13,29 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const Book = (props) => {
     const dateNow = new Date();
-    const { setPaymentVisible, currentOrder, setCurrentOrder } = props;
+    const { setPaymentVisible, currentOrder, setCurrentOrder, setTotalPay } = props;
     const [ date, setDate ] = useState(dayjs(dateNow));
     const [ selectedValue, setSelectedValue ] = useState(null);
     const [ time, setTime ] = useState(null);
     const [ adults, setAdults ] = useState(0);
     const [ children, setChildren ] = useState(0);
     const [ infants, setInfants ] = useState(0);
-    const [ formVisible, setFormVisible ] = useState(false)
+    const [ formVisible, setFormVisible ] = useState(false);
+
+    const totalCalculate = (adults, children, typeOrder) => {
+        let totalAdults;
+        let totalChildren;
+
+        if(typeOrder === 'group') {
+            totalAdults = adults > 0 ? (adults * 25) : 0;
+            totalChildren = children > 0 ? (children * 20) : 0;
+        } else if(typeOrder === 'private') {
+            totalAdults = adults > 0 ? (adults * 35) : 0;
+            totalChildren = children > 0 ? (children * 30) : 0;
+        }
+
+        return totalAdults + totalChildren;
+    }
     
     const handleCheck = () => {
         if(selectedValue !== null) {
@@ -37,15 +52,18 @@ export const Book = (props) => {
                     });
             
                     setFormVisible(true);
-                    notifySuccess('ok');
+
+                    const total = totalCalculate(adults, children, selectedValue);
+                    setTotalPay(total);
+                    
                 } else {
-                    notifyError("Personas");
+                    notifyError("You must select the number of people.");
                 }
             } else {
-                notifyError("Completar Hora");
+                notifyError("You must select a time.");
             }
         } else {
-            notifyError("Completar grupo");
+            notifyError("You must enter an option.");
         }
     }
 
@@ -62,17 +80,17 @@ export const Book = (props) => {
             if(currentOrder.email !== null && currentOrder.email !== undefined && currentOrder.email !== '') {
                 if(currentOrder.phone !== null && currentOrder.phone !== undefined && currentOrder.phone !== '') {
 
-                    notifySuccess('Enviado');
+                    notifySuccess('We will proceed to the payment.');
                     e.target.reset();
                     setPaymentVisible(true)
                 } else {
-                    notifyError("Phone");
+                    notifyError("You must enter a correct Phone.");
                 }
             } else {
-                notifyError("Email");
+                notifyError("You must enter a correct Email.");
             }
         } else {
-            notifyError("Name");
+            notifyError("You must enter a correct Name.");
         }
     }
 
@@ -106,7 +124,7 @@ export const Book = (props) => {
             </LocalizationProvider>
 
 
-            <div>
+            <div className="book_type-conteiner">
                 <div 
                 className={`book_type ${selectedValue === 'group' && 'book_selected'}`}
                 onClick={() => {
@@ -249,16 +267,16 @@ export const Book = (props) => {
 
             {formVisible &&
             <form className="book_form" onSubmit={handleSubmit}>
-                <label>Name</label>
+                <label>Name<span>*</span></label>
                 <input type="text" name="name"  onChange={handleInput}/>
 
-                <label>Email</label>
+                <label>Email<span>*</span></label>
                 <input type="email" name="email"  onChange={handleInput}/>
 
-                <label>Phone</label>
+                <label>Phone<span>*</span></label>
                 <input type="tel" name="phone"  onChange={handleInput}/>
 
-                <label>Comment</label>
+                <label>Comment<span>*</span></label>
                 <textarea name="comment" onChange={handleInput}></textarea>
 
                 <button type="submit">PAY NOW</button>

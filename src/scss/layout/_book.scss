@@ -1,4 +1,5 @@
 @use '../base/variables' as v;
+@use '../base/mixins' as m;
 
 .book {
     display: flex;
@@ -15,6 +16,10 @@
         width: 400px !important;
         margin-bottom: 20px !important;
 
+        @include m.phone {
+            width: 320px !important;
+        }
+
         .MuiDayCalendar-header,
         .MuiDayCalendar-weekContainer {
             justify-content: space-around !important;
@@ -23,6 +28,19 @@
 
     &_selected {
         border: 1px solid rgba(0, 0, 0, 1) !important;
+    }
+
+    &_type-conteiner {
+
+        @include m.tablet {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+        @include m.desktopS {
+            display: flex;
+            gap: 50px;
+        }
     }
 
     &_type {
@@ -174,16 +192,19 @@
     &_btn {
         width: 100%;
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
 
         button {
             border: none;
-            background-color: rgba(0, 0, 0, .8);
-            padding: 7px 15px;
-            border-radius: 12px;
-            width: 60%;
+            background-color: rgba(0, 0, 0, .7);
+            padding: 10px 15px;
+            border-radius: 20px;
+            width: 30%;
             color: #FFFFFF;
             cursor: pointer;
+            font-family: v.$poppins;
+            font-weight: 300;
+            font-size: 12px;
 
             &:active {
                 transform: scale(0.9);
@@ -200,5 +221,59 @@
         display: flex;
         flex-direction: column;
         width: 80%;
+
+        label {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        span {
+            margin-left: 5px;
+            color: rgba(198, 40, 40, .8);
+        }
+
+        input {
+            outline: none;
+            padding: 5px 2px;
+            font-size: 13px;
+            font-family: v.$poppins;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            outline: none;
+            resize: none;
+            padding: 5px 2px;
+            font-size: 13px;
+            font-family: v.$poppins;
+            font-weight: 300;
+            margin-bottom: 20px;
+            height: 100px;
+        }
+
+        button {
+            margin: auto;
+            border: none;
+            background-color: rgba(0, 0, 0, .7);
+            padding: 10px 15px;
+            border-radius: 20px;
+            width: 70%;
+            color: #FFFFFF;
+            cursor: pointer;
+            font-family: v.$poppins;
+            font-weight: 300;
+            font-size: 15px;
+
+            &:active {
+                transform: scale(0.9);
+                transition: all 200ms ease;
+            }
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 1);
+            }
+        }
     }
 }

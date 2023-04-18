@@ -4,8 +4,7 @@ import { useState } from 'react';
 import { Navbar } from "@/components/Navbar";
 import { Exposure } from "../components/Exposure";
 import { Book } from "../components/Book";
-import { Payment } from "../components/payment";
-
+import { Payments } from '../components/Payments';
 // Image
 import details2 from "../assets/img/details1.jpg";
 import details3 from "../assets/img/details2.jpg";
@@ -23,6 +22,7 @@ import { GrLocation } from 'react-icons/gr';
 export const Details = () => {
     const [ paymentVisible, setPaymentVisible ] = useState(false);
     const [ currentOrder, setCurrentOrder ] = useState(null);
+    const [ totalPay, setTotalPay ] = useState(null);
 
     const multimedia = {
         A: {
@@ -96,14 +96,16 @@ export const Details = () => {
                 currentOrder={currentOrder}
                 setCurrentOrder={setCurrentOrder}
                 setPaymentVisible={setPaymentVisible}
+                setTotalPay={setTotalPay}
                 />
             </div>
             
             {paymentVisible && 
-            <Payment 
+            <Payments 
                 currentOrder={currentOrder}
                 setCurrentOrder={setCurrentOrder}
                 setPaymentVisible={setPaymentVisible}
+                totalPay={totalPay}
             />}
 
         </div>
