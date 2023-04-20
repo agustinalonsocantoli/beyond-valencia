@@ -17,6 +17,7 @@ import { VscCalendar } from 'react-icons/vsc';
 import { BsTicket } from 'react-icons/bs'
 import { TfiWorld } from 'react-icons/tfi';
 import { GrLocation } from 'react-icons/gr';
+import { RxCross1 } from "react-icons/rx"
 
 
 export const Details = () => {
@@ -44,7 +45,9 @@ export const Details = () => {
     }
 
     return(
-        <div className="details">
+        <div className="details" style={{position: 'relative',
+            backgroundColor: paymentVisible ? 'rgba(0, 0, 0, .5)' : 'transparent'
+        }}>
 
             <Navbar title={"Experiences"} subtitle={"Experiences"} />
 
@@ -56,7 +59,7 @@ export const Details = () => {
                 <div className="description">
                     <h1>One Day in Calpe</h1>
 
-                    <h2>General information</h2>
+                    <h2>More about experience</h2>
 
                     <div className="description_text">
                         <p>
@@ -81,6 +84,14 @@ export const Details = () => {
                         <p><GrLocation />Location</p>
                     </div>
 
+
+                    <h3>Include</h3>
+                    <ul className="highlights">
+                        <li style={{listStyle: 'none'}}><RxCross1 style={{color: 'red', marginRight: 5}} />Save time—tick off multiple top Amsterdam landmarks in a day</li>
+                        <li style={{listStyle: 'none'}}><RxCross1 style={{color: 'red', marginRight: 5}} />Travel in an eco-friendly way—the boat has an electric engine</li>
+                        <li style={{listStyle: 'none'}}><RxCross1 style={{color: 'red', marginRight: 5}} />Flexible tour—choose from a variety of daily start times and from 3 different departure locations</li>
+                    </ul>
+
                     <div className="description_policy">
                         <p>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis laboriosam consectetur animi! Doloribus beatae non consectetur laudantium dolores soluta delectus iste quia consequatur facilis fugiat eum distinctio praesentium, exercitationem pariatur? Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere natus, temporibus molestias porro cumque dicta magnam, incidunt quaerat, quidem animi maxime nulla nihil quo tempore aspernatur et odio totam in.
@@ -97,6 +108,7 @@ export const Details = () => {
                 setCurrentOrder={setCurrentOrder}
                 setPaymentVisible={setPaymentVisible}
                 setTotalPay={setTotalPay}
+                totalPay={totalPay}
                 />
             </div>
             

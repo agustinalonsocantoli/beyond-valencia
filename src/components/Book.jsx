@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const Book = (props) => {
     const dateNow = new Date();
-    const { setPaymentVisible, currentOrder, setCurrentOrder, setTotalPay } = props;
+    const { setPaymentVisible, currentOrder, setCurrentOrder, setTotalPay, totalPay } = props;
     const [ date, setDate ] = useState(dayjs(dateNow));
     const [ selectedValue, setSelectedValue ] = useState(null);
     const [ time, setTime ] = useState(null);
@@ -21,6 +21,9 @@ export const Book = (props) => {
     const [ children, setChildren ] = useState(0);
     const [ infants, setInfants ] = useState(0);
     const [ formVisible, setFormVisible ] = useState(false);
+    const [ subTotal, setSubTotal ] = useState(0);
+    const [ discount, setDiscount ] = useState(0);
+    const [ codeDiscount, setCodeDiscount ] = useState(null);
 
     const totalCalculate = (adults, children, typeOrder) => {
         let totalAdults;
@@ -43,19 +46,21 @@ export const Book = (props) => {
                 if(adults !== 0 || children !== 0) {
 
                     setCurrentOrder({
+                        tourName: "One Day in Calpe",
                         date: dayjs(date.$d).format('DD/MM/YYYY'),
                         time: time,
                         typeOrder: selectedValue,
                         adults: adults,
                         children: children,
-                        infants: infants
+                        infants: infants,
                     });
             
                     setFormVisible(true);
 
                     const total = totalCalculate(adults, children, selectedValue);
-                    setTotalPay(total);
-                    
+                    setSubTotal(total);
+                    setTotalPay(total)
+
                 } else {
                     notifyError("You must select the number of people.");
                 }
@@ -91,6 +96,20 @@ export const Book = (props) => {
             }
         } else {
             notifyError("You must enter a correct Name.");
+        }
+    }
+
+    const handleGetCode = ({ target }) => {
+        setCodeDiscount(target.value);
+    }
+
+    const validateCode = () => {
+        if(codeDiscount === import.meta.env.VITE_BASE_HOTEL_CODE) {
+            setDiscount(10)
+            setTotalPay(subTotal - ((subTotal * (10)) / 100))
+            notifySuccess("Congratulations you got the discount");
+        } else {
+            notifyError("The code entered is not valid");
         }
     }
 
@@ -133,7 +152,9 @@ export const Book = (props) => {
                     <h3>Shared Group</h3>
                     <h5>RESERVE AND PAY</h5>
 
-                    <h4>Price €25</h4>
+                    <h4>Price</h4>
+                    <h4>Adults €25</h4>
+                    <h4>Children €20</h4>
                     <p>No additional taxes</p>
 
                     <div className={`time ${selectedValue === 'group' && 'time_selected'}`}>
@@ -171,8 +192,10 @@ export const Book = (props) => {
                     <h3>Private Group</h3>
                     <h5>RESERVE AND PAY</h5>
 
-                    <h4>Price €35</h4>
-                    <p>No additional taxes</p>
+                    <h4>Price</h4>
+                    <h4>Adults €35</h4>
+                    <h4>Children €30</h4>
+                    <p>Infants free ticket, no additional taxes</p>
 
                     <div className={`time ${selectedValue === 'private' && 'time_selected'}`}>
                         <span
@@ -262,25 +285,46 @@ export const Book = (props) => {
             </div>
 
             <div className="book_btn">
-                <button onClick={handleCheck}>CHECK NOW</button>
+                <button onClick={handleCheck}>BOOK</button>
             </div>
+            
+
 
             {formVisible &&
-            <form className="book_form" onSubmit={handleSubmit}>
-                <label>Name<span>*</span></label>
-                <input type="text" name="name"  onChange={handleInput}/>
+            <div>
+                <div className="book_total">
+                    <h3>Adults {adults !== null ? adults : 0} x €35</h3>
+                    <h3>Children {children !== null ? children : 0} x €30</h3>
+                    <h2>Subtotal €{subTotal}</h2>
 
-                <label>Email<span>*</span></label>
-                <input type="email" name="email"  onChange={handleInput}/>
+                    <p>Si te alojas con uno de nuestros socios pidele el codigo para obtener un descuento.</p>
+                    <label>Enter your code here!</label>
 
-                <label>Phone<span>*</span></label>
-                <input type="tel" name="phone"  onChange={handleInput}/>
+                    <div>
+                        <input type="text" name="discountCode" onChange={handleGetCode}/>
+                        <button onClick={validateCode}>Validate Code</button>
+                    </div>
 
-                <label>Comment<span>*</span></label>
-                <textarea name="comment" onChange={handleInput}></textarea>
+                    <h3>Discount %{discount}</h3>
+                    <h2>Total €{totalPay}</h2>
+                </div>  
 
-                <button type="submit">PAY NOW</button>
-            </form>
+                <form className="book_form" onSubmit={handleSubmit}>
+                    <label>Name<span>*</span></label>
+                    <input type="text" name="name"  onChange={handleInput}/>
+
+                    <label>Email<span>*</span></label>
+                    <input type="email" name="email"  onChange={handleInput}/>
+
+                    <label>Phone<span>*</span></label>
+                    <input type="tel" name="phone"  onChange={handleInput}/>
+
+                    <label>Comment</label>
+                    <textarea name="comment" onChange={handleInput}></textarea>
+
+                    <button type="submit">PAY NOW</button>
+                </form>
+            </div>
             }
 
             <ToastContainer

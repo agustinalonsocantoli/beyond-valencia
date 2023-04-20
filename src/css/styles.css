@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap");
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,900,700,500);
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -1086,25 +1087,12 @@ body {
 .book_selected {
   border: 1px solid rgb(0, 0, 0) !important;
 }
-@media (min-width: 481px) and (max-width: 768px) {
-  .book_type-conteiner {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-  }
-}
-@media (min-width: 769px) and (max-width: 1024px) {
-  .book_type-conteiner {
-    display: flex;
-    gap: 50px;
-  }
-}
 .book_type {
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   position: relative;
-  min-width: 300px;
+  min-width: 400px;
   margin-bottom: 10px;
   cursor: pointer;
 }
@@ -1123,6 +1111,14 @@ body {
 }
 .book_type h4 {
   font-size: 17px;
+  font-weight: 700;
+}
+.book_type h4:nth-child(4) {
+  font-size: 14px;
+  font-weight: 600;
+}
+.book_type h4:nth-child(5) {
+  font-size: 12px;
   font-weight: 400;
 }
 .book_type p {
@@ -1184,7 +1180,7 @@ body {
 }
 .book_amount {
   display: flex;
-  width: 250px;
+  width: 350px;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
@@ -1248,10 +1244,78 @@ body {
 .book_btn button:hover {
   background-color: rgb(0, 0, 0);
 }
+.book_total {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000000;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 12px;
+  width: 400px;
+}
+.book_total h3 {
+  font-size: 15px;
+  font-weight: 400;
+}
+.book_total h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 5px 0 5px 0;
+}
+.book_total h2:last-child {
+  margin-left: auto;
+}
+.book_total p {
+  font-size: 10px;
+  color: rgb(198, 40, 40);
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.book_total label {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.book_total div {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.book_total div input {
+  outline: none;
+  padding: 5px 2px;
+  font-size: 13px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  margin-bottom: 5px;
+  width: 60%;
+  border: 1px solid rgb(198, 40, 40);
+}
+.book_total div button {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 7px 15px;
+  border-radius: 20px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  margin-bottom: 7px;
+  outline: none;
+}
+.book_total div button:active {
+  transform: scale(0.9);
+  transition: all 200ms ease;
+}
+.book_total div button:hover {
+  background-color: rgb(0, 0, 0);
+}
 .book_form {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  margin: auto;
+  width: 90%;
 }
 .book_form label {
   font-size: 18px;
@@ -1299,6 +1363,124 @@ body {
 }
 .book_form button:hover {
   background-color: rgb(0, 0, 0);
+}
+
+.payment {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 20%;
+  margin: auto;
+  width: 600px;
+  position: fixed;
+}
+
+.form-container {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(178, 209, 229, 0.7);
+  border: 2px solid rgba(178, 209, 229, 0.7);
+}
+
+.card-wrapper {
+  background-color: #6FB7E9;
+  width: 100%;
+  display: flex;
+}
+
+.personal-information {
+  background-color: #3C8DC5;
+  color: #fff;
+  padding: 1px 0;
+  text-align: center;
+}
+
+h1 {
+  font-size: 1.3em;
+  font-family: "Roboto";
+}
+
+input {
+  margin: 1px 0;
+  padding-left: 3%;
+  font-size: 14px;
+}
+
+.input-pay {
+  display: block;
+  height: 50px;
+  width: 100%;
+  border: none;
+}
+
+input[type=submit] {
+  display: block;
+  height: 60px;
+  width: 100%;
+  border: none;
+  background-color: #3C8DC5;
+  color: #fff;
+  margin-top: 2px;
+  cursor: pointer;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #6FB7E9;
+  transition: 0.3s ease;
+}
+
+#column-left {
+  width: 46.5%;
+  float: left;
+  margin-bottom: 2px;
+}
+
+#column-right {
+  width: 46.5%;
+  float: right;
+}
+
+@media only screen and (max-width: 480px) {
+  body {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .form-container {
+    margin: 0 2%;
+  }
+  input {
+    font-size: 1em;
+  }
+  #input-button {
+    width: 100%;
+  }
+  #input-field {
+    width: 96.5%;
+  }
+  h1 {
+    font-size: 1.2em;
+  }
+  input {
+    margin: 2px 0;
+  }
+  input[type=submit] {
+    height: 50px;
+  }
+  #column-left {
+    width: 96.5%;
+    display: block;
+    float: none;
+  }
+  #column-right {
+    width: 96.5%;
+    display: block;
+    float: none;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
