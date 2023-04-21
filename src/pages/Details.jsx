@@ -21,7 +21,7 @@ import { RxCross1 } from "react-icons/rx"
 
 
 export const Details = () => {
-    const [ paymentVisible, setPaymentVisible ] = useState(false);
+    const [ paymentVisible, setPaymentVisible ] = useState(true);
     const [ currentOrder, setCurrentOrder ] = useState(null);
     const [ totalPay, setTotalPay ] = useState(null);
 
@@ -45,9 +45,7 @@ export const Details = () => {
     }
 
     return(
-        <div className="details" style={{position: 'relative',
-            backgroundColor: paymentVisible ? 'rgba(0, 0, 0, .5)' : 'transparent'
-        }}>
+        <div className="details">
 
             <Navbar title={"Experiences"} subtitle={"Experiences"} />
 
