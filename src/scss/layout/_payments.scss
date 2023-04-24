@@ -1,8 +1,67 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.payment {
+    background-color: rgba(0, 0, 0, .7);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+}
+
 .checkout {
     width: 40%;
-    margin: auto;
+    position: absolute;
     padding: 50px;
-    border: 2px solid #000;
-    margin-bottom: 50px;
+    background-color: #FFFFFF;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 5%;
+    border-radius: 20px;
 
+    &_email {
+        margin-bottom: 20px;
+    }
+
+    &_btn{
+        display: flex;
+        margin-top: 30px;
+
+        button {
+            margin: auto;
+            border: none;
+            background-color: rgba(0, 0, 0, .7);
+            padding: 10px;
+            border-radius: 8px;
+            width: 40%;
+            color: #FFFFFF;
+            cursor: pointer;
+            font-family: v.$poppins;
+            font-weight: 300;
+            font-size: 15px;
+
+            &:active {
+                transform: scale(0.9);
+                transition: all 200ms ease;
+            }
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 1);
+            }
+        }
+    }
+
+    .loading {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+
+        svg {
+            height: 50px;
+            width: 50px;
+        }
+    }
 }

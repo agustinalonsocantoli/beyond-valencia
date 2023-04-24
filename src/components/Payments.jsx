@@ -1,40 +1,59 @@
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { CheckoutForm } from './stripe/CheckoutForm';
-import { FormPay } from './stripe/formPay';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 
 const stripePromise = loadStripe(import.meta.env.VITE_BASE_STRIPE_PUBLIC);
 
 export const Payments = (props) => {
-    const { setPaymentVisible, currentOrder, setCurrentOrder, totalPay } = props;
-    const clientSecret = 'pi_3MzIfXEHiue9EhXc1TmyQ57d_secret_spK9DHTFDAZXuUZ5iiDO8PTQx';
-
+    const { setPaymentVisible, currentOrder, totalPay, setCurrentOrder, setFormVisible } = props;
+    const [ clientSecret, setClientSecret ] = useState('');
+    const [ id, setId ] = useState('');
+    
     useEffect(() => {
-        async () => {
-            const response = await fetch('http://localhost:4242/secret');
-            const { client_secret } = await response.json();
 
-            console.log(client_secret)
-        }
-    }, [])
+        fetch("http://localhost:4242/api/checkout", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ 
+            amount: (totalPay * 100), 
+            description: currentOrder.tourName,
+            email: currentOrder.email,
+            name: currentOrder.name,
+            phone: currentOrder.phone,
+        }),
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            setClientSecret(data.clientSecret);
+            setId(data.id);
+        });
+
+    }, []);
+
 
     const appearance = {
         theme: 'stripe',
     };
     
-    // const options = {
-    // clientSecret,
-    // appearance,
-    // };
+    const options = {
+    clientSecret,
+    appearance,
+    };
 
     return(
         <div className='payment'>
-
-            <Elements stripe={stripePromise}>
-                <CheckoutForm />
+            {clientSecret &&
+            <Elements stripe={stripePromise} options={options}>
+                <CheckoutForm 
+                setPaymentVisible={setPaymentVisible} 
+                setCurrentOrder={setCurrentOrder} 
+                id={id} 
+                setFormVisible={setFormVisible}
+                />
             </Elements>
+            }
 
         </div>
     );

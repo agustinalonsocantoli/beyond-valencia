@@ -21,7 +21,8 @@ import { RxCross1 } from "react-icons/rx"
 
 
 export const Details = () => {
-    const [ paymentVisible, setPaymentVisible ] = useState(true);
+    const [ paymentVisible, setPaymentVisible ] = useState(false);
+    const [ formVisible, setFormVisible ] = useState(false);
     const [ currentOrder, setCurrentOrder ] = useState(null);
     const [ totalPay, setTotalPay ] = useState(null);
 
@@ -107,6 +108,8 @@ export const Details = () => {
                 setPaymentVisible={setPaymentVisible}
                 setTotalPay={setTotalPay}
                 totalPay={totalPay}
+                formVisible={formVisible}
+                setFormVisible={setFormVisible}
                 />
             </div>
             
@@ -116,6 +119,7 @@ export const Details = () => {
                 setCurrentOrder={setCurrentOrder}
                 setPaymentVisible={setPaymentVisible}
                 totalPay={totalPay}
+                setFormVisible={setFormVisible}
             />}
 
         </div>
