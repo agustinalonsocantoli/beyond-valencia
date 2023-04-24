@@ -49,6 +49,8 @@ export const Services = ({ data }) => {
                 </Link>
 
             </div>
+
+            <div style={{height: 100, backgroundColor: "#fff", marginTop: "-100px"}}></div>
         </div>
     );
 }

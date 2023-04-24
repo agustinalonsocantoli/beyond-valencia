@@ -85,3 +85,23 @@
         }
     }
 }
+
+.app {
+    position: relative;
+
+    .whatsapp {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        cursor: pointer;
+        z-index: 399;
+        background-color: white;
+        padding: 10px 12px 5px 12px;
+        border-radius: 100%;
+
+        svg {
+            color: green;
+            font-size: 40px;
+        }
+    }
+}

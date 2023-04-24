@@ -66,10 +66,10 @@ export const Experiences = () => {
     }
 
     return(
-        <div>
+        <div >
             <Navbar title={"Experiences"} subtitle={"Experiences"} />
 
-            <Exposure data={multimedia}  />
+            <Exposure data={multimedia} />
 
             <Services data={data} />
 

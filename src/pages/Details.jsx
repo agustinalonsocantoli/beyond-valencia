@@ -100,6 +100,11 @@ export const Details = () => {
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam quo maiores, laborum veritatis assumenda incidunt! Quas reprehenderit consequuntur at quos quo corporis, sunt dolores odit placeat? Perferendis labore ipsam hic.
                         </p>
                     </div>
+
+                    <select name="" id="">
+                        <option>1</option>
+                        <option value="">2</option>
+                    </select>
                 </div>
 
                 <Book 

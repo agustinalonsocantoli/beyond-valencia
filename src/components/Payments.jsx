@@ -3,7 +3,6 @@ import { loadStripe } from '@stripe/stripe-js';
 import { CheckoutForm } from './stripe/CheckoutForm';
 import { useEffect, useState } from 'react';
 
-
 const stripePromise = loadStripe(import.meta.env.VITE_BASE_STRIPE_PUBLIC);
 
 export const Payments = (props) => {
@@ -54,6 +53,14 @@ export const Payments = (props) => {
                 />
             </Elements>
             }
+
+            {/* <Elements stripe={stripePromise}>
+                <CardForm 
+                setPaymentVisible={setPaymentVisible} 
+                currentOrder={currentOrder}
+                setFormVisible={setFormVisible}
+                />
+            </Elements> */}
 
         </div>
     );
