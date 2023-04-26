@@ -50,7 +50,7 @@ export const Services = ({ data }) => {
 
             </div>
 
-            <div style={{height: 100, backgroundColor: "#fff", marginTop: "-100px"}}></div>
+            <div className="bg_img"></div>
         </div>
     );
 }

@@ -1,0 +1,43 @@
+.options {
+    display: flex;
+    height: 100vh;
+
+    &_img-box {
+        flex: 1;
+        position: relative;
+
+        h1 {
+            color: #FFFFFF;
+            font-size: 100px;
+        }
+
+        .title_locker {
+            position: absolute;
+            top: 25%;
+            left: 3%;
+            padding: 10px 25px;
+            background-color: rgba(0, 0, 0, .7);
+            border-radius: 12px;
+        }
+
+        .title_bike {
+            position: absolute;
+            top: 25%;
+            left: 21%;
+            padding: 10px 25px;
+            background-color: rgba(0, 0, 0, .7);
+            border-radius: 12px;
+        }
+    }
+
+    &_line {
+        width: 10px;
+        background-color: #000000;
+    }
+
+    img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
+}

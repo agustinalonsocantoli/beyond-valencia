@@ -11,6 +11,7 @@ import day from '../assets/img/dayTrip.jpg';
 import food from '../assets/img/fyd.jpg';
 // Icon
 import { GiClick } from 'react-icons/gi';
+import { Link } from "react-router-dom";
 
 export const Home = () => {
     const data = {
@@ -45,8 +46,12 @@ export const Home = () => {
 
             <div className="home_video">
                 <div className="video_hashtag">
-                    <h2>#weareonfire</h2>
+                    <Link to="https://www.instagram.com/beyond_valencia_/">#BeyondValencia</Link>
                     <GiClick className="hashtag_icon"/>
+                </div>
+
+                <div className="video_link">
+                    <Link to={"/more-services"}>More services</Link>
                 </div>
 
                 <div className="video_logo">
