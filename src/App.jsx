@@ -17,9 +17,9 @@ function App() {
   return (
     <div className="app">
       <Router>
-        <div className="whatsapp">
+        {/* <div className="whatsapp">
           <BsWhatsapp />
-        </div>
+        </div> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/experiences" element={<Experiences />} />

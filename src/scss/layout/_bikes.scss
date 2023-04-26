@@ -1,0 +1,36 @@
+.bikes {
+    display: flex;
+    height: 100vh;
+
+    &_img {
+        flex: 1;
+
+        img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    &_line {
+        width: 10px;
+        background-color: #000000;
+    }
+
+
+
+    &_contents {
+        flex: 1;
+        background-color: #FFFBF6;
+
+        &-logo {
+            width: 300px;
+
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
