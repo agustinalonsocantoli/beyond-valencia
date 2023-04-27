@@ -5,6 +5,8 @@ import { Navbar } from "@/components/Navbar";
 import { Exposure } from "../components/Exposure";
 import { Book } from "../components/Book";
 import { Payments } from '../components/Payments';
+import { Footer } from '../components/Footer';
+import { Whatsapp } from '../components/Whatsapp';
 // Image
 import details2 from "../assets/img/details1.jpg";
 import details3 from "../assets/img/details2.jpg";
@@ -127,6 +129,9 @@ export const Details = () => {
                 setFormVisible={setFormVisible}
             />}
 
+            <Whatsapp />
+            
+            <Footer />
         </div>
     );
 }

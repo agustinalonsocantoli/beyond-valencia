@@ -3,6 +3,7 @@ import { Services } from "../components/Services";
 import { Footer } from "../components/Footer";
 import { Events } from "../components/Events";
 import { Wine } from "../components/Wine";
+import { Whatsapp } from '../components/Whatsapp';
 // Video & Img
 import homeVideo from '../assets/video/fire.mp4';
 import logo from '../assets/logoB.png';
@@ -74,6 +75,8 @@ export const Home = () => {
             <Events />
 
             <Wine />
+
+            <Whatsapp />
             
             <Footer />
         </div>

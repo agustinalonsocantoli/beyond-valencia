@@ -5,6 +5,7 @@ import { Services } from "../components/Services";
 import { Footer } from "../components/Footer";
 import { Events } from "../components/Events";
 import { Wine } from "../components/Wine";
+import { Whatsapp } from '../components/Whatsapp';
 // Video & Img
 import expA from '../assets/video/expA.mp4';
 import expB from '../assets/img/expB.jpg';
@@ -76,6 +77,8 @@ export const Experiences = () => {
             <Events />
 
             <Wine />
+
+            <Whatsapp />
             
             <Footer />
         </div>

@@ -2,7 +2,16 @@
 import { useState } from "react";
 
 export const Complete = (props) => {
-    const { title, subtitle, handleInput, handleSubmit, totalPay, setTotalPay, subTotal } = props;
+    const { title, 
+        subtitle, 
+        handleInput, 
+        handleSubmit, 
+        totalPay, 
+        setTotalPay, 
+        subTotal, 
+        notifySuccess, 
+        notifyError
+    } = props;
     const [ discount, setDiscount ] = useState(0);
     const [ codeDiscount, setCodeDiscount ] = useState(null);
 

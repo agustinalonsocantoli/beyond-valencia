@@ -9,17 +9,13 @@ import { Details } from "./pages/Details";
 import { Options } from "./pages/Options";
 import { Lockers } from "./pages/Lockers";
 import { Bikes } from "./pages/Bikes";
-// Icons
-import { BsWhatsapp } from 'react-icons/bs'
+
 
 function App() {
 
   return (
     <div className="app">
       <Router>
-        {/* <div className="whatsapp">
-          <BsWhatsapp />
-        </div> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/experiences" element={<Experiences />} />

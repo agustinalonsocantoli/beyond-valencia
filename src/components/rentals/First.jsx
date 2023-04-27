@@ -1,5 +1,6 @@
 export const First = (props) => {
-    const { title, subtitle, longerTime, setTime } = props;
+    const { title, subtitle, longerTime, time, setTime, product } = props;
+    const { h, allDay, longer, threeDays } = product;
 
     return(
         <div className='contents_first'>
@@ -7,32 +8,49 @@ export const First = (props) => {
             <h3>{subtitle}</h3>
 
             <div className='contents_first-time'>
-                <div>
-                    <span onClick={() => setTime('2-Hours')}>2H</span>
-                    <span>2 horas</span>
-                </div>
+                { h && 
+                    <div>
+                        <span className={time === h.select ? 'active' : 'disable'} 
+                        onClick={() => setTime(h.select)}
+                        >
+                            {h.time}
+                        </span>
+                        <span>{h.description}</span>
+                    </div>
+                }
 
                 <div>
-                    <span onClick={() => setTime('All-Day')}>All day</span>
-                    <span>Todo el dia</span>
+                    <span className={time === allDay.select ? 'active' : 'disable'} 
+                    onClick={() => setTime(allDay.select)}
+                    >
+                        {allDay.select}
+                    </span>
+                    <span>{allDay.description}</span>
                 </div>
+
+                { threeDays && 
+                    <div>
+                        <span className={time === threeDays.select ? 'active' : 'disable'} 
+                        onClick={() => setTime(threeDays.select)}
+                        >
+                            {threeDays.time}
+                        </span>
+                        <span>{threeDays.description}</span>
+                    </div>
+                }
 
                 { longerTime &&
                 <div className='time-select'>
-                    <label>Longer time</label>
+                    <div>
+                    <label>{longer.time}</label>
                     <select name='longerTime' defaultValue="default" onChange={(e) => setTime(e.target.value)}>
                         <option value="default" disabled>How many days?</option>
-                        <option value="2-Days">2</option>
-                        <option value="3-Days">3</option>
-                        <option value="4-Days">4</option>
-                        <option value="5-Days">5</option>
-                        <option value="6-Days">6</option>
-                        <option value="7-Days">7</option>
-                        <option value="8-Days">8</option>
-                        <option value="9-Days">9</option>
-                        <option value="10-Days">10</option>
+                        {longer.select.map((item, index) => (
+                            <option key={index} value={item}>{index + 2}</option>
+                        ))}
                     </select>
-                    <span>Mucho mas tiempo</span>
+                    </div>
+                    <span>{longer.description}</span>
                 </div>
                 }
             </div>

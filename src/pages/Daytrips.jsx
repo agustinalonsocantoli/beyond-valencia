@@ -13,6 +13,7 @@ import dayD from '../assets/img/dayD.jpg';
 import imgS1 from '../assets/img/day1.jpg';
 import imgS2 from '../assets/video/day2.mp4';
 import imgS3 from '../assets/img/experiences.jpg';
+import { Whatsapp } from '../components/Whatsapp';
 
 export const Daytrips = () => {
 
@@ -79,6 +80,8 @@ export const Daytrips = () => {
             <Events />
 
             <Wine />
+
+            <Whatsapp />
             
             <Footer />
         </div>

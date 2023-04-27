@@ -17,10 +17,7 @@ export const Payments = (props) => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ 
             amount: (totalPay * 100), 
-            description: currentOrder.tourName,
-            email: currentOrder.email,
-            name: currentOrder.name,
-            phone: currentOrder.phone,
+            description: "Test",
         }),
         })
         .then((res) => res.json())
@@ -53,15 +50,6 @@ export const Payments = (props) => {
                 />
             </Elements>
             }
-
-            {/* <Elements stripe={stripePromise}>
-                <CardForm 
-                setPaymentVisible={setPaymentVisible} 
-                currentOrder={currentOrder}
-                setFormVisible={setFormVisible}
-                />
-            </Elements> */}
-
         </div>
     );
 };

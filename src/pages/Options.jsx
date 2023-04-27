@@ -9,7 +9,7 @@ export const Options = () => {
                 <img src={lockers} alt="img/lockers" />
 
                 <Link to="/lockers" className='title_locker'>
-                    <h1>LOCKERS Y</h1>
+                    <h1>LOCKERS &</h1>
                     <h1>CONSIGNAS</h1>
                 </Link>
             </div>

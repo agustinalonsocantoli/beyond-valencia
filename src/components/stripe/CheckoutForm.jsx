@@ -52,7 +52,7 @@ export const CheckoutForm = (props) => {
 
         setPaymentVisible(false);
         setCurrentOrder(null);
-        setFormVisible(false);
+        setFormVisible && setFormVisible(false);
     };   
 
     const handleChange = (e) => {

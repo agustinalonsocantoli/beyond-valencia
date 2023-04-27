@@ -10,10 +10,13 @@ export const Second = (props) => {
         setMedium,
         normal,
         setNormal,
-        data
+        data,
+        product,
+        time
     } = props;
 
     const { s, m, n } = data;
+    const { h, allDay, longer, threeDays } = product;
     
     return(
         <div className='contents_second'>
@@ -31,7 +34,16 @@ export const Second = (props) => {
                         <span>{s.description}</span>
                         <span>{s.others}</span>
                     </div>
-                    <span>{s.price}€</span>
+
+                    <span>
+                        <span>Price per item </span>
+                        {
+                        h && time === h.select && h.price.small ||
+                        time === allDay.select && allDay.price.small || 
+                        longer && longer.select.map(item => item === time) && longer.price.small ||
+                        threeDays && time === threeDays.select && threeDays.price.small
+                        }€
+                    </span>
                 </div>
             </div>
 
@@ -46,7 +58,16 @@ export const Second = (props) => {
                         <span>{m.description}</span>
                         <span>{m.others}</span>
                     </div>
-                    <span>{m.price}€</span>
+                    
+                    <span>
+                        <span>Price per item </span>
+                        {
+                        h && time === h.select && h.price.medium ||
+                        time === allDay.select && allDay.price.medium || 
+                        longer && longer.select.map(item => item === time) && longer.price.medium ||
+                        threeDays && time === threeDays.select && threeDays.price.medium
+                        }€
+                    </span>
                 </div>
             </div>
 
@@ -57,11 +78,20 @@ export const Second = (props) => {
                 </div>
 
                 <div className='type_select-info'>
-                    <div>
+                    <div style={{width: '50%'}}>
                         <span>{n.description}</span>
                         <span>{n.others}</span>
                     </div>
-                    <span>{n.price}€</span>
+                    
+                    <span>
+                        <span>Price per item </span>
+                        {
+                        h && time === h.select && h.price.normal ||
+                        time === allDay.select && allDay.price.normal || 
+                        longer && longer.select.map(item => item === time) && longer.price.normal ||
+                        threeDays && time === threeDays.select && threeDays.price.normal
+                        }€
+                    </span>
                 </div>
             </div>
         </div>
