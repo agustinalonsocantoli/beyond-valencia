@@ -1681,6 +1681,13 @@ body {
 .bikes .btn_ok button {
   padding: 5px 15px;
   font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-transform: uppercase;
+}
+.bikes .btn_ok button svg {
+  font-size: 20px;
 }
 .bikes .btn_back {
   position: absolute;
@@ -1690,6 +1697,12 @@ body {
 .bikes .btn_back button {
   padding: 5px 20px;
   font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.bikes .btn_back button svg {
+  font-size: 20px;
 }
 
 .order {

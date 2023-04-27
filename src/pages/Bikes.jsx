@@ -11,11 +11,15 @@ import { First } from '../components/rentals/First';
 import { Second } from '../components/rentals/Second';
 import { Third } from '../components/rentals/Third';
 import { Complete } from '../components/rentals/Complete';
+import { Payments } from '../components/Payments';
 // DayJs
 import dayjs from 'dayjs';
 // Toast
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// Icons
+import { IoReturnDownBackSharp } from 'react-icons/io5';
+import { BsCheck2 } from 'react-icons/bs';
 
 export const Bikes = () => {
     const dateNow = new Date();
@@ -28,6 +32,7 @@ export const Bikes = () => {
     const [ time, setTime ] = useState(null);
     const [ subTotal, setSubTotal ] = useState(0);
     const [ totalPay, setTotalPay ] = useState(0);
+    const [ paymentVisible, setPaymentVisible ] = useState(false);
 
     const data = {
         s: {
@@ -54,7 +59,7 @@ export const Bikes = () => {
             price: {
                 small: 14,
                 medium: 14,
-                normal: "Free",
+                normal: 0,
             }
         },
         threeDays: {
@@ -78,20 +83,25 @@ export const Bikes = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        if(currentOrder.name !== null && currentOrder.name !== undefined && currentOrder.name !== '') {
-            if(currentOrder.email !== null && currentOrder.email !== undefined && currentOrder.email !== '') {
-                if(currentOrder.phone !== null && currentOrder.phone !== undefined && currentOrder.phone !== '') {
+        if(currentOrder !== null && currentOrder !== undefined) {
+            if(currentOrder.name !== null && currentOrder.name !== undefined && currentOrder.name !== '') {
+                if(currentOrder.email !== null && currentOrder.email !== undefined && currentOrder.email !== '') {
+                    if(currentOrder.phone !== null && currentOrder.phone !== undefined && currentOrder.phone !== '') {
 
-                    notifySuccess('We will proceed to the payment.');
-                    e.target.reset();
+                        notifySuccess('We will proceed to the payment.');
+                        setPaymentVisible(true);
+                        e.target.reset();
+                    } else {
+                        notifyError("You must enter a correct Phone.");
+                    }
                 } else {
-                    notifyError("You must enter a correct Phone.");
+                    notifyError("You must enter a correct Email.");
                 }
             } else {
-                notifyError("You must enter a correct Email.");
+                notifyError("You must enter a correct Name.");
             }
         } else {
-            notifyError("You must enter a correct Name.");
+            notifyError("You must complete the fields.");
         }
     }
 
@@ -208,13 +218,13 @@ export const Bikes = () => {
 
                 { page !== 3 &&
                     <div className='btn_ok'>
-                        <button onClick={handleOk}>Ok</button>
+                        <button onClick={handleOk}>Ok<BsCheck2 /></button>
                     </div>
                 }
 
                 { page !== 0 &&
                     <div className='btn_back'>
-                        <button onClick={handleBack}>Back</button>
+                        <button onClick={handleBack}><IoReturnDownBackSharp />Back</button>
                     </div>
                 }
             </div>
@@ -227,6 +237,14 @@ export const Bikes = () => {
                     page === 0 ? bikes : page === 1 ? bikes1 : page === 2 ? bikes2 : bikes3
                 } alt="img/bikes" />
             </div>
+
+            {paymentVisible && 
+            <Payments 
+                currentOrder={currentOrder}
+                setCurrentOrder={setCurrentOrder}
+                setPaymentVisible={setPaymentVisible}
+                totalPay={totalPay}
+            />}
 
             <ToastContainer
             position="top-center"

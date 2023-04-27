@@ -9,6 +9,7 @@ import { Details } from "./pages/Details";
 import { Options } from "./pages/Options";
 import { Lockers } from "./pages/Lockers";
 import { Bikes } from "./pages/Bikes";
+import { PaySuccess } from "./components/stripe/PaySuccess";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/more-services" element={<Options />} />
           <Route path="/lockers" element={<Lockers />} />
           <Route path="/bikes" element={<Bikes />} />
+          <Route path="/pay-success" element={<PaySuccess />} />
           <Route path="*" element={<div>Error</div>} />
         </Routes>
       </Router>

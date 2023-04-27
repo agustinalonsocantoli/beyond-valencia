@@ -94,21 +94,25 @@ export const Lockers = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        if(currentOrder.name !== null && currentOrder.name !== undefined && currentOrder.name !== '') {
-            if(currentOrder.email !== null && currentOrder.email !== undefined && currentOrder.email !== '') {
-                if(currentOrder.phone !== null && currentOrder.phone !== undefined && currentOrder.phone !== '') {
+        if(currentOrder !== null && currentOrder !== undefined) {
+            if(currentOrder.name !== null && currentOrder.name !== undefined && currentOrder.name !== '') {
+                if(currentOrder.email !== null && currentOrder.email !== undefined && currentOrder.email !== '') {
+                    if(currentOrder.phone !== null && currentOrder.phone !== undefined && currentOrder.phone !== '') {
 
-                    notifySuccess('We will proceed to the payment.');
-                    setPaymentVisible(true);
-                    e.target.reset();
+                        notifySuccess('We will proceed to the payment.');
+                        setPaymentVisible(true);
+                        e.target.reset();
+                    } else {
+                        notifyError("You must enter a correct Phone.");
+                    }
                 } else {
-                    notifyError("You must enter a correct Phone.");
+                    notifyError("You must enter a correct Email.");
                 }
             } else {
-                notifyError("You must enter a correct Email.");
+                notifyError("You must enter a correct Name.");
             }
         } else {
-            notifyError("You must enter a correct Name.");
+            notifyError("You must complete the fields.");
         }
     }
 

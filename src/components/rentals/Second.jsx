@@ -83,6 +83,7 @@ export const Second = (props) => {
                         <span>{n.others}</span>
                     </div>
                     
+                    { threeDays && (allDay.price.normal ==! 0 || threeDays.price.normal ==! 0 ) ?
                     <span>
                         <span>Price per item </span>
                         {
@@ -91,7 +92,9 @@ export const Second = (props) => {
                         longer && longer.select.map(item => item === time) && longer.price.normal ||
                         threeDays && time === threeDays.select && threeDays.price.normal
                         }€
-                    </span>
+                    </span> : <span>Free</span>
+                    } 
+                   
                 </div>
             </div>
         </div>
