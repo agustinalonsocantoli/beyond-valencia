@@ -38,12 +38,12 @@ export const Bikes = () => {
         s: {
             name: 'Small',
             description: "26 inches",
-            others: "Pequeñas de 26 pulgadas"
+            others: "26 pulgadas"
         },
         m: {
             name: 'Medium',
             description: "28 inches",
-            others: "Pequeñas de 28 pulgadas"
+            others: "28 pulgadas"
         },
         n: {
             name: 'Children bike',
@@ -59,7 +59,6 @@ export const Bikes = () => {
             price: {
                 small: 14,
                 medium: 14,
-                normal: 0,
             }
         },
         threeDays: {
@@ -69,7 +68,6 @@ export const Bikes = () => {
             price: {
                 small: 38,
                 medium: 38,
-                normal: 0
             }
         },
     }
@@ -214,6 +212,10 @@ export const Bikes = () => {
                     setTotalPay={setTotalPay}
                     notifyError={notifyError}
                     notifySuccess={notifySuccess}
+                    data={data}
+                    small={small}
+                    medium={medium}
+                    normal={normal}
                 />}
 
                 { page !== 3 &&

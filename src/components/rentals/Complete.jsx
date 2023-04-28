@@ -10,8 +10,13 @@ export const Complete = (props) => {
         setTotalPay, 
         subTotal, 
         notifySuccess, 
-        notifyError
+        notifyError,
+        data,
+        small,
+        medium,
+        normal
     } = props;
+    const { s, m, n } = data;
     const [ discount, setDiscount ] = useState(0);
     const [ codeDiscount, setCodeDiscount ] = useState(null);
 
@@ -39,8 +44,9 @@ export const Complete = (props) => {
 
             <div className="contents_complete-box">
                 <div className="contents_complete-total">
-                    <h3>Adults</h3>
-                    <h3>Children</h3>
+                    {small > 0 && <h3>{s.name} x {small}</h3>}
+                    {medium > 0 && <h3>{m.name} x {medium}</h3>}
+                    {normal > 0 && <h3>{n.name} x {normal}</h3>}
                     <h2>Subtotal €{subTotal}</h2>
 
                     <p>Si te alojas con uno de nuestros socios pidele el codigo para obtener un descuento.</p>

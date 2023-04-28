@@ -14,30 +14,16 @@
             z-index: 399;
             
             a {
-                color: #FFFFFF;
-                font-size: 20px;
+                color: #ccc;
+                font-size: 15px;
                 cursor: pointer;
-            }
-            
-            .hashtag_icon {
-                position: absolute;
-                color: #FFFFFF;
-                font-size: 30px;
-                left: 97%;
-                top: 55%;
-            }
-        }
+                display: flex;
+                align-items: center;
 
-        .video_link {
-            position: absolute;
-            right: 50px;
-            top: 20px;
-            z-index: 399;
-            
-            a {
-                color: #FFFFFF;
-                font-size: 20px;
-                cursor: pointer;
+                svg {
+                    color: #ccc;
+                    font-size: 20px;
+                }
             }
         }
 

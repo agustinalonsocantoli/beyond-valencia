@@ -11,34 +11,33 @@ import exp from '../assets/img/experiences.jpg';
 import day from '../assets/img/dayTrip.jpg';
 import food from '../assets/img/fyd.jpg';
 // Icon
-import { GiClick } from 'react-icons/gi';
+import { AiOutlineInstagram } from 'react-icons/ai';
 import { Link } from "react-router-dom";
 
 export const Home = () => {
     const data = {
         h1: "Easy, safe and unique... #valencia",
-        h2: "PERSONALIZED SERVICES",
+        h2: <Link to={"/more-services"}>LOCKERS & BIKE RENTALS </Link>,
         S1: {
-            link: "/experiences",
+            // link: "/experiences",
             img: exp,
             type: "image",
             h3: "Experiences",
-            p: "Carefully selected experiences in Valencia, from just a bike to dinning with a local family in the city centre.",
+            p: "Carefully selected and exclusive experiences in Valencia capital city",
         },
         S2: {
-            link: "/daytrips",
+            // link: "/daytrips",
             img: day,
             type: "image",
             h3: "Day trips",
-            p: "Day trips for going",
-            span: "#beyondthecity"
+            p: "Exploring locations out from the box, and out from the city centre",
         },
         S3: {
-            link: "/food",
+            // link: "/food",
             img: food,
             type: "image",
-            h3: "Food and Dinning",
-            p: "Best selection of spots and deals in town.",
+            h3: "Food & Dinning",
+            p: "Access to the best deals in town at run by local spots with authenticity",
         },
     }
 
@@ -47,12 +46,10 @@ export const Home = () => {
 
             <div className="home_video">
                 <div className="video_hashtag">
-                    <Link to="https://www.instagram.com/beyond_valencia_/">#BeyondValencia</Link>
-                    <GiClick className="hashtag_icon"/>
-                </div>
-
-                <div className="video_link">
-                    <Link to={"/more-services"}>More services</Link>
+                    <Link to="https://www.instagram.com/beyond_valencia_/" target='_blank'  rel='noopener noreferrer'>
+                        #weareonfire
+                        <AiOutlineInstagram />
+                    </Link>
                 </div>
 
                 <div className="video_logo">

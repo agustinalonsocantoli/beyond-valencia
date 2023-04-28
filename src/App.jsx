@@ -19,11 +19,11 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/experiences" element={<Experiences />} />
+          {/* <Route path="/experiences" element={<Experiences />} />
           <Route path="/daytrips" element={<Daytrips />} />
           <Route path="/food" element={<Food />} />
           <Route path="/aboutus" element={<div>About Us</div>} />
-          <Route path="/details" element={<Details />} />
+          <Route path="/details" element={<Details />} /> */}
           <Route path="/more-services" element={<Options />} />
           <Route path="/lockers" element={<Lockers />} />
           <Route path="/bikes" element={<Bikes />} />

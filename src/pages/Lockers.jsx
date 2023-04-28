@@ -239,6 +239,10 @@ export const Lockers = () => {
                     setTotalPay={setTotalPay}
                     notifyError={notifyError}
                     notifySuccess={notifySuccess}
+                    data={data}
+                    small={small}
+                    medium={medium}
+                    normal={normal}
                 />}
 
                 { page !== 3 &&

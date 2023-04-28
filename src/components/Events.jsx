@@ -2,23 +2,26 @@ export const Events = () => {
     return(
         <div className="events">
             <div>
-                <h1>Our Upcoming Events</h1>
+                <h1>Our upcoming events</h1>
             </div>
 
             <div className="events_content">
                 <div>
-                    <h3>April 2023 discounts</h3>
-                    <p>We selected 20 local vendors in town that offer outstanding services and experiences, and they now give a special treat to our audience.</p>
+                    <h3>Niña Pastori in Valencia</h3>
+                    <p>She will present her latest album, “Camino” It's sure to be an unforgettable concert, tickets are now available on the platform</p>
+                    <p>Palacio de Conciertos de Valencia || May 27 </p>
                 </div>
 
                 <div>
-                    <h3>Eastern rooftop-drinks</h3>
-                    <p>On request attendance to a Boiler Room at the Cabanyal | April 28th, 5:00 p.m. to 11:00 p.m. | Don Vicente Gallart 15, 46011, Valencia.</p>
+                    <h3><span>10 Sentidos:</span> The most spectacular living arts festival </h3>
+                    <p>Established and up-and-coming talents come together in the city, for shining a light on art's as a catalyst for social action</p>
+                    <p>Rio Turia  || Until May 21st</p>
                 </div>
 
                 <div>
-                    <h3><span>EcoCharlas</span> guestlist</h3>
-                    <p>A Monthly Regional Industry Event | May 12, 2023, 3:00 p.m. to 5:00 p.m. | Marina de Empresas, CAMINO CANAL, 91 - LO 20, 46024, Valencia</p>
+                    <h3><span>Concerts</span> at La Pergola in the Marina</h3>
+                    <p>The Concert Series in La Pergola at the Valencia Marina is back with artists of all kinds. An event that no music lover can miss.</p>
+                    <p>Rio Turia  || Last one on June 3rd</p>
                 </div>
 
             </div>
