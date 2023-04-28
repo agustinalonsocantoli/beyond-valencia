@@ -2,6 +2,7 @@
 import { useState } from 'react';
 // Img
 import bikes from '../assets/Options/bikes.jpg';
+import bikesMb from '../assets/Options/bikesMb.jpg';
 import bikes1 from '../assets/Options/bikes1.jpg';
 import bikes2 from '../assets/Options/lockers2.jpg';
 import bikes3 from '../assets/Options/bikes3.jpg';
@@ -23,6 +24,7 @@ import { BsCheck2 } from 'react-icons/bs';
 
 export const Bikes = () => {
     const dateNow = new Date();
+    const resposive = window.innerWidth < 1024 ? true : false;
     const [ page, setPage ] = useState(0);
     const [ currentOrder, setCurrentOrder ] = useState(null);
     const [ date, setDate ] = useState(dayjs(dateNow));
@@ -236,7 +238,7 @@ export const Bikes = () => {
             <div className='bikes_img'>
                 <img 
                 src={
-                    page === 0 ? bikes : page === 1 ? bikes1 : page === 2 ? bikes2 : bikes3
+                    page === 0 && !resposive ? bikes : page === 0 && resposive ? bikesMb : page === 1 ? bikes1 : page === 2 ? bikes2 : bikes3
                 } alt="img/bikes" />
             </div>
 

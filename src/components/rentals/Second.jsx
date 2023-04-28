@@ -14,7 +14,7 @@ export const Second = (props) => {
         product,
         time
     } = props;
-
+    const resposive = window.innerWidth < 1024 ? true : false;
     const { s, m, n } = data;
     const { h, allDay, longer, threeDays } = product;
     
@@ -78,7 +78,7 @@ export const Second = (props) => {
                 </div>
 
                 <div className='type_select-info'>
-                    <div style={{width: '50%'}}>
+                    <div style={{width: resposive ? '55%' : '50%'}}>
                         <span>{n.description}</span>
                         <span>{n.others}</span>
                     </div>

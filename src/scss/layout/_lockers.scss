@@ -1,11 +1,42 @@
 @use '../base/variables' as v;
+@use '../base/mixins' as m;
 
 .lockers {
     display: flex;
     height: 100vh;
+    background-color: #FFFBF6;
+
+    @include m.phone {
+        height: auto;
+        width: 100%;
+        flex-direction: column;
+    }
+    @include m.tablet {
+        height: auto;
+        width: 100%;
+        flex-direction: column;
+    }
+    @include m.desktopS {
+        height: auto;
+        width: 100%;
+        flex-direction: column;
+    }
 
     &_img {
         flex: 1;
+
+        @include m.phone {
+            flex: auto;
+            height: 20vh;
+        }
+        @include m.tablet {
+            flex: auto;
+            height: 30vh;
+        }
+        @include m.desktopS {
+            flex: auto;
+            height: 30vh;
+        }
 
         img {
             object-fit: cover;
@@ -23,13 +54,27 @@
 
     &_contents {
         flex: 1;
-        background-color: #FFFBF6;
         position: relative;
+        background-color: #FFFBF6;
+
+        @include m.phone {
+            min-height: 80vh;
+        }
+        @include m.tablet {
+            min-height: 70vh;
+        }
+        @include m.desktopS {
+            min-height: 70vh;
+        }
 
         &-logo {
             width: 300px;
             margin-top: -5px;
             margin-left: -6px;
+            
+            @include m.phone {
+                width: 200px;
+            }
 
             img {
                 object-fit: cover;
