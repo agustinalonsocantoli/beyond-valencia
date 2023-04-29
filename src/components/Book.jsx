@@ -13,14 +13,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const Book = (props) => {
     const dateNow = new Date();
-    const { setPaymentVisible, currentOrder, setCurrentOrder, setTotalPay, totalPay } = props;
+    const { setPaymentVisible, currentOrder, setCurrentOrder, setTotalPay, totalPay, formVisible, setFormVisible } = props;
     const [ date, setDate ] = useState(dayjs(dateNow));
     const [ selectedValue, setSelectedValue ] = useState(null);
     const [ time, setTime ] = useState(null);
     const [ adults, setAdults ] = useState(0);
     const [ children, setChildren ] = useState(0);
     const [ infants, setInfants ] = useState(0);
-    const [ formVisible, setFormVisible ] = useState(false);
     const [ subTotal, setSubTotal ] = useState(0);
     const [ discount, setDiscount ] = useState(0);
     const [ codeDiscount, setCodeDiscount ] = useState(null);

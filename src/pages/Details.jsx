@@ -5,6 +5,8 @@ import { Navbar } from "@/components/Navbar";
 import { Exposure } from "../components/Exposure";
 import { Book } from "../components/Book";
 import { Payments } from '../components/Payments';
+import { Footer } from '../components/Footer';
+import { Whatsapp } from '../components/Whatsapp';
 // Image
 import details2 from "../assets/img/details1.jpg";
 import details3 from "../assets/img/details2.jpg";
@@ -21,7 +23,8 @@ import { RxCross1 } from "react-icons/rx"
 
 
 export const Details = () => {
-    const [ paymentVisible, setPaymentVisible ] = useState(true);
+    const [ paymentVisible, setPaymentVisible ] = useState(false);
+    const [ formVisible, setFormVisible ] = useState(false);
     const [ currentOrder, setCurrentOrder ] = useState(null);
     const [ totalPay, setTotalPay ] = useState(null);
 
@@ -99,6 +102,11 @@ export const Details = () => {
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam quo maiores, laborum veritatis assumenda incidunt! Quas reprehenderit consequuntur at quos quo corporis, sunt dolores odit placeat? Perferendis labore ipsam hic.
                         </p>
                     </div>
+
+                    <select name="" id="">
+                        <option>1</option>
+                        <option value="">2</option>
+                    </select>
                 </div>
 
                 <Book 
@@ -107,6 +115,8 @@ export const Details = () => {
                 setPaymentVisible={setPaymentVisible}
                 setTotalPay={setTotalPay}
                 totalPay={totalPay}
+                formVisible={formVisible}
+                setFormVisible={setFormVisible}
                 />
             </div>
             
@@ -116,8 +126,12 @@ export const Details = () => {
                 setCurrentOrder={setCurrentOrder}
                 setPaymentVisible={setPaymentVisible}
                 totalPay={totalPay}
+                setFormVisible={setFormVisible}
             />}
 
+            <Whatsapp />
+            
+            <Footer />
         </div>
     );
 }

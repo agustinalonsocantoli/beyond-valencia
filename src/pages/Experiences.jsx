@@ -5,6 +5,7 @@ import { Services } from "../components/Services";
 import { Footer } from "../components/Footer";
 import { Events } from "../components/Events";
 import { Wine } from "../components/Wine";
+import { Whatsapp } from '../components/Whatsapp';
 // Video & Img
 import expA from '../assets/video/expA.mp4';
 import expB from '../assets/img/expB.jpg';
@@ -66,16 +67,18 @@ export const Experiences = () => {
     }
 
     return(
-        <div>
+        <div >
             <Navbar title={"Experiences"} subtitle={"Experiences"} />
 
-            <Exposure data={multimedia}  />
+            <Exposure data={multimedia} />
 
             <Services data={data} />
 
             <Events />
 
             <Wine />
+
+            <Whatsapp />
             
             <Footer />
         </div>

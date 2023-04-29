@@ -49,6 +49,8 @@ export const Services = ({ data }) => {
                 </Link>
 
             </div>
+
+            <div className="bg_img"></div>
         </div>
     );
 }

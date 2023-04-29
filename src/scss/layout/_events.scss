@@ -4,7 +4,8 @@
     background-color: #FFFFFF;
     display: grid;
     grid-template-columns: 60% 40%;
-    margin-top: 80px;
+    margin-top: 50px;
+    margin-bottom: 70px;
 
     @include m.phone {
         grid-template-columns: repeat(1, 1fr);
@@ -22,7 +23,8 @@
     h1 {
         font-size: 70px;
         width: 80%;
-        padding-left: 170px;
+        padding-left: 120px;
+        margin-top: -10px;
 
         @include m.phone {
             padding: 0 10px;
@@ -45,7 +47,7 @@
     }
 
     .events_content {
-        margin-right: 120px;
+        margin-right: 20px;
 
         @include m.phone {
             margin-right: 0px;
@@ -63,6 +65,7 @@
         h3 {
             font-size: 32px;
             margin-bottom: 5px;
+            width: 80%;
 
             @include m.phone {
                 font-size: 25px;
@@ -82,10 +85,8 @@
         p {
             width: 80%;
             font-size: 20px;
-            margin-bottom: 40px;
             color: #868686;
             font-weight: 300;
-
 
             @include m.phone {
                 font-size: 17px;
@@ -99,6 +100,11 @@
                 width: 100%;
 
             }
+        }
+
+        p:last-child {
+            margin-bottom: 40px;
+            font-weight: 600
         }
     }
 }
