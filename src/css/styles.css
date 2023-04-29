@@ -1503,10 +1503,6 @@ body {
   display: flex;
   justify-content: center;
 }
-.checkout .loading svg {
-  height: 50px;
-  width: 50px;
-}
 .checkout .card_img {
   margin-bottom: 20px;
 }
@@ -1835,6 +1831,24 @@ body {
   bottom: 50px;
   right: 100px;
 }
+@media (max-width: 480px) {
+  .lockers .btn_ok {
+    bottom: 30px;
+    right: 50px;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .lockers .btn_ok {
+    bottom: 30px;
+    right: 50px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .lockers .btn_ok {
+    bottom: 20%;
+    right: 100px;
+  }
+}
 .lockers .btn_ok button {
   padding: 5px 15px;
   font-size: 15px;
@@ -1973,6 +1987,24 @@ body {
   position: absolute;
   bottom: 50px;
   right: 100px;
+}
+@media (max-width: 480px) {
+  .bikes .btn_ok {
+    bottom: 30px;
+    right: 50px;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .bikes .btn_ok {
+    bottom: 30px;
+    right: 50px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .bikes .btn_ok {
+    bottom: 20%;
+    right: 100px;
+  }
 }
 .bikes .btn_ok button {
   padding: 5px 15px;
@@ -2577,10 +2609,20 @@ body {
   flex: 1;
   flex-direction: column;
 }
+@media (max-width: 480px) {
+  .contents_complete-form {
+    flex: 0;
+  }
+}
 .contents_complete-form label {
   font-size: 15px;
   font-weight: 600;
   margin-bottom: 3px;
+}
+@media (max-width: 480px) {
+  .contents_complete-form label {
+    font-size: 13px;
+  }
 }
 .contents_complete-form span {
   margin-left: 5px;
@@ -2594,6 +2636,11 @@ body {
   font-weight: 300;
   margin-bottom: 5px;
 }
+@media (max-width: 480px) {
+  .contents_complete-form input {
+    font-size: 10px;
+  }
+}
 .contents_complete-form textarea {
   outline: none;
   resize: none;
@@ -2603,6 +2650,12 @@ body {
   font-weight: 300;
   margin-bottom: 20px;
   height: 55px;
+}
+@media (max-width: 480px) {
+  .contents_complete-form textarea {
+    font-size: 10px;
+    margin-bottom: 15px;
+  }
 }
 .contents_complete-form button {
   margin: auto;
@@ -2617,11 +2670,86 @@ body {
   font-weight: 300;
   font-size: 13px;
 }
+@media (max-width: 480px) {
+  .contents_complete-form button {
+    font-size: 10px;
+    padding: 5px 10px;
+    width: 40%;
+  }
+}
 .contents_complete-form button:active {
   transform: scale(0.9);
   transition: all 200ms ease;
 }
 .contents_complete-form button:hover {
+  background-color: rgb(0, 0, 0);
+}
+
+.pay_success {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: auto;
+  min-height: 100vh;
+}
+@media (max-width: 480px) {
+  .pay_success {
+    width: 90%;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .pay_success {
+    width: 90%;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .pay_success {
+    width: 90%;
+  }
+}
+.pay_success-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.pay_success-content svg {
+  color: #52DD11;
+  font-size: 250px;
+}
+.pay_success-content h1 {
+  font-size: 50px;
+  font-weight: 400;
+}
+@media (max-width: 480px) {
+  .pay_success-content h1 {
+    font-size: 30px;
+  }
+}
+.pay_success-content button {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 15px 50px;
+  border-radius: 20px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+}
+@media (max-width: 480px) {
+  .pay_success-content button {
+    padding: 12px 40px;
+    font-size: 17px;
+  }
+}
+.pay_success-content button:active {
+  transform: scale(0.9);
+  transition: all 200ms ease;
+}
+.pay_success-content button:hover {
   background-color: rgb(0, 0, 0);
 }
 

@@ -20,6 +20,8 @@ import 'react-toastify/dist/ReactToastify.css';
 // Icons
 import { IoReturnDownBackSharp } from 'react-icons/io5';
 import { BsCheck2 } from 'react-icons/bs';
+//  Email
+import emailjs from '@emailjs/browser';
 
 export const Lockers = () => {
     const dateNow = new Date();
@@ -33,6 +35,20 @@ export const Lockers = () => {
     const [ subTotal, setSubTotal ] = useState(0);
     const [ totalPay, setTotalPay ] = useState(0);
     const [ paymentVisible, setPaymentVisible ] = useState(false);
+
+    let templateParams = {
+        name: currentOrder !== null && currentOrder.name,
+        email: currentOrder !== null && currentOrder.email,
+        phone: currentOrder !== null && currentOrder.phone,
+        time: currentOrder !== null && currentOrder.time,
+        date: currentOrder !== null && currentOrder.date,
+        small: currentOrder !== null && currentOrder.small,
+        medium: currentOrder !== null && currentOrder.medium,
+        normal: currentOrder !== null && currentOrder.normal,
+        comment: currentOrder !== null && currentOrder.comment ? currentOrder.comment : 'No comment entered',
+        total: `${totalPay}€`,
+        discountCode: currentOrder !== null && currentOrder.discountCode ? currentOrder.discountCode : 'No code used',
+    }
 
     const data = {
         s: {
@@ -100,7 +116,21 @@ export const Lockers = () => {
                     if(currentOrder.phone !== null && currentOrder.phone !== undefined && currentOrder.phone !== '') {
 
                         notifySuccess('We will proceed to the payment.');
+                        setCurrentOrder(prev => ({...prev, total: totalPay}));
                         setPaymentVisible(true);
+
+                        emailjs.send(
+                            import.meta.env.VITE_BASE_EMAIL_SERVICE, 
+                            import.meta.env.VITE_BASE_EMAIL_TEMPLATELOCKERS, 
+                            templateParams,
+                            import.meta.env.VITE_BASE_EMAIL_PUBLIC
+                        )
+                        .then(function(response) {
+                        console.log('SUCCESS!', response.status, response.text);
+                        }, function(error) {
+                        console.log('FAILED...', error);
+                        });
+
                         e.target.reset();
                     } else {
                         notifyError("You must enter a correct Phone.");
@@ -119,16 +149,23 @@ export const Lockers = () => {
     const handleOk = () => {
         if(page < 3) {
             if(page === 0 && time !== null && time !== undefined) {
+                setCurrentOrder(prev => ({...prev, time: time}));
                 setPage(prev => prev + 1);
             } else if (page === 1 && (small !== 0 || medium !== 0 || normal !== 0)) {
+                setCurrentOrder(prev => ({
+                    ...prev,
+                    small: small,
+                    medium: medium,
+                    childrenBike: normal,
+                }));
                 setPage(prev => prev + 1);
             } else if(page === 2 && date !== null && date !== undefined) {
-                setPage(prev => prev + 1);
-
                 const total = totalCalculate(small, medium, normal, time);
 
                 setSubTotal(total);
                 setTotalPay(total);
+                setCurrentOrder(prev => ({...prev, date: dayjs(date.$d).format('DD/MM/YYYY')}));
+                setPage(prev => prev + 1);
             };
         };
     };
@@ -145,14 +182,19 @@ export const Lockers = () => {
         let totalNormal = 0;
 
         if(timeValue === '2-Hours') {
+            totalSmall = smallOrder > 0 ? (smallOrder * 3) : 0;
+            totalMedium = mediumOrder > 0 ? (mediumOrder * 5) : 0;
+            totalNormal = normalOrder > 0 ? (normalOrder * 8) : 0;
+        } 
+        else if (timeValue === 'All-Day') {
             totalSmall = smallOrder > 0 ? (smallOrder * 5) : 0;
             totalMedium = mediumOrder > 0 ? (mediumOrder * 8) : 0;
             totalNormal = normalOrder > 0 ? (normalOrder * 10) : 0;
-        } 
+        }
         else {
-            totalSmall = smallOrder > 0 ? (smallOrder * 8) : 0;
-            totalMedium = mediumOrder > 0 ? (mediumOrder * 10) : 0;
-            totalNormal = normalOrder > 0 ? (normalOrder * 12) : 0;
+            totalSmall = smallOrder > 0 ? (smallOrder * 4) : 0;
+            totalMedium = mediumOrder > 0 ? (mediumOrder * 7) : 0;
+            totalNormal = normalOrder > 0 ? (normalOrder * 11) : 0;
         }
 
         return totalSmall + totalMedium + totalNormal;
@@ -243,6 +285,7 @@ export const Lockers = () => {
                     small={small}
                     medium={medium}
                     normal={normal}
+                    setCurrentOrder={setCurrentOrder}
                 />}
 
                 { page !== 3 &&

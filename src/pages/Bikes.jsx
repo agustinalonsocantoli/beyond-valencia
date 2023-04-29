@@ -21,6 +21,8 @@ import 'react-toastify/dist/ReactToastify.css';
 // Icons
 import { IoReturnDownBackSharp } from 'react-icons/io5';
 import { BsCheck2 } from 'react-icons/bs';
+//  Email
+import emailjs from '@emailjs/browser';
 
 export const Bikes = () => {
     const dateNow = new Date();
@@ -35,6 +37,20 @@ export const Bikes = () => {
     const [ subTotal, setSubTotal ] = useState(0);
     const [ totalPay, setTotalPay ] = useState(0);
     const [ paymentVisible, setPaymentVisible ] = useState(false);
+
+    let templateParams = {
+        name: currentOrder !== null && currentOrder.name,
+        email: currentOrder !== null && currentOrder.email,
+        phone: currentOrder !== null && currentOrder.phone,
+        time: currentOrder !== null && currentOrder.time,
+        date: currentOrder !== null && currentOrder.date,
+        small: currentOrder !== null && currentOrder.small,
+        medium: currentOrder !== null && currentOrder.medium,
+        childrenBike: currentOrder !== null && currentOrder.childrenBike,
+        comment: currentOrder !== null && currentOrder.comment ? currentOrder.comment : 'No comment entered',
+        total: `${totalPay}€`,
+        discountCode: currentOrder !== null && currentOrder.discountCode ? currentOrder.discountCode : 'No code used',
+    }
 
     const data = {
         s: {
@@ -89,7 +105,21 @@ export const Bikes = () => {
                     if(currentOrder.phone !== null && currentOrder.phone !== undefined && currentOrder.phone !== '') {
 
                         notifySuccess('We will proceed to the payment.');
+                        setCurrentOrder(prev => ({...prev, total: totalPay}));
                         setPaymentVisible(true);
+
+                        emailjs.send(
+                            import.meta.env.VITE_BASE_EMAIL_SERVICE, 
+                            import.meta.env.VITE_BASE_EMAIL_TEMPLATEBIKES, 
+                            templateParams,
+                            import.meta.env.VITE_BASE_EMAIL_PUBLIC
+                        )
+                        .then(function(response) {
+                        console.log('SUCCESS!', response.status, response.text);
+                        }, function(error) {
+                        console.log('FAILED...', error);
+                        });
+
                         e.target.reset();
                     } else {
                         notifyError("You must enter a correct Phone.");
@@ -108,16 +138,23 @@ export const Bikes = () => {
     const handleOk = () => {
         if(page < 3) {
             if(page === 0 && time !== null && time !== undefined) {
+                setCurrentOrder(prev => ({...prev, time: time}));
                 setPage(prev => prev + 1);
             } else if (page === 1 && (small !== 0 || medium !== 0 || normal !== 0)) {
+                setCurrentOrder(prev => ({
+                    ...prev,
+                    small: small,
+                    medium: medium,
+                    childrenBike: normal,
+                }));
                 setPage(prev => prev + 1);
             } else if(page === 2 && date !== null && date !== undefined) {
-                setPage(prev => prev + 1);
-
                 const total = totalCalculate(small, medium, time);
 
                 setSubTotal(total);
                 setTotalPay(total);
+                setCurrentOrder(prev => ({...prev, date: dayjs(date.$d).format('DD/MM/YYYY')}));
+                setPage(prev => prev + 1);
             };
         };
     };
@@ -133,12 +170,12 @@ export const Bikes = () => {
         let totalMedium = 0;
 
         if(timeValue === 'All-Day') {
-            totalSmall = smallOrder > 0 ? (smallOrder * 12) : 0;
-            totalMedium = mediumOrder > 0 ? (mediumOrder * 12) : 0;
+            totalSmall = smallOrder > 0 ? (smallOrder * 14) : 0;
+            totalMedium = mediumOrder > 0 ? (mediumOrder * 14) : 0;
         } 
         else if (timeValue === 'Three-Days') {
-            totalSmall = smallOrder > 0 ? (smallOrder * 25) : 0;
-            totalMedium = mediumOrder > 0 ? (mediumOrder * 25) : 0;
+            totalSmall = smallOrder > 0 ? (smallOrder * 38) : 0;
+            totalMedium = mediumOrder > 0 ? (mediumOrder * 38) : 0;
         }
 
         return totalSmall + totalMedium;
@@ -218,6 +255,7 @@ export const Bikes = () => {
                     small={small}
                     medium={medium}
                     normal={normal}
+                    setCurrentOrder={setCurrentOrder}
                 />}
 
                 { page !== 3 &&
