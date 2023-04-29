@@ -9,7 +9,7 @@ export const Options = () => {
         <div className="options">
             <div className='options_img-box'>
                 <picture>
-                    <source srcset={lockersW} type="image/webp" />
+                    <source srcSet={lockersW} type="image/webp" />
                     <img src={lockers} alt="img/lockers" />
                 </picture>
                 
@@ -23,7 +23,7 @@ export const Options = () => {
 
             <div className='options_img-box'>
                 <picture>
-                    <source srcset={bikesW} type="image/webp" />
+                    <source srcSet={bikesW} type="image/webp" />
                     <img src={bikes} alt="img/bikes" />
                 </picture>
                 

@@ -7,7 +7,7 @@ export const Wine = () => {
         <div className="wine">
             <div className="wine_img">
                 <picture>
-                    <source srcset={wineW} type="image/webp" />
+                    <source srcSet={wineW} type="image/webp" />
                     <img src={wine} alt="img/wine" />
                 </picture>
             </div>

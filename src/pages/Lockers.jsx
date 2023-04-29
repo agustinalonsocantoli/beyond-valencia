@@ -231,14 +231,14 @@ export const Lockers = () => {
             <div className='lockers_img'>
                 <picture>
                     <source 
-                    srcset={
+                    srcSet={
                         page === 0 ? lockersW : page === 1 ? lockers1W : page === 2 ? lockers2W : lockers3W
                     } type="image/webp" />
 
                     <img 
                     src={
                         page === 0 ? lockers : page === 1 ? lockers1 : page === 2 ? lockers2 : lockers3
-                    } alt="img/lockers" />
+                    } alt="img/lockers" loading='lazy'/>
                 </picture>
             </div>
 

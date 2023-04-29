@@ -281,14 +281,14 @@ export const Bikes = () => {
             <div className='bikes_img'>
                 <picture>
                     <source 
-                    srcset={
+                    srcSet={
                         page === 0 && !resposive ? bikesW : page === 0 && resposive ? bikesMbW : page === 1 ? bikes1W : page === 2 ? bikes2W : bikes3W
                     } type="image/webp" />
 
-                    <img 
+                    <img
                     src={
                         page === 0 && !resposive ? bikes : page === 0 && resposive ? bikesMb : page === 1 ? bikes1 : page === 2 ? bikes2 : bikes3
-                    } alt="img/bikes" />
+                    } alt="img/bikes" loading='lazy'/>
                 </picture>
             </div>
 

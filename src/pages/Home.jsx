@@ -19,6 +19,7 @@ import { AiOutlineInstagram } from 'react-icons/ai';
 import { Link } from "react-router-dom";
 
 export const Home = () => {
+
     const data = {
         h1: "Easy, safe and unique... #valencia",
         h2: <Link to={"/more-services"}>LOCKERS & BIKE RENTALS </Link>,
@@ -67,9 +68,9 @@ export const Home = () => {
                     <h2>CURATED EXPERIENCES</h2>
                 </div>
 
-                <video autoPlay muted loop>
+                <video muted={true} autoPlay={true} loop={true} playsInline={true}>
+                    <source srcSet={homeVideoW} type="video/webm" />
                     <source src={homeVideo} type="video/mp4" />
-                    <source src={homeVideoW} type="video/webm" />
                 </video>
             </div>
 
