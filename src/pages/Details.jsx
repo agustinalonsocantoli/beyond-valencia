@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Navbar } from "@/components/Navbar";
 import { Exposure } from "../components/Exposure";
 import { Book } from "../components/Book";
-import { Payments } from '../components/Payments';
+import { Payments } from '../components/stripe/Payments';
 import { Footer } from '../components/Footer';
 import { Whatsapp } from '../components/Whatsapp';
 // Image

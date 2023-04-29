@@ -1,7 +1,10 @@
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import { CheckoutForm } from './stripe/CheckoutForm';
+import { CheckoutForm } from './CheckoutForm';
 import { useEffect, useState } from 'react';
+import { MdError } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const stripePromise = loadStripe(import.meta.env.VITE_BASE_STRIPE_PUBLIC);
 
@@ -9,6 +12,8 @@ export const Payments = (props) => {
     const { setPaymentVisible, currentOrder, totalPay, setCurrentOrder, setFormVisible } = props;
     const [ clientSecret, setClientSecret ] = useState('');
     const [ id, setId ] = useState('');
+    const navigate = useNavigate();
+    const [ error, setError ] = useState(false);
     
     useEffect(() => {
 
@@ -26,6 +31,14 @@ export const Payments = (props) => {
             setId(data.id);
         });
 
+        const timeout = setTimeout(() => {
+            setError(true);
+        }, 5000)
+
+        return () => {
+            clearTimeout(timeout);
+        }
+
     }, []);
 
 
@@ -40,7 +53,7 @@ export const Payments = (props) => {
 
     return(
         <div className='payment'>
-            {clientSecret &&
+            {clientSecret ?
             <Elements stripe={stripePromise} options={options}>
                 <CheckoutForm 
                 setPaymentVisible={setPaymentVisible} 
@@ -49,6 +62,20 @@ export const Payments = (props) => {
                 setFormVisible={setFormVisible}
                 />
             </Elements>
+            :
+            <div>
+                {error ?
+                <div className='payment_error'>
+                    <h1>Server error, try again later.</h1>
+                    <MdError />
+                    <button onClick={() => navigate('/')}>Home Page</button>
+                </div>
+                :
+                <div className='payment_loading'>
+                    <CircularProgress size={200} />
+                </div>
+            }
+            </div>
             }
         </div>
     );

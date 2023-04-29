@@ -14,7 +14,8 @@ export const Complete = (props) => {
         data,
         small,
         medium,
-        normal
+        normal,
+        setCurrentOrder
     } = props;
     const { s, m, n } = data;
     const [ discount, setDiscount ] = useState(0);
@@ -25,9 +26,21 @@ export const Complete = (props) => {
     }
 
     const validateCode = () => {
-        if(codeDiscount === import.meta.env.VITE_BASE_HOTEL_CODE) {
+        if(
+            codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_FIVED ||
+            codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_FIVEJ
+        ) {
+            setDiscount(5)
+            setTotalPay(subTotal - ((subTotal * (5)) / 100))
+            setCurrentOrder(prev => ({...prev, discountCode: codeDiscount}));
+            notifySuccess("Congratulations you got the discount");
+        } else if(
+            codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_TEND ||
+            codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_TENJ
+        ) {
             setDiscount(10)
             setTotalPay(subTotal - ((subTotal * (10)) / 100))
+            setCurrentOrder(prev => ({...prev, discountCode: codeDiscount}));
             notifySuccess("Congratulations you got the discount");
         } else {
             notifyError("The code entered is not valid");

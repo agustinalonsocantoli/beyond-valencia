@@ -9,6 +9,103 @@
     right: 0;
     left: 0;
 
+    &_error {
+        background-color: #FFFFFF;
+        padding: 20px;
+        width: 60%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        border-radius: 12px;
+        margin-top: 10%;
+
+        @include m.phone {
+            width: 90%;
+        }
+        @include m.tablet {
+            width: 90%;
+        }
+        @include m.desktopS {
+            width: 90%;
+        }
+
+        svg {
+            color: #DC2222;
+            font-size: 250px;
+
+            @include m.phone {
+                font-size: 200;
+            }
+        }
+
+        h1 {
+            font-size: 50px;
+            font-weight: 400;
+
+            @include m.phone {
+                font-size: 25px;
+                text-align: center;
+            }
+            @include m.tablet {
+                font-size: 40px;
+            }
+            @include m.desktopS {
+                font-size: 40px;
+            }
+        }
+
+        button {
+            border: none;
+            background-color: rgba(0, 0, 0, .7);
+            padding: 15px 50px;
+            border-radius: 20px;
+            color: #FFFFFF;
+            cursor: pointer;
+            font-family: v.$poppins;
+            font-weight: 300;
+            font-size: 20px;
+
+            @include m.phone {
+                padding: 12px 40px;
+                font-size: 17px;
+            }
+
+            &:active {
+                transform: scale(0.9);
+                transition: all 200ms ease;
+            }
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 1);
+            }
+        }
+    }
+
+    &_loading {
+        background-color: #FFFFFF;
+        padding: 5%;
+        width: 40%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 12px;
+        margin-top: 10%;
+
+        @include m.phone {
+            width: 90%;
+        }
+        @include m.tablet {
+            width: 90%;
+        }
+        @include m.desktopS {
+            width: 90%;
+        }
+    }
+
 }
 
 .checkout {
@@ -58,11 +155,6 @@
         margin-top: 30px;
         display: flex;
         justify-content: center;
-
-        svg {
-            height: 50px;
-            width: 50px;
-        }
     }
 
     .card_img {
@@ -83,4 +175,5 @@
         -moz-box-shadow: 2px 2px 15px 0px rgba(0,0,0,0.75);
         box-shadow: 2px 2px 15px 0px rgba(0,0,0,0.75);
     }
+
 }

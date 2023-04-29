@@ -509,10 +509,18 @@
         flex: 1;
         flex-direction: column;
 
+        @include m.phone {
+            flex: 0;
+        }
+
         label {
             font-size: 15px;
             font-weight: 600;
             margin-bottom: 3px;
+
+            @include m.phone {
+                font-size: 13px;
+            }
         }
 
         span {
@@ -527,6 +535,10 @@
             font-family: v.$poppins;
             font-weight: 300;
             margin-bottom: 5px;
+
+            @include m.phone {
+                font-size: 10px;
+            }
         }
 
         textarea {
@@ -538,6 +550,11 @@
             font-weight: 300;
             margin-bottom: 20px;
             height: 55px;
+
+            @include m.phone {
+                font-size: 10px;
+                margin-bottom: 15px;
+            }
         }
 
         button {
@@ -552,6 +569,12 @@
             font-family: v.$poppins;
             font-weight: 300;
             font-size: 13px;
+
+            @include m.phone {
+                font-size: 10px;
+                padding: 5px 10px;
+                width: 40%;
+            }
 
             &:active {
                 transform: scale(0.9);
