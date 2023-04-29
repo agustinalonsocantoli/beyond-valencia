@@ -6,6 +6,10 @@ import lockers1 from '../assets/Options/lockers1.jpg';
 import lockers2 from '../assets/Options/lockers2.jpg';
 import lockers3 from '../assets/Options/lockers3.jpg';
 import logo from '../assets/logoB.png'
+import lockersW from '../assets/Options/lockers.webp';
+import lockers1W from '../assets/Options/lockers1.webp';
+import lockers2W from '../assets/Options/lockers2.webp';
+import lockers3W from '../assets/Options/lockers3.webp';
 // Components
 import { First } from '../components/rentals/First';
 import { Second } from '../components/rentals/Second';
@@ -225,10 +229,17 @@ export const Lockers = () => {
     return(
         <div className="lockers">
             <div className='lockers_img'>
-                <img 
-                src={
-                    page === 0 ? lockers : page === 1 ? lockers1 : page === 2 ? lockers2 : lockers3
-                } alt="img/lockers" />
+                <picture>
+                    <source 
+                    srcset={
+                        page === 0 ? lockersW : page === 1 ? lockers1W : page === 2 ? lockers2W : lockers3W
+                    } type="image/webp" />
+
+                    <img 
+                    src={
+                        page === 0 ? lockers : page === 1 ? lockers1 : page === 2 ? lockers2 : lockers3
+                    } alt="img/lockers" />
+                </picture>
             </div>
 
             <div className='lockers_line'></div>

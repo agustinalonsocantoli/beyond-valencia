@@ -6,10 +6,14 @@ import { Wine } from "../components/Wine";
 import { Whatsapp } from '../components/Whatsapp';
 // Video & Img
 import homeVideo from '../assets/video/fire.mp4';
+import homeVideoW from '../assets/video/fire.webm';
 import logo from '../assets/logoB.png';
 import exp from '../assets/img/experiences.jpg';
 import day from '../assets/img/dayTrip.jpg';
 import food from '../assets/img/fyd.jpg';
+import expW from '../assets/img/experiences.webp';
+import dayW from '../assets/img/dayTrip.webp';
+import foodW from '../assets/img/fyd.webp';
 // Icon
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { Link } from "react-router-dom";
@@ -21,6 +25,7 @@ export const Home = () => {
         S1: {
             // link: "/experiences",
             img: exp,
+            imgW: expW,
             type: "image",
             h3: "Experiences",
             p: "Carefully selected and exclusive experiences in Valencia capital city",
@@ -28,6 +33,7 @@ export const Home = () => {
         S2: {
             // link: "/daytrips",
             img: day,
+            imgW: dayW,
             type: "image",
             h3: "Day trips",
             p: "Exploring locations out from the box, and out from the city centre",
@@ -35,6 +41,7 @@ export const Home = () => {
         S3: {
             // link: "/food",
             img: food,
+            imgW: foodW,
             type: "image",
             h3: "Food & Dinning",
             p: "Access to the best deals in town at run by local spots with authenticity",
@@ -62,6 +69,7 @@ export const Home = () => {
 
                 <video autoPlay muted loop>
                     <source src={homeVideo} type="video/mp4" />
+                    <source src={homeVideoW} type="video/webm" />
                 </video>
             </div>
 

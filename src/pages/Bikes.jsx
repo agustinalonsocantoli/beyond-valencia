@@ -7,6 +7,11 @@ import bikes1 from '../assets/Options/bikes1.jpg';
 import bikes2 from '../assets/Options/lockers2.jpg';
 import bikes3 from '../assets/Options/bikes3.jpg';
 import logo from '../assets/logoB.png'
+import bikesW from '../assets/Options/bikes.webp';
+import bikesMbW from '../assets/Options/bikesMb.webp';
+import bikes1W from '../assets/Options/bikes1.webp';
+import bikes2W from '../assets/Options/lockers2.webp';
+import bikes3W from '../assets/Options/bikes3.webp';
 // Components
 import { First } from '../components/rentals/First';
 import { Second } from '../components/rentals/Second';
@@ -274,10 +279,17 @@ export const Bikes = () => {
             <div className='bikes_line'></div>
 
             <div className='bikes_img'>
-                <img 
-                src={
-                    page === 0 && !resposive ? bikes : page === 0 && resposive ? bikesMb : page === 1 ? bikes1 : page === 2 ? bikes2 : bikes3
-                } alt="img/bikes" />
+                <picture>
+                    <source 
+                    srcset={
+                        page === 0 && !resposive ? bikesW : page === 0 && resposive ? bikesMbW : page === 1 ? bikes1W : page === 2 ? bikes2W : bikes3W
+                    } type="image/webp" />
+
+                    <img 
+                    src={
+                        page === 0 && !resposive ? bikes : page === 0 && resposive ? bikesMb : page === 1 ? bikes1 : page === 2 ? bikes2 : bikes3
+                    } alt="img/bikes" />
+                </picture>
             </div>
 
             {paymentVisible && 

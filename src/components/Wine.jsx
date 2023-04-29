@@ -1,11 +1,15 @@
 // Img
 import wine from '../assets/img/wine.jpg';
+import wineW from '../assets/img/wine.webp';
 
 export const Wine = () => {
     return(
         <div className="wine">
             <div className="wine_img">
-                <img src={wine} alt="img/wine" />
+                <picture>
+                    <source srcset={wineW} type="image/webp" />
+                    <img src={wine} alt="img/wine" />
+                </picture>
             </div>
 
             <div className="wine_title">
