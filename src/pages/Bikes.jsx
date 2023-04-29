@@ -12,7 +12,7 @@ import { First } from '../components/rentals/First';
 import { Second } from '../components/rentals/Second';
 import { Third } from '../components/rentals/Third';
 import { Complete } from '../components/rentals/Complete';
-import { Payments } from '../components/Payments';
+import { Payments } from '../components/stripe/Payments';
 // DayJs
 import dayjs from 'dayjs';
 // Toast
