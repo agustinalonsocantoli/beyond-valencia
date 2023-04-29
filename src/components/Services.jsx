@@ -14,7 +14,10 @@ export const Services = ({ data }) => {
             <div className="services_conteiner">
                 
                 <Link className="services_img" to={S1.link}>
-                    <img src={S1.img} alt={`img/${S1.h3}`} />
+                    <picture>
+                        <source srcset={S1.imgW} type="image/webp" />
+                        <img src={S1.img} alt={`img/${S1.h3}`} />
+                    </picture>
                     
                     <div className="img_content">
                         <h3>{S1.h3}</h3>
@@ -30,7 +33,10 @@ export const Services = ({ data }) => {
                     }
 
                     { S2.type === "image" &&
-                    <img src={S2.img} alt={`img/${S2.h3}`} />
+                    <picture>
+                        <source srcset={S2.imgW} type="image/webp" />
+                        <img src={S2.img} alt={`img/${S2.h3}`} />
+                    </picture>
                     }
                     
                     <div className="img_content">
@@ -40,7 +46,10 @@ export const Services = ({ data }) => {
                 </Link>
 
                 <Link className="services_img" to={S3.link}>
-                    <img src={S3.img} alt={`img/${S3.h3}`} />
+                    <picture>
+                        <source srcset={S3.imgW} type="image/webp" />
+                        <img src={S3.img} alt={`img/${S3.h3}`} />
+                    </picture>
                     
                     <div className="img_content">
                         <h3>{S3.h3}</h3>
