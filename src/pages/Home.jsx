@@ -19,7 +19,7 @@ import { AiOutlineInstagram } from 'react-icons/ai';
 import { Link } from "react-router-dom";
 
 export const Home = () => {
-
+    
     const data = {
         h1: "Easy, safe and unique... #valencia",
         h2: <Link to={"/more-services"}>LOCKERS & BIKE RENTALS </Link>,
