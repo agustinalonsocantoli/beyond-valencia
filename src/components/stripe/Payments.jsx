@@ -17,7 +17,7 @@ export const Payments = (props) => {
     
     useEffect(() => {
 
-        fetch("http://localhost:4242/api/checkout", {
+        fetch(import.meta.env.VITE_BASE_URL_APICHECKOUT, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ 

@@ -38,7 +38,7 @@ export const CheckoutForm = (props) => {
     const handleCancel = async (e) => {
         e.preventDefault();
 
-        fetch('http://localhost:4242/api/cancel', {
+        fetch(import.meta.env.VITE_BASE_URL_APICANCEL, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ 
