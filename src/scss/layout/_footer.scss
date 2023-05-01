@@ -5,8 +5,12 @@
     color: #FFFFFF;
     display: flex;
     justify-content: space-between;
-    padding: 1%;
+    padding: 2%;
     align-items: center;
+
+    @include m.phone {
+        padding: 5% 2%;
+    }
 
     h3 {
         font-size: 15px;
@@ -41,7 +45,7 @@
             border-radius: 2px;
 
             @include m.phone {
-                width: 35px;
+                width: 30px;
                 height: 15px;
             }
             @include m.tablet {

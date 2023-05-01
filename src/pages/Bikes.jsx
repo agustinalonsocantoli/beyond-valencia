@@ -1,5 +1,6 @@
 // React
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 // Img
 import bikes from '../assets/Options/bikes.jpg';
 import bikesMb from '../assets/Options/bikesMb.jpg';
@@ -213,7 +214,7 @@ export const Bikes = () => {
 
             <div className='bikes_contents'>
                 <div className='bikes_contents-logo'>
-                    <img src={logo} alt="img/logo" />
+                    <Link to={'/more-services'}><img src={logo} alt="img/logo" /></Link>
                 </div>
 
                 { page === 0 && <First 
@@ -280,15 +281,9 @@ export const Bikes = () => {
 
             <div className='bikes_img'>
                 <picture>
-                    <source 
-                    srcSet={
-                        page === 0 && !resposive ? bikesW : page === 0 && resposive ? bikesMbW : page === 1 ? bikes1W : page === 2 ? bikes2W : bikes3W
-                    } type="image/webp" />
+                    <source srcSet={!resposive ? bikesW : bikesMbW} type="image/webp" />
 
-                    <img
-                    src={
-                        page === 0 && !resposive ? bikes : page === 0 && resposive ? bikesMb : page === 1 ? bikes1 : page === 2 ? bikes2 : bikes3
-                    } alt="img/bikes" loading='lazy'/>
+                    <img src={!resposive ? bikes : bikesMb} alt="img/bikes" loading='lazy'/>
                 </picture>
             </div>
 

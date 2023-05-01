@@ -1,5 +1,6 @@
 // React
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 // Img
 import lockers from '../assets/Options/lockers.jpg';
 import lockers1 from '../assets/Options/lockers1.jpg';
@@ -230,15 +231,9 @@ export const Lockers = () => {
         <div className="lockers">
             <div className='lockers_img'>
                 <picture>
-                    <source 
-                    srcSet={
-                        page === 0 ? lockersW : page === 1 ? lockers1W : page === 2 ? lockers2W : lockers3W
-                    } type="image/webp" />
+                    <source srcSet={lockersW} type="image/webp" />
 
-                    <img 
-                    src={
-                        page === 0 ? lockers : page === 1 ? lockers1 : page === 2 ? lockers2 : lockers3
-                    } alt="img/lockers" loading='lazy'/>
+                    <img src={lockers} alt="img/lockers" loading='lazy'/>
                 </picture>
             </div>
 
@@ -246,7 +241,7 @@ export const Lockers = () => {
 
             <div className='lockers_contents'>
                 <div className='lockers_contents-logo'>
-                    <img src={logo} alt="img/logo" />
+                    <Link to={'/more-services'}><img src={logo} alt="img/logo" /></Link>
                 </div>
 
                 { page === 0 && <First 
