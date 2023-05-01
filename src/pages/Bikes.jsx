@@ -4,15 +4,9 @@ import { Link } from 'react-router-dom';
 // Img
 import bikes from '../assets/Options/bikes.jpg';
 import bikesMb from '../assets/Options/bikesMb.jpg';
-import bikes1 from '../assets/Options/bikes1.jpg';
-import bikes2 from '../assets/Options/lockers2.jpg';
-import bikes3 from '../assets/Options/bikes3.jpg';
 import logo from '../assets/logoB.png'
 import bikesW from '../assets/Options/bikes.webp';
 import bikesMbW from '../assets/Options/bikesMb.webp';
-import bikes1W from '../assets/Options/bikes1.webp';
-import bikes2W from '../assets/Options/lockers2.webp';
-import bikes3W from '../assets/Options/bikes3.webp';
 // Components
 import { First } from '../components/rentals/First';
 import { Second } from '../components/rentals/Second';
@@ -78,7 +72,7 @@ export const Bikes = () => {
     const product = {
         allDay: {
             time: 'All day',
-            description: 'Todo el dia',
+            description: 'Todo el día',
             select: 'All-Day',
             price: {
                 small: 14,
@@ -87,7 +81,7 @@ export const Bikes = () => {
         },
         threeDays: {
             time: '3 days',
-            description: 'Tres dias',
+            description: 'Tres días',
             select: 'Three-Days',
             price: {
                 small: 38,
@@ -224,6 +218,7 @@ export const Bikes = () => {
                     time={time}
                     setTime={setTime}
                     product={product}
+                    setPage={setPage}
                 />}
 
                 { page === 1 && <Second
@@ -242,9 +237,10 @@ export const Bikes = () => {
 
                 { page === 2 && <Third 
                     title="When?"
-                    subtitle="¿Para cuando necesitas tus bicis?" 
+                    subtitle="¿Para cuándo necesitas tus bicis?" 
                     date={date}
                     setDate={setDate}
+                    setPage={setPage}
                 />}
 
                 { page === 3 && <Complete 

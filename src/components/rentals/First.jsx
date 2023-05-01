@@ -1,5 +1,5 @@
 export const First = (props) => {
-    const { title, subtitle, longerTime, time, setTime, product } = props;
+    const { title, subtitle, longerTime, time, setTime, product, setPage } = props;
     const { h, allDay, longer, threeDays } = product;
 
     return(
@@ -11,7 +11,10 @@ export const First = (props) => {
                 { h && 
                     <div>
                         <span className={time === h.select ? 'active' : 'disable'} 
-                        onClick={() => setTime(h.select)}
+                        onClick={() => {
+                            setTime(h.select);
+                            setPage(prev => prev + 1);
+                        }}
                         >
                             {h.time}
                         </span>
@@ -21,7 +24,10 @@ export const First = (props) => {
 
                 <div>
                     <span className={time === allDay.select ? 'active' : 'disable'} 
-                    onClick={() => setTime(allDay.select)}
+                    onClick={() => {
+                        setTime(allDay.select);
+                        setPage(prev => prev + 1);
+                    }}
                     >
                         {allDay.select}
                     </span>
@@ -31,7 +37,10 @@ export const First = (props) => {
                 { threeDays && 
                     <div>
                         <span className={time === threeDays.select ? 'active' : 'disable'} 
-                        onClick={() => setTime(threeDays.select)}
+                        onClick={() => {
+                            setTime(threeDays.select);
+                            setPage(prev => prev + 1);
+                        }}
                         >
                             {threeDays.time}
                         </span>
@@ -43,7 +52,10 @@ export const First = (props) => {
                 <div className='time-select'>
                     <div>
                     <label>{longer.time}</label>
-                    <select name='longerTime' defaultValue="default" onChange={(e) => setTime(e.target.value)}>
+                    <select name='longerTime' defaultValue="default" onChange={(e) => {
+                        setTime(e.target.value);
+                        setPage(prev => prev + 1);
+                        }}>
                         <option value="default" disabled>How many days?</option>
                         {longer.select.map((item, index) => (
                             <option key={index} value={item}>{index + 2}</option>

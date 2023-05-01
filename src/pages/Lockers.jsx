@@ -3,14 +3,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 // Img
 import lockers from '../assets/Options/lockers.jpg';
-import lockers1 from '../assets/Options/lockers1.jpg';
-import lockers2 from '../assets/Options/lockers2.jpg';
-import lockers3 from '../assets/Options/lockers3.jpg';
 import logo from '../assets/logoB.png'
 import lockersW from '../assets/Options/lockers.webp';
-import lockers1W from '../assets/Options/lockers1.webp';
-import lockers2W from '../assets/Options/lockers2.webp';
-import lockers3W from '../assets/Options/lockers3.webp';
 // Components
 import { First } from '../components/rentals/First';
 import { Second } from '../components/rentals/Second';
@@ -86,7 +80,7 @@ export const Lockers = () => {
         },
         allDay: {
             time: 'All day',
-            description: 'Todo el dia',
+            description: 'Todo el día',
             select: 'All-Day',
             price: {
                 small: 5,
@@ -96,7 +90,7 @@ export const Lockers = () => {
         },
         longer: {
             time: 'Longer time?',
-            description: '¿Cuantos dias necesitas?',
+            description: '¿Cuántos días necesitas?',
             select: ['2-Days', '3-Days', '4-Days', '5-Days', '6-Days', '7-Days', '8-Days', '9-Days', '10-Days'],
             price: {
                 small: 4,
@@ -251,6 +245,7 @@ export const Lockers = () => {
                     time={time}
                     setTime={setTime}
                     product={product}
+                    setPage={setPage}
                 />}
 
                  
@@ -274,6 +269,7 @@ export const Lockers = () => {
                     date={date}
                     setDate={setDate}
                     setCurrentOrder={setCurrentOrder}
+                    setPage={setPage}
                     
                 />}
 

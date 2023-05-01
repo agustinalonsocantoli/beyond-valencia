@@ -38,14 +38,14 @@ body {
   z-index: 399;
 }
 .home .home_video .video_hashtag a {
-  color: #ccc;
+  color: #545454;
   font-size: 15px;
   cursor: pointer;
   display: flex;
   align-items: center;
 }
 .home .home_video .video_hashtag a svg {
-  color: #ccc;
+  color: #545454;
   font-size: 20px;
 }
 .home .home_video .video_logo {

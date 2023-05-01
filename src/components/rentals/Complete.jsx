@@ -62,7 +62,7 @@ export const Complete = (props) => {
                     {normal > 0 && <h3>{n.name} x {normal}</h3>}
                     <h2>Subtotal €{subTotal}</h2>
 
-                    <p>Si te alojas con uno de nuestros socios solicita el codigo para obtener un descuento.</p>
+                    <p>Si te alojas con uno de nuestros socios solicita el codígo para obtener un descuento.</p>
                     <label>Enter your code here!</label>
 
                     <div>
@@ -84,7 +84,7 @@ export const Complete = (props) => {
                     <label>Phone<span>*</span></label>
                     <input type="tel" name="phone" onChange={handleInput}/>
 
-                    <label>Comment</label>
+                    <label>Comments</label>
                     <textarea name="comment" onChange={handleInput}></textarea>
 
                     <button type="submit">PAY NOW</button>
