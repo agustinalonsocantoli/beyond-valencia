@@ -5,7 +5,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 
 export const Third = (props) => {
-    const { title, subtitle, date, setDate, setPage } = props;
+    const { title, subtitle, date, setDate } = props;
     const dateNow = new Date();
 
     return(
@@ -17,7 +17,6 @@ export const Third = (props) => {
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DateCalendar value={date} onChange={(value) => {
                         setDate(value);
-                        setPage(prev => prev + 1);
                     }} minDate={dayjs(dateNow)} />
                 </LocalizationProvider>
             </div>

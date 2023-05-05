@@ -127,6 +127,7 @@ export const Details = () => {
                 setPaymentVisible={setPaymentVisible}
                 totalPay={totalPay}
                 setFormVisible={setFormVisible}
+                description={`${currentOrder.tourName ? currentOrder.tourName : ""}, Email: ${currentOrder.email ? currentOrder.email : ""}`}
             />}
 
             <Whatsapp />

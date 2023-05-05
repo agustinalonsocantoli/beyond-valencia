@@ -86,8 +86,8 @@ export const Complete = (props) => {
 
                     <label>Comments</label>
                     <textarea name="comment" onChange={handleInput}></textarea>
-
-                    <button type="submit">PAY NOW</button>
+                    
+                    <button type="submit">{totalPay <= 0 ? "SEND ORDER" : "PAY NOW"}</button>
                 </form>
             </div>
         </div>

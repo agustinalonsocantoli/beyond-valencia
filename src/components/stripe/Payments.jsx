@@ -9,12 +9,12 @@ import CircularProgress from '@mui/material/CircularProgress';
 const stripePromise = loadStripe(import.meta.env.VITE_BASE_STRIPE_PUBLIC);
 
 export const Payments = (props) => {
-    const { setPaymentVisible, currentOrder, totalPay, setCurrentOrder, setFormVisible } = props;
+    const { setPaymentVisible, currentOrder, totalPay, setCurrentOrder, setFormVisible, description } = props;
     const [ clientSecret, setClientSecret ] = useState('');
     const [ id, setId ] = useState('');
     const navigate = useNavigate();
     const [ error, setError ] = useState(false);
-    
+
     useEffect(() => {
 
         fetch(import.meta.env.VITE_BASE_URL_APICHECKOUT, {
@@ -22,18 +22,20 @@ export const Payments = (props) => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ 
             amount: (totalPay * 100), 
-            description: "Test",
+            description: description,
         }),
         })
         .then((res) => res.json())
         .then((data) => {
+            console.log(clientSecret)
+            console.log(data.message ? data.message : "Response Success")
             setClientSecret(data.clientSecret);
             setId(data.id);
         });
 
         const timeout = setTimeout(() => {
             setError(true);
-        }, 5000)
+        }, 7000)
 
         return () => {
             clearTimeout(timeout);

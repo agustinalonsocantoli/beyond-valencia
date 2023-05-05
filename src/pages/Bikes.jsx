@@ -1,6 +1,6 @@
 // React
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // Img
 import bikes from '../assets/Options/bikes.jpg';
 import bikesMb from '../assets/Options/bikesMb.jpg';
@@ -37,6 +37,7 @@ export const Bikes = () => {
     const [ subTotal, setSubTotal ] = useState(0);
     const [ totalPay, setTotalPay ] = useState(0);
     const [ paymentVisible, setPaymentVisible ] = useState(false);
+    const navigate = useNavigate();
 
     let templateParams = {
         name: currentOrder !== null && currentOrder.name,
@@ -104,9 +105,18 @@ export const Bikes = () => {
                 if(currentOrder.email !== null && currentOrder.email !== undefined && currentOrder.email !== '') {
                     if(currentOrder.phone !== null && currentOrder.phone !== undefined && currentOrder.phone !== '') {
 
-                        notifySuccess('We will proceed to the payment.');
+                        if(totalPay > 0) {
+                            notifySuccess('We will proceed to the payment.')
+                        } else {
+                            notifySuccess('Order sent.')
+
+                            setTimeout(() => {
+                                navigate("/")
+                            }, 2000);
+                        }
+
                         setCurrentOrder(prev => ({...prev, total: totalPay}));
-                        setPaymentVisible(true);
+                        {totalPay > 0 && setPaymentVisible(true); }
 
                         emailjs.send(
                             import.meta.env.VITE_BASE_EMAIL_SERVICE, 
@@ -240,7 +250,6 @@ export const Bikes = () => {
                     subtitle="¿Para cuándo necesitas tus bicis?" 
                     date={date}
                     setDate={setDate}
-                    setPage={setPage}
                 />}
 
                 { page === 3 && <Complete 
@@ -289,6 +298,7 @@ export const Bikes = () => {
                 setCurrentOrder={setCurrentOrder}
                 setPaymentVisible={setPaymentVisible}
                 totalPay={totalPay}
+                description={`Order Bikes Email: ${currentOrder.email ? currentOrder.email : ""}`}
             />}
 
             <ToastContainer

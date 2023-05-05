@@ -1,6 +1,6 @@
 // React
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // Img
 import lockers from '../assets/Options/lockers.jpg';
 import logo from '../assets/logoB.png'
@@ -34,6 +34,7 @@ export const Lockers = () => {
     const [ subTotal, setSubTotal ] = useState(0);
     const [ totalPay, setTotalPay ] = useState(0);
     const [ paymentVisible, setPaymentVisible ] = useState(false);
+    const navigate = useNavigate();
 
     let templateParams = {
         name: currentOrder !== null && currentOrder.name,
@@ -113,10 +114,18 @@ export const Lockers = () => {
             if(currentOrder.name !== null && currentOrder.name !== undefined && currentOrder.name !== '') {
                 if(currentOrder.email !== null && currentOrder.email !== undefined && currentOrder.email !== '') {
                     if(currentOrder.phone !== null && currentOrder.phone !== undefined && currentOrder.phone !== '') {
+                        
+                        if(totalPay > 0) {
+                            notifySuccess('We will proceed to the payment.')
+                        } else {
+                            notifySuccess('Order sent.')
 
-                        notifySuccess('We will proceed to the payment.');
+                            setTimeout(() => {
+                                navigate("/")
+                            }, 2000);
+                        }
                         setCurrentOrder(prev => ({...prev, total: totalPay}));
-                        setPaymentVisible(true);
+                        {totalPay > 0 && setPaymentVisible(true); }
 
                         emailjs.send(
                             import.meta.env.VITE_BASE_EMAIL_SERVICE, 
@@ -269,7 +278,6 @@ export const Lockers = () => {
                     date={date}
                     setDate={setDate}
                     setCurrentOrder={setCurrentOrder}
-                    setPage={setPage}
                     
                 />}
 
@@ -309,12 +317,12 @@ export const Lockers = () => {
                 setCurrentOrder={setCurrentOrder}
                 setPaymentVisible={setPaymentVisible}
                 totalPay={totalPay}
+                description={`Order Lockers Email: ${currentOrder.email ? currentOrder.email : ""}`}
             />}
 
             <ToastContainer
             position="top-center"
             autoClose={2000}
-            hideProgressBar={false}
             newestOnTop={false}
             closeOnClick
             rtl={false}
