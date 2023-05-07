@@ -119,6 +119,16 @@
     top: 5%;
     border-radius: 20px;
 
+    @include m.phone {
+        width: 90%;
+    }
+    @include m.tablet {
+        width: 80%;
+    }
+    @include m.desktopS {
+        width: 80%;
+    }
+
     &_email {
         margin-bottom: 20px;
     }
