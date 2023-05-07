@@ -1575,7 +1575,7 @@ body {
 }
 
 .checkout {
-  width: 40%;
+  width: 50%;
   position: absolute;
   padding: 50px;
   background-color: #FFFFFF;
@@ -1584,6 +1584,21 @@ body {
   right: 0;
   top: 5%;
   border-radius: 20px;
+}
+@media (max-width: 480px) {
+  .checkout {
+    width: 95%;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .checkout {
+    width: 90%;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .checkout {
+    width: 90%;
+  }
 }
 .checkout_email {
   margin-bottom: 20px;
