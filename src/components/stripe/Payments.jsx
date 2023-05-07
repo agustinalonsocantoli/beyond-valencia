@@ -35,7 +35,7 @@ export const Payments = (props) => {
 
         const timeout = setTimeout(() => {
             setError(true);
-        }, 7000)
+        }, 10000)
 
         return () => {
             clearTimeout(timeout);
