@@ -20,30 +20,53 @@ export const Complete = (props) => {
     const { s, m, n } = data;
     const [ discount, setDiscount ] = useState(0);
     const [ codeDiscount, setCodeDiscount ] = useState(null);
+    const [ isDiscountAdd, setIsDescountAdd ] = useState(false);
 
     const handleGetCode = ({ target }) => {
         setCodeDiscount(target.value);
     }
 
     const validateCode = () => {
-        if(
-            codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_FIVED ||
-            codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_FIVEJ
-        ) {
-            setDiscount(5)
-            setTotalPay(subTotal - ((subTotal * (5)) / 100))
-            setCurrentOrder(prev => ({...prev, discountCode: codeDiscount}));
-            notifySuccess("Congratulations you got the discount");
-        } else if(
-            codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_TEND ||
-            codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_TENJ
-        ) {
-            setDiscount(10)
-            setTotalPay(subTotal - ((subTotal * (10)) / 100))
-            setCurrentOrder(prev => ({...prev, discountCode: codeDiscount}));
-            notifySuccess("Congratulations you got the discount");
+        if(!isDiscountAdd) {
+            if(
+                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_FIVED ||
+                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_FIVEJ
+            ) {
+                setDiscount(5)
+                setTotalPay(subTotal - ((subTotal * (5)) / 100))
+                setCurrentOrder(prev => ({...prev, discountCode: codeDiscount}));
+                setIsDescountAdd(true);
+                notifySuccess("Congratulations you got the discount");
+            } else if(
+                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_TEND ||
+                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_TENJ
+            ) {
+                setDiscount(10)
+                setTotalPay(subTotal - ((subTotal * (10)) / 100))
+                setCurrentOrder(prev => ({...prev, discountCode: codeDiscount}));
+                setIsDescountAdd(true);
+                notifySuccess("Congratulations you got the discount");
+            } else if(
+                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_HT_BAL ||
+                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_HT_PAMP ||
+                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_HT_BE ||
+                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_HT_WEL ||
+                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_HT_MEL ||
+                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_HT_PV ||
+                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_AIR_NAT ||
+                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_AIR_DAN ||
+                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_AIR_CAR
+            ) {
+                setDiscount(10)
+                setTotalPay(subTotal - ((subTotal * (20)) / 100))
+                setCurrentOrder(prev => ({...prev, discountCode: codeDiscount}));
+                setIsDescountAdd(true);
+                notifySuccess("Congratulations you got the discount");
+            } else {
+                notifyError("The code entered is not valid");
+            }
         } else {
-            notifyError("The code entered is not valid");
+            notifyError("Just one code per order");
         }
     }
 

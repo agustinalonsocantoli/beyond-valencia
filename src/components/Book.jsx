@@ -10,6 +10,7 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 // Toast
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Orders } from "./Orders";
 
 export const Book = (props) => {
     const dateNow = new Date();
@@ -241,17 +242,7 @@ export const Book = (props) => {
                         <p>Age 18 - 99</p>
                     </div>
 
-                    <div className="amount_selector">
-                        <button disabled={!adults > 0}
-                        onClick={() => {
-                            adults > 0 &&
-                            setAdults(prev => prev - 1)
-                        }}>
-                            <HiMinusSmall />
-                        </button>
-                        <h4>{adults}</h4>
-                        <button onClick={() => setAdults(prev => prev + 1)}> <HiPlusSmall /> </button>
-                    </div>
+                    <Orders type={adults} setType={setAdults} />
                 </div>
 
                 <div className="book_amount">
@@ -260,17 +251,7 @@ export const Book = (props) => {
                         <p>Age 6 - 17</p>
                     </div>
 
-                    <div className="amount_selector">
-                        <button disabled={!children > 0}
-                        onClick={() => {
-                            children > 0 &&
-                            setChildren(prev => prev - 1)
-                        }}>
-                            <HiMinusSmall />
-                        </button>
-                        <h4>{children}</h4>
-                        <button onClick={() => setChildren(prev => prev + 1)}> <HiPlusSmall /> </button>
-                    </div>
+                    <Orders type={children} setType={setChildren} />
                 </div>
 
                 <div className="book_amount">
@@ -279,25 +260,13 @@ export const Book = (props) => {
                         <p>Age 0 - 5</p>
                     </div>
 
-                    <div className="amount_selector">
-                        <button disabled={!infants > 0}
-                        onClick={() => {
-                            infants > 0 &&
-                            setInfants(prev => prev - 1)
-                        }}>
-                            <HiMinusSmall />
-                        </button>
-                        <h4>{infants}</h4>
-                        <button onClick={() => setInfants(prev => prev + 1)}> <HiPlusSmall /> </button>
-                    </div>
+                    <Orders type={infants} setType={setInfants} />
                 </div>
             </div>
 
             <div className="book_btn">
                 <button onClick={handleCheck}>BOOK</button>
             </div>
-            
-
 
             {formVisible &&
             <div>
