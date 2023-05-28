@@ -55,13 +55,17 @@ export const Complete = (props) => {
                 codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_HT_PV ||
                 codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_AIR_NAT ||
                 codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_AIR_DAN ||
-                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_AIR_CAR
+                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_AIR_CAR ||
+                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_HT_COZY ||
+                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_HT_QUART ||
+                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_HT_VTV
             ) {
                 setDiscount(10)
                 setTotalPay(subTotal - ((subTotal * (20)) / 100))
                 setCurrentOrder(prev => ({...prev, discountCode: codeDiscount}));
                 setIsDescountAdd(true);
                 notifySuccess("Congratulations you got the discount");
+
             } else {
                 notifyError("The code entered is not valid");
             }
