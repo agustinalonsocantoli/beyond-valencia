@@ -38,7 +38,7 @@ export const Bikes = () => {
     const [ totalPay, setTotalPay ] = useState(0);
     const [ paymentVisible, setPaymentVisible ] = useState(false);
     const navigate = useNavigate();
-    console.log(emailService);
+
     let templateParams = {
         name: currentOrder !== null && currentOrder.name,
         email: currentOrder !== null && currentOrder.email,
