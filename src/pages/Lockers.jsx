@@ -6,11 +6,11 @@ import lockers from '../assets/Options/lockers.jpg';
 import logo from '../assets/logoB.png'
 import lockersW from '../assets/Options/lockers.webp';
 // Components
-import { First } from '../components/rentals/First';
-import { Second } from '../components/rentals/Second';
-import { Third } from '../components/rentals/Third';
-import { Complete } from '../components/rentals/Complete';
-import { Payments } from '../components/stripe/Payments';
+import { First } from '../components/Orders/First';
+import { Second } from '../components/Orders/Second';
+import { Third } from '../components/Orders/Third';
+import { Complete } from '../components/Orders/Complete';
+import { Payments } from '../components/Stripe/Payments';
 // DayJs
 import dayjs from 'dayjs';
 // Toast

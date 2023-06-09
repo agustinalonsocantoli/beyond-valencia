@@ -3,13 +3,14 @@ import { useNavigate, NavLink } from "react-router-dom";
 // Icons
 import { TfiMenu, TfiClose } from "react-icons/tfi";
 // Img
-import logo from "../assets/logoW.png";
+import logo from "../../assets/logoW.png";
 import { useState } from "react";
 
 export const Navbar = ({ title, subtitle }) => {
     const navigate = useNavigate()
     const [ isVisible, setIsVisible ] = useState(false);
-    const resposive = window.innerWidth < 1024 ? false : true;
+    // TODO: Desidir si se implementa navbar distinta a responsive
+    // const resposive = window.innerWidth < 1024 ? false : true;
     
     return(
         <div className="nav">
@@ -20,7 +21,6 @@ export const Navbar = ({ title, subtitle }) => {
                 <h1 data-text={subtitle}>{title}</h1>
             </div>
             
-            { !resposive &&
             <div className="nav_menu">
                 {!isVisible ? 
                 <TfiMenu onClick={() => setIsVisible(true)} /> : 
@@ -39,9 +39,9 @@ export const Navbar = ({ title, subtitle }) => {
                 </div>
                 }
             </div>
-            }
-
-            { resposive &&
+            
+            {/* TODO: Desidir si se implementa navbar distinta a responsive */}
+            {/* { resposive &&
             <div className="nav_menu">
 
                 <div className="menu_open">
@@ -54,7 +54,7 @@ export const Navbar = ({ title, subtitle }) => {
                     </ul>
                 </div>
             </div>
-            }
+            } */}
 
         </div>
     );

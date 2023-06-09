@@ -1,6 +1,6 @@
 // Img
-import wine from '../assets/img/wine.jpg';
-import wineW from '../assets/img/wine.webp';
+import wine from '../../assets/img/wine.jpg';
+import wineW from '../../assets/img/wine.webp';
 
 export const Wine = () => {
     return(

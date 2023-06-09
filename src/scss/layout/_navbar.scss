@@ -97,9 +97,9 @@
     }
 
     .menu_open {
-        position: fixed;
+        position: absolute;
         top: 5%;
-        right: 0;
+        right: 100%;
         min-width: 600px;
         padding: 8px 0;
         border-radius: 8px;

@@ -1,9 +1,9 @@
 // Components
-import { Services } from "../components/Services";
-import { Footer } from "../components/Footer";
-import { Events } from "../components/Events";
-import { Wine } from "../components/Wine";
-import { Whatsapp } from '../components/Whatsapp';
+import { Services } from "../components/Shared/Services";
+import { Footer } from "../components/Shared/Footer";
+import { Events } from "../components/Shared/Events";
+import { Wine } from "../components/Shared/Wine";
+import { Whatsapp } from '../components/Shared/Whatsapp';
 // Video & Img
 import home from '../assets/img/home.jpg';
 import homeW from '../assets/img/home.webp';
