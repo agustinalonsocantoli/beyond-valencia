@@ -1,12 +1,12 @@
 // React
 import { useState } from 'react';
 // Components
-import { Navbar } from "@/components/Navbar";
-import { Exposure } from "../components/Exposure";
-import { Book } from "../components/Book";
-import { Payments } from '../components/stripe/Payments';
-import { Footer } from '../components/Footer';
-import { Whatsapp } from '../components/Whatsapp';
+import { Navbar } from "@/components/Shared/Navbar";
+import { Exposure } from "../components/Shared/Exposure";
+import { Book } from "../components/Book/Book";
+import { Payments } from '../components/Stripe/Payments';
+import { Footer } from '../components/Shared/Footer';
+import { Whatsapp } from '../components/Shared/Whatsapp';
 // Image
 import details2 from "../assets/img/details1.jpg";
 import details3 from "../assets/img/details2.jpg";
@@ -102,11 +102,6 @@ export const Details = () => {
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam quo maiores, laborum veritatis assumenda incidunt! Quas reprehenderit consequuntur at quos quo corporis, sunt dolores odit placeat? Perferendis labore ipsam hic.
                         </p>
                     </div>
-
-                    <select name="" id="">
-                        <option>1</option>
-                        <option value="">2</option>
-                    </select>
                 </div>
 
                 <Book 

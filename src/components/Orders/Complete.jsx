@@ -1,5 +1,7 @@
 // React
 import { useState } from "react";
+import { CodeOrders } from "./CodeOrders";
+import { FormBook } from "../Shared/Form";
 
 export const Complete = (props) => {
     const { title, 
@@ -60,7 +62,7 @@ export const Complete = (props) => {
                 codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_HT_QUART ||
                 codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_HT_VTV
             ) {
-                setDiscount(10)
+                setDiscount(20)
                 setTotalPay(subTotal - ((subTotal * (20)) / 100))
                 setCurrentOrder(prev => ({...prev, discountCode: codeDiscount}));
                 setIsDescountAdd(true);
@@ -83,39 +85,24 @@ export const Complete = (props) => {
             </div>
 
             <div className="contents_complete-box">
-                <div className="contents_complete-total">
-                    {small > 0 && <h3>{s.name} x {small}</h3>}
-                    {medium > 0 && <h3>{m.name} x {medium}</h3>}
-                    {normal > 0 && <h3>{n.name} x {normal}</h3>}
-                    <h2>Subtotal €{subTotal}</h2>
-
-                    <p>Si te alojas con uno de nuestros socios solicita el codígo para obtener un descuento.</p>
-                    <label>Enter your code here!</label>
-
-                    <div>
-                        <input type="text" name="discountCode" onChange={handleGetCode}/>
-                        <button onClick={validateCode}>Validate Code</button>
-                    </div>
-
-                    <h3>Discount %{discount}</h3>
-                    <h2>Total €{totalPay}</h2>
-                </div>  
-
-                <form className="contents_complete-form" onSubmit={handleSubmit}>
-                    <label>Name<span>*</span></label>
-                    <input type="text" name="name" onChange={handleInput}/>
-
-                    <label>Email<span>*</span></label>
-                    <input type="email" name="email" onChange={handleInput}/>
-
-                    <label>Phone<span>*</span></label>
-                    <input type="tel" name="phone" onChange={handleInput}/>
-
-                    <label>Comments</label>
-                    <textarea name="comment" onChange={handleInput}></textarea>
-                    
-                    <button type="submit">{totalPay <= 0 ? "SEND ORDER" : "PAY NOW"}</button>
-                </form>
+                <CodeOrders
+                small={small}
+                medium={medium}
+                normal={normal}
+                subTotal={subTotal}
+                discount={discount}
+                totalPay={totalPay}
+                handleGetCode={handleGetCode}
+                validateCode={validateCode}
+                data={data}
+                />
+                
+                <FormBook
+                handleSubmit={handleSubmit} 
+                handleInput={handleInput} 
+                labelButton={totalPay <= 0 ? "SEND ORDER" : "PAY NOW"}
+                nameClass="contents_complete-form"
+                />
             </div>
         </div>
     );

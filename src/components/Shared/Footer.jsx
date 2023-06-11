@@ -1,14 +1,14 @@
 // Img
-import visa from '../assets/cart/visa.svg'
-import amex from '../assets/cart/amex.svg'
-import master from '../assets/cart/master.svg'
-import cc from '../assets/cart/cc.svg'
-import apl from '../assets/cart/appay.svg'
-import goo from '../assets/cart/gpay.jpg'
-import ali from '../assets/cart/ali.jpg'
-import we from '../assets/cart/wec.png'
-import id from '../assets/cart/ideal.svg'
-import pho from '../assets/cart/phone.svg'
+import visa from '../../assets/cart/visa.svg'
+import amex from '../../assets/cart/amex.svg'
+import master from '../../assets/cart/master.svg'
+import cc from '../../assets/cart/cc.svg'
+import apl from '../../assets/cart/appay.svg'
+import goo from '../../assets/cart/gpay.jpg'
+import ali from '../../assets/cart/ali.jpg'
+import we from '../../assets/cart/wec.png'
+import id from '../../assets/cart/ideal.svg'
+import pho from '../../assets/cart/phone.svg'
 
 export const Footer = () => {
     return(

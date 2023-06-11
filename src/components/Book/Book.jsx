@@ -1,7 +1,5 @@
 // React
 import { useState } from "react";
-// Icons
-import { HiMinusSmall, HiPlusSmall } from 'react-icons/hi2'
 // Calendar
 import dayjs from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -10,7 +8,10 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 // Toast
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Orders } from "./Orders";
+import { FormBook } from "../Shared/Form";
+import { CodeBook } from "./CodeBook"
+import { SelectQuantity } from "./SelectQuantity";
+import { SelectDetail } from "./SelectDetail";
 
 export const Book = (props) => {
     const dateNow = new Date();
@@ -152,117 +153,21 @@ export const Book = (props) => {
                 <DateCalendar value={date} onChange={(value) => setDate(value)} minDate={dayjs(dateNow)} />
             </LocalizationProvider>
 
+            <SelectDetail
+            selectedValue={selectedValue}
+            setSelectedValue={setSelectedValue}
+            time={time}
+            setTime={setTime}
+            />
 
-            <div className="book_type-conteiner">
-                <div 
-                className={`book_type ${selectedValue === 'group' && 'book_selected'}`}
-                onClick={() => {
-                    setSelectedValue('group');
-                }}>
-                    <h3>Shared Group</h3>
-                    <h5>RESERVE AND PAY</h5>
-
-                    <h4>Price</h4>
-                    <h4>Adults €25</h4>
-                    <h4>Children €20</h4>
-                    <p>No additional taxes</p>
-
-                    <div className={`time ${selectedValue === 'group' && 'time_selected'}`}>
-                        <span
-                        className={(time === "10:00 AM" && selectedValue === 'group') ? 'active' : 'disable'} 
-                        onClick={() => {
-                            (selectedValue === 'group') &&
-                            setTime("10:00 AM");
-                        }}>
-                            10:00 AM
-                        </span>
-
-                        <span
-                        className={(time === "3:30 PM" && selectedValue === 'group') ? 'active' : 'disable'} 
-                        onClick={() => {
-                            (selectedValue === 'group') &&
-                            setTime("3:30 PM");
-                        }}>
-                            3:30 PM
-                        </span>
-                    </div>
-
-                    <div className="type_check">
-                        <span className="radio">
-                            {selectedValue === 'group' && <span className="radio_check"></span>}
-                        </span>
-                    </div>
-                </div>
-
-                <div 
-                className={`book_type ${selectedValue === 'private' && 'book_selected'}`}
-                onClick={() => {
-                    setSelectedValue('private');
-                }}>
-                    <h3>Private Group</h3>
-                    <h5>RESERVE AND PAY</h5>
-
-                    <h4>Price</h4>
-                    <h4>Adults €35</h4>
-                    <h4>Children €30</h4>
-                    <p>Infants free ticket, no additional taxes</p>
-
-                    <div className={`time ${selectedValue === 'private' && 'time_selected'}`}>
-                        <span
-                        className={(time === "11:30 AM" && selectedValue === 'private') ? 'active' : 'disable'} 
-                        onClick={() => {
-                            (selectedValue === 'private') &&
-                            setTime("11:30 AM");
-                        }}>
-                            11:30 AM
-                        </span>
-                        
-                        <span
-                        className={(time === "5:00 PM" && selectedValue === 'private') ? 'active' : 'disable'} 
-                        onClick={() => {
-                            (selectedValue === 'private') &&
-                            setTime("5:00 PM");
-                        }}>
-                            5:00 PM
-                        </span>
-                    </div>
-
-                    <div className="type_check">
-                        <span className="radio">
-                            {selectedValue === 'private' && <span className="radio_check"></span>}
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <div className="amount_conteiner">
-                <div className="book_amount">
-                    <div>
-                        <h3>Adults</h3>
-                        <p>Age 18 - 99</p>
-                    </div>
-
-                    <Orders type={adults} setType={setAdults} />
-                </div>
-
-                <div className="book_amount">
-                    <div>
-                        <h3>Children</h3>
-                        <p>Age 6 - 17</p>
-                    </div>
-
-                    <Orders type={children} setType={setChildren} />
-                </div>
-
-                <div className="book_amount">
-                    <div>
-                        <h3>Infants</h3>
-                        <p>Age 0 - 5</p>
-                    </div>
-
-                    <Orders type={infants} setType={setInfants} />
-                </div>
-            </div>
+            <SelectQuantity 
+            adults={adults}
+            setAdults={setAdults}
+            children={children}
+            setChildren={setChildren}
+            infants={infants}
+            setInfants={setInfants}
+            />
 
             <div className="book_btn">
                 <button onClick={handleCheck}>BOOK</button>
@@ -270,38 +175,22 @@ export const Book = (props) => {
 
             {formVisible &&
             <div>
-                <div className="book_total">
-                    <h3>Adults {adults !== null ? adults : 0} x €35</h3>
-                    <h3>Children {children !== null ? children : 0} x €30</h3>
-                    <h2>Subtotal €{subTotal}</h2>
+                <CodeBook 
+                adults={adults}
+                children={children}
+                subTotal={subTotal}
+                discount={discount}
+                totalPay={totalPay}
+                handleGetCode={handleGetCode}
+                validateCode={validateCode}
+                />
 
-                    <p>Si te alojas con uno de nuestros socios pidele el codigo para obtener un descuento.</p>
-                    <label>Enter your code here!</label>
-
-                    <div>
-                        <input type="text" name="discountCode" onChange={handleGetCode}/>
-                        <button onClick={validateCode}>Validate Code</button>
-                    </div>
-
-                    <h3>Discount %{discount}</h3>
-                    <h2>Total €{totalPay}</h2>
-                </div>  
-
-                <form className="book_form" onSubmit={handleSubmit}>
-                    <label>Name<span>*</span></label>
-                    <input type="text" name="name"  onChange={handleInput}/>
-
-                    <label>Email<span>*</span></label>
-                    <input type="email" name="email"  onChange={handleInput}/>
-
-                    <label>Phone<span>*</span></label>
-                    <input type="tel" name="phone"  onChange={handleInput}/>
-
-                    <label>Comment</label>
-                    <textarea name="comment" onChange={handleInput}></textarea>
-
-                    <button type="submit">PAY NOW</button>
-                </form>
+                <FormBook 
+                handleSubmit={handleSubmit} 
+                handleInput={handleInput} 
+                labelButton="PAY NOW"
+                nameClass="book_form"
+                />
             </div>
             }
 

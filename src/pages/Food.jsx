@@ -1,11 +1,11 @@
 // Components
-import { Navbar } from '@/components/Navbar';
-import { Exposure } from '../components/Exposure';
-import { Services } from "../components/Services";
-import { Footer } from "../components/Footer";
-import { Events } from "../components/Events";
-import { Wine } from "../components/Wine";
-import { Whatsapp } from '../components/Whatsapp';
+import { Navbar } from '@/components/Shared/Navbar';
+import { Exposure } from '../components/Shared/Exposure';
+import { Services } from "../components/Shared/Services";
+import { Footer } from "../components/Shared/Footer";
+import { Events } from "../components/Shared/Events";
+import { Wine } from "../components/Shared/Wine";
+import { Whatsapp } from '../components/Shared/Whatsapp';
 // Video & Img
 import foodA from '../assets/video/foodA.mp4';
 import foodB from '../assets/img/foodB.jpg';

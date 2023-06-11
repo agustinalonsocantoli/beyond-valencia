@@ -1,10 +1,10 @@
 // Components
-import { Navbar } from '@/components/Navbar';
-import { Exposure } from '../components/Exposure';
-import { Services } from "../components/Services";
-import { Footer } from "../components/Footer";
-import { Events } from "../components/Events";
-import { Wine } from "../components/Wine";
+import { Navbar } from '@/components/Shared/Navbar';
+import { Exposure } from '../components/Shared/Exposure';
+import { Services } from "../components/Shared/Services";
+import { Footer } from "../components/Shared/Footer";
+import { Events } from "../components/Shared/Events";
+import { Wine } from "../components/Shared/Wine";
 // Video & Img
 import dayA from '../assets/img/dayA.jpg';
 import dayB from '../assets/img/dayB.jpg';
@@ -13,7 +13,7 @@ import dayD from '../assets/img/dayD.jpg';
 import imgS1 from '../assets/img/day1.jpg';
 import imgS2 from '../assets/video/day2.mp4';
 import imgS3 from '../assets/img/experiences.jpg';
-import { Whatsapp } from '../components/Whatsapp';
+import { Whatsapp } from '../components/Shared/Whatsapp';
 
 export const Daytrips = () => {
 
