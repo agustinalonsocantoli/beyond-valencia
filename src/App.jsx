@@ -2,10 +2,10 @@
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 // Components
 import { Home } from '@/pages/Home';
-import { Experiences } from "./pages/Experiences";
-import { Daytrips } from "./pages/Daytrips";
-import { Food } from "./pages/Food";
-import { Details } from "./pages/Details";
+// import { Experiences } from "./pages/Experiences";
+// import { Daytrips } from "./pages/Daytrips";
+// import { Food } from "./pages/Food";
+// import { Details } from "./pages/Details";
 import { Options } from "./pages/Options";
 import { Lockers } from "./pages/Lockers";
 import { Bikes } from "./pages/Bikes";
