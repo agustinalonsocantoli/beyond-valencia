@@ -9,7 +9,7 @@ import { Home } from '@/pages/Home';
 import { Options } from "./pages/Options";
 import { Lockers } from "./pages/Lockers";
 import { Bikes } from "./pages/Bikes";
-import { PaySuccess } from "./components/Stripe/PaySuccess";
+import { PaySuccess } from './components/Stripe/PaySuccess'
 
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
           <Route path="/more-services" element={<Options />} />
           <Route path="/lockers" element={<Lockers />} />
           <Route path="/bikes" element={<Bikes />} />
-          <Route path="/pay-success" element={<PaySuccess />} />
+          <Route path="/pay-success" element={<PaySuccess /> } />
           <Route path="*" element={<div>Error</div>} />
         </Routes>
       </Router>

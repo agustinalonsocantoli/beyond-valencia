@@ -18,7 +18,7 @@ export const CheckoutForm = (props) => {
         const { error } = await stripe.confirmPayment({
         elements,
         confirmParams: {
-            return_url: "https://www.beyondvalencia.com/pay-success",
+            return_url: "https://www.beyondvalencia.com/#/pay-success",
         },
         });
 
