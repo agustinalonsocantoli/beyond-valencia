@@ -1,6 +1,7 @@
 // React
 import { useState } from "react";
 import { CodeOrders } from "./CodeOrders";
+import { FormBook } from "../Shared/Form";
 
 export const Complete = (props) => {
     const { title, 
@@ -61,7 +62,7 @@ export const Complete = (props) => {
                 codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_HT_QUART ||
                 codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_HT_VTV
             ) {
-                setDiscount(10)
+                setDiscount(20)
                 setTotalPay(subTotal - ((subTotal * (20)) / 100))
                 setCurrentOrder(prev => ({...prev, discountCode: codeDiscount}));
                 setIsDescountAdd(true);
@@ -96,7 +97,7 @@ export const Complete = (props) => {
                 data={data}
                 />
                 
-                <FormBook 
+                <FormBook
                 handleSubmit={handleSubmit} 
                 handleInput={handleInput} 
                 labelButton={totalPay <= 0 ? "SEND ORDER" : "PAY NOW"}
