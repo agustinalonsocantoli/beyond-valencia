@@ -16,6 +16,7 @@ export const Payments = (props) => {
     const [ error, setError ] = useState(false);
 
     useEffect(() => {
+        setError(false);
 
         fetch(import.meta.env.VITE_BASE_URL_APICHECKOUT, {
           method: "POST",
@@ -27,19 +28,14 @@ export const Payments = (props) => {
         })
         .then((res) => res.json())
         .then((data) => {
-            console.log(clientSecret)
-            console.log(data.message ? data.message : "Response Success")
-            setClientSecret(data.clientSecret);
-            setId(data.id);
-        });
 
-        const timeout = setTimeout(() => {
+            setClientSecret(data?.clientSecret);
+            setId(data?.id);
+        })
+        .catch(() => {
+
             setError(true);
-        }, 10000)
-
-        return () => {
-            clearTimeout(timeout);
-        }
+        })
 
     }, []);
 

@@ -48,7 +48,8 @@ export const CheckoutForm = (props) => {
         .then((res) => res.json())
         .then((data) => {
             console.log(data.status);
-        });
+        })
+        .catch((error) => console.error(error));
 
         setPaymentVisible(false);
         setCurrentOrder(null);
