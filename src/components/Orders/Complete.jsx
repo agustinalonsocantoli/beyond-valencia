@@ -60,7 +60,11 @@ export const Complete = (props) => {
                 codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_AIR_CAR ||
                 codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_HT_COZY ||
                 codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_HT_QUART ||
-                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_HT_VTV
+                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_HT_VTV ||
+                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_NAP ||
+                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_COS ||
+                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_VTC ||
+                codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_PAL
             ) {
                 setDiscount(20)
                 setTotalPay(subTotal - ((subTotal * (20)) / 100))
