@@ -34,15 +34,15 @@
 
         svg {
             color: #DC2222;
-            font-size: 250px;
+            font-size: 200px;
 
             @include m.phone {
-                font-size: 200;
+                font-size: 150px;
             }
         }
 
         h1 {
-            font-size: 50px;
+            font-size: 40px;
             font-weight: 400;
 
             @include m.phone {
@@ -50,36 +50,10 @@
                 text-align: center;
             }
             @include m.tablet {
-                font-size: 40px;
+                font-size: 35px;
             }
             @include m.desktopS {
                 font-size: 40px;
-            }
-        }
-
-        button {
-            border: none;
-            background-color: rgba(0, 0, 0, .7);
-            padding: 15px 50px;
-            border-radius: 20px;
-            color: #FFFFFF;
-            cursor: pointer;
-            font-family: v.$poppins;
-            font-weight: 300;
-            font-size: 20px;
-
-            @include m.phone {
-                padding: 12px 40px;
-                font-size: 17px;
-            }
-
-            &:active {
-                transform: scale(0.9);
-                transition: all 200ms ease;
-            }
-
-            &:hover {
-                background-color: rgba(0, 0, 0, 1);
             }
         }
     }
@@ -118,24 +92,30 @@
     right: 0;
     top: 5%;
     border-radius: 20px;
+    max-height: 98vh;
+    overflow: scroll;
 
     @include m.phone {
         width: 95%;
+        top: 1%;
+        padding: 20px 30px;
     }
     @include m.tablet {
         width: 90%;
+        top: 3%;
+        padding: 30px;
     }
     @include m.desktopS {
         width: 90%;
     }
 
     &_email {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 
     &_btn{
         display: flex;
-        margin-top: 30px;
+        margin-top: 20px;
 
         button {
             margin: auto;
@@ -148,7 +128,7 @@
             cursor: pointer;
             font-family: v.$poppins;
             font-weight: 300;
-            font-size: 15px;
+            font-size: 13px;
 
             &:active {
                 transform: scale(0.9);
@@ -186,4 +166,65 @@
         box-shadow: 2px 2px 15px 0px rgba(0,0,0,0.75);
     }
 
+    &_msg {
+        margin-top: 5px;
+        color: #DC2222;
+    }
+}
+
+.pay_success {
+    background-color: #FFFFFF;
+    padding: 20px;
+    width: 60%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border-radius: 12px;
+    margin-top: 10%;
+
+    @include m.phone {
+        width: 90%;
+    }
+    @include m.tablet {
+        width: 90%;
+    }
+    @include m.desktopS {
+        width: 90%;
+    }
+
+    svg {
+        color: #52DD11;
+        font-size: 200px;
+
+        @include m.phone {
+            font-size: 150px;
+        }
+    }
+
+    h1 {
+        font-size: 40px;
+        font-weight: 400;
+
+        @include m.phone {
+            font-size: 25px;
+            text-align: center;
+        }
+        @include m.tablet {
+            font-size: 35px;
+        }
+        @include m.desktopS {
+            font-size: 40px;
+        }
+    }
+}
+
+.icon_close {
+    position: absolute;
+    font-size: 30px;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
 }

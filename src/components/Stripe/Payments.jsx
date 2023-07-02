@@ -2,22 +2,26 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { CheckoutForm } from './CheckoutForm';
 import { useEffect, useState } from 'react';
-import { MdError } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
+import { ModalError } from '../Modals/ModalError';
 
 const stripePromise = loadStripe(import.meta.env.VITE_BASE_STRIPE_PUBLIC);
 
 export const Payments = (props) => {
     const { setPaymentVisible, currentOrder, totalPay, setCurrentOrder, setFormVisible, description } = props;
-    const [ clientSecret, setClientSecret ] = useState('');
-    const [ id, setId ] = useState('');
     const navigate = useNavigate();
-    const [ error, setError ] = useState(false);
+    const [ clientSecret, setClientSecret ] = useState(null);
+    const [ id, setId ] = useState('');
+    const [openError, setOpenError] = useState(false);
+    const onOpenError = () => setOpenError(true);
+    const onCloseError = () => { 
+        setOpenError(false); 
+        console.log("hola");
+        navigate("/");
+    }
 
     useEffect(() => {
-        setError(false);
-
         fetch(import.meta.env.VITE_BASE_URL_APICHECKOUT, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -33,8 +37,7 @@ export const Payments = (props) => {
             setId(data?.id);
         })
         .catch(() => {
-
-            setError(true);
+            onOpenError();
         })
 
     }, []);
@@ -52,6 +55,7 @@ export const Payments = (props) => {
     return(
         <div className='payment'>
             {clientSecret ?
+            <div>
             <Elements stripe={stripePromise} options={options}>
                 <CheckoutForm 
                 setPaymentVisible={setPaymentVisible} 
@@ -60,21 +64,19 @@ export const Payments = (props) => {
                 setFormVisible={setFormVisible}
                 />
             </Elements>
+            </div>
             :
-            <div>
-                {error ?
-                <div className='payment_error'>
-                    <h1>Server error, try again later.</h1>
-                    <MdError />
-                    <button onClick={() => navigate('/')}>Home Page</button>
-                </div>
-                :
-                <div className='payment_loading'>
-                    <CircularProgress size={200} />
-                </div>
-            }
+            openError &&
+            <div className='payment_loading'>
+                <CircularProgress size={150} />
             </div>
             }
+            
+            <ModalError 
+            handleClose={onCloseError} 
+            open={openError} 
+            message="Server error, try again later."
+            />
         </div>
     );
 };
