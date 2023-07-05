@@ -1,5 +1,5 @@
 // React
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 // Components
 import { Home } from '@/pages/Home';
 // import { Experiences } from "./pages/Experiences";
@@ -26,7 +26,7 @@ function App() {
             <Route path="more-services/*" element={<Options />} />
             <Route path="lockers/*" element={<Lockers />} />
             <Route path="bikes/*" element={<Bikes />} />
-            <Route path="*" element={<div>Error</div>} />
+            <Route path="*" element={<Navigate to={"/"} />} />
           </Routes>
       </Router>
     </div>
