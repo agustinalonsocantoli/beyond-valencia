@@ -1,5 +1,5 @@
 // React
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // Calendar
 import dayjs from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -25,6 +25,10 @@ export const Book = (props) => {
     const [ subTotal, setSubTotal ] = useState(0);
     const [ discount, setDiscount ] = useState(0);
     const [ codeDiscount, setCodeDiscount ] = useState(null);
+    const [ isDiscountAdd, setIsDescountAdd ] = useState(false);
+    const codesFive = import.meta.env.VITE_BASE_DISCOUNT_FIVE.split(',')
+    const codesTen = import.meta.env.VITE_BASE_DISCOUNT_TEN.split(',')
+    const codesTwenty = import.meta.env.VITE_BASE_DISCOUNT_TWENTY.split(',')
 
     const totalCalculate = (adults, children, typeOrder) => {
         let totalAdults;
@@ -104,23 +108,30 @@ export const Book = (props) => {
         setCodeDiscount(target.value);
     }
 
+    const addedDiscount = (porcent, code) => {
+        setDiscount(porcent)
+        setTotalPay(subTotal - ((subTotal * (porcent)) / 100))
+        setCurrentOrder(prev => ({...prev, discountCode: code}));
+        setIsDescountAdd(true);
+        notifySuccess("Congratulations you got the discount");
+    };
+
     const validateCode = () => {
-        if(
-            codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_FIVED ||
-            codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_FIVEJ
-        ) {
-            setDiscount(5)
-            setTotalPay(subTotal - ((subTotal * (5)) / 100))
-            notifySuccess("Congratulations you got the discount");
-        } else if(
-            codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_TEND ||
-            codeDiscount === import.meta.env.VITE_BASE_DISCOUNT_TENJ
-        ) {
-            setDiscount(10)
-            setTotalPay(subTotal - ((subTotal * (10)) / 100))
-            notifySuccess("Congratulations you got the discount");
+        if(!isDiscountAdd) {
+            if(codesFive?.includes(codeDiscount)) {
+                addedDiscount(5, codeDiscount)
+
+            } else if(codesTen?.includes(codeDiscount)) {
+                addedDiscount(10, codeDiscount)
+
+            } else if(codesTwenty?.includes(codeDiscount)) {
+                addedDiscount(20, codeDiscount)
+
+            } else {
+                notifyError("The code entered is not valid");
+            }
         } else {
-            notifyError("The code entered is not valid");
+            notifyError("Just one code per order");
         }
     }
 

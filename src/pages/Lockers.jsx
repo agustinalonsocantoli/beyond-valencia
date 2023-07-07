@@ -164,7 +164,7 @@ export const Lockers = () => {
                     ...prev,
                     small: small,
                     medium: medium,
-                    childrenBike: normal,
+                    large: normal,
                 }));
                 setPage(prev => prev + 1);
             } else if(page === 2 && date !== null && date !== undefined) {
