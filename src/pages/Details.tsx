@@ -108,7 +108,6 @@ export const Details = () => {
                 </div>
 
                 <Book 
-                currentOrder={currentOrder}
                 setCurrentOrder={setCurrentOrder}
                 setPaymentVisible={setPaymentVisible}
                 setTotalPay={setTotalPay}
