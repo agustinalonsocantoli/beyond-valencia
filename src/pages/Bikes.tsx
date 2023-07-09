@@ -17,27 +17,27 @@ import { Payments } from '../components/stripe/Payments';
 // DayJs
 import dayjs from 'dayjs';
 // Toast
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // Icons
 import { IoReturnDownBackSharp } from 'react-icons/io5';
 import { BsCheck2 } from 'react-icons/bs';
-//  Email
-import emailjs from '@emailjs/browser';
+import { sendEmail } from '../shared/emails';
+import { notifySuccess } from '../shared/notify';
 
 export const Bikes = () => {
     const dateNow = new Date();
     const resposive = window.innerWidth < 1024 ? true : false;
-    const [ page, setPage ] = useState<number>(0);
-    const [ currentOrder, setCurrentOrder ] = useState<any>(null);
-    const [ date, setDate ] = useState<any>(dayjs(dateNow));
-    const [ small, setSmall ] = useState<number>(0);
-    const [ medium, setMedium ] = useState<number>(0);
-    const [ normal, setNormal ] = useState<number>(0);
-    const [ time, setTime ] = useState<string | null>(null);
-    const [ subTotal, setSubTotal ] = useState<number>(0);
-    const [ totalPay, setTotalPay ] = useState<number>(0);
-    const [ paymentVisible, setPaymentVisible ] = useState<boolean>(false);
+    const [page, setPage] = useState<number>(0);
+    const [currentOrder, setCurrentOrder] = useState<any>(null);
+    const [date, setDate] = useState<any>(dayjs(dateNow));
+    const [small, setSmall] = useState<number>(0);
+    const [medium, setMedium] = useState<number>(0);
+    const [normal, setNormal] = useState<number>(0);
+    const [time, setTime] = useState<string | null>(null);
+    const [subTotal, setSubTotal] = useState<number>(0);
+    const [totalPay, setTotalPay] = useState<number>(0);
+    const [paymentVisible, setPaymentVisible] = useState<boolean>(false);
     const navigate = useNavigate();
 
     const templateParams: any = {
@@ -92,64 +92,37 @@ export const Bikes = () => {
         },
     }
 
-    const handleInput = (e: any) => {
-        const { name, value } = e.target;
-
-        setCurrentOrder((prev: any) => ({...prev, [name]: value}));
-    }
-
     const handleSubmit = (e: any) => {
-        e.preventDefault();
-        
-        if(currentOrder !== null && currentOrder !== undefined) {
-            if(currentOrder.name !== null && currentOrder.name !== undefined && currentOrder.name !== '') {
-                if(currentOrder.email !== null && currentOrder.email !== undefined && currentOrder.email !== '') {
-                    if(currentOrder.phone !== null && currentOrder.phone !== undefined && currentOrder.phone !== '') {
+        const { name, email, phone, comment } = e;
 
-                        if(totalPay > 0) {
-                            notifySuccess('We will proceed to the payment.')
-                        } else {
-                            notifySuccess('Order sent.')
-
-                            setTimeout(() => {
-                                navigate("/")
-                            }, 2000);
-                        }
-
-                        setCurrentOrder((prev: any) => ({...prev, total: totalPay}));
-                        {totalPay > 0 && setPaymentVisible(true); }
-
-                        emailjs.send(
-                            import.meta.env.VITE_BASE_EMAIL_SERVICE, 
-                            import.meta.env.VITE_BASE_EMAIL_TEMPLATEBIKES, 
-                            templateParams,
-                            import.meta.env.VITE_BASE_EMAIL_PUBLIC
-                        )
-                        .then(function(response) {
-                        console.log('SUCCESS!', response.status, response.text);
-                        }, function(error) {
-                        console.log('FAILED...', error);
-                        });
-
-                        e.target.reset();
-                    } else {
-                        notifyError("You must enter a correct Phone.");
-                    }
-                } else {
-                    notifyError("You must enter a correct Email.");
-                }
-            } else {
-                notifyError("You must enter a correct Name.");
-            }
+        if (totalPay > 0) {
+            notifySuccess('We will proceed to the payment.')
         } else {
-            notifyError("You must complete the fields.");
+            notifySuccess('Order sent.')
+
+            setTimeout(() => {
+                navigate("/")
+            }, 2000);
         }
+
+        setCurrentOrder((prev: any) => ({
+            ...prev,
+            name,
+            email,
+            phone,
+            comment,
+            total: totalPay
+        }));
+
+        { totalPay > 0 && setPaymentVisible(true); }
+
+        sendEmail(templateParams, import.meta.env.VITE_BASE_EMAIL_TEMPLATEBIKES)
     }
 
     const handleOk = () => {
-        if(page < 3) {
-            if(page === 0 && time !== null && time !== undefined) {
-                setCurrentOrder((prev: any) => ({...prev, time: time}));
+        if (page < 3) {
+            if (page === 0 && time !== null && time !== undefined) {
+                setCurrentOrder((prev: any) => ({ ...prev, time: time }));
                 setPage(prev => prev + 1);
             } else if (page === 1 && (small !== 0 || medium !== 0 || normal !== 0)) {
                 setCurrentOrder((prev: any) => ({
@@ -159,19 +132,19 @@ export const Bikes = () => {
                     childrenBike: normal,
                 }));
                 setPage(prev => prev + 1);
-            } else if(page === 2 && date !== null && date !== undefined) {
+            } else if (page === 2 && date !== null && date !== undefined) {
                 const total = totalCalculate(small, medium, time);
 
                 setSubTotal(total);
                 setTotalPay(total);
-                setCurrentOrder((prev: any) => ({...prev, date: dayjs(date.$d).format('DD/MM/YYYY')}));
+                setCurrentOrder((prev: any) => ({ ...prev, date: dayjs(date.$d).format('DD/MM/YYYY') }));
                 setPage(prev => prev + 1);
             }
         }
     };
 
     const handleBack = () => {
-        if(page > 0) {
+        if (page > 0) {
             setPage(prev => prev - 1)
         }
     };
@@ -180,10 +153,10 @@ export const Bikes = () => {
         let totalSmall = 0;
         let totalMedium = 0;
 
-        if(timeValue === 'All-Day') {
+        if (timeValue === 'All-Day') {
             totalSmall = smallOrder > 0 ? (smallOrder * 14) : 0;
             totalMedium = mediumOrder > 0 ? (mediumOrder * 14) : 0;
-        } 
+        }
         else if (timeValue === 'Three-Days') {
             totalSmall = smallOrder > 0 ? (smallOrder * 38) : 0;
             totalMedium = mediumOrder > 0 ? (mediumOrder * 38) : 0;
@@ -192,29 +165,7 @@ export const Bikes = () => {
         return totalSmall + totalMedium;
     }
 
-    const notifyError = (message: string) => toast.error(message, {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-    });
-
-    const notifySuccess = (message: string) => toast.success(message, {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-    });
-
-    return(
+    return (
         <div className="bikes">
 
             <div className='bikes_contents'>
@@ -222,9 +173,9 @@ export const Bikes = () => {
                     <Link to={'/more-services'}><img src={logo} alt="img/logo" /></Link>
                 </div>
 
-                { page === 0 && <First 
+                {page === 0 && <First
                     title="For how long would you like to rent the bike?"
-                    subtitle="¿Por cuánto tiempo le gustaría rentar la bici?" 
+                    subtitle="¿Por cuánto tiempo le gustaría rentar la bici?"
                     longerTime={false}
                     time={time}
                     setTime={setTime}
@@ -232,10 +183,10 @@ export const Bikes = () => {
                     setPage={setPage}
                 />}
 
-                { page === 1 && <Second
+                {page === 1 && <Second
                     title="How many rental bikes?"
-                    subtitle="¿Cuántas bicicletas por un día necesitas?" 
-                    small={small} 
+                    subtitle="¿Cuántas bicicletas por un día necesitas?"
+                    small={small}
                     setSmall={setSmall}
                     medium={medium}
                     setMedium={setMedium}
@@ -246,23 +197,20 @@ export const Bikes = () => {
                     product={product}
                 />}
 
-                { page === 2 && <Third 
+                {page === 2 && <Third
                     title="When?"
-                    subtitle="¿Para cuándo necesitas tus bicis?" 
+                    subtitle="¿Para cuándo necesitas tus bicis?"
                     date={date}
                     setDate={setDate}
                 />}
 
-                { page === 3 && <Complete 
+                {page === 3 && <Complete
                     title="All set!"
-                    subtitle="Todo listo!" 
-                    handleInput={handleInput}
+                    subtitle="Todo listo!"
                     handleSubmit={handleSubmit}
                     subTotal={subTotal}
                     totalPay={totalPay}
                     setTotalPay={setTotalPay}
-                    notifyError={notifyError}
-                    notifySuccess={notifySuccess}
                     data={data}
                     small={small}
                     medium={medium}
@@ -270,13 +218,13 @@ export const Bikes = () => {
                     setCurrentOrder={setCurrentOrder}
                 />}
 
-                { page !== 3 &&
+                {page !== 3 &&
                     <div className='btn_ok'>
                         <button onClick={handleOk}>Ok<BsCheck2 /></button>
                     </div>
                 }
 
-                { page !== 0 &&
+                {page !== 0 &&
                     <div className='btn_back'>
                         <button onClick={handleBack}><IoReturnDownBackSharp />Back</button>
                     </div>
@@ -289,29 +237,29 @@ export const Bikes = () => {
                 <picture>
                     <source srcSet={!resposive ? bikesW : bikesMbW} type="image/webp" />
 
-                    <img src={!resposive ? bikes : bikesMb} alt="img/bikes" loading='lazy'/>
+                    <img src={!resposive ? bikes : bikesMb} alt="img/bikes" loading='lazy' />
                 </picture>
             </div>
 
-            {paymentVisible && 
-            <Payments 
-                setCurrentOrder={setCurrentOrder}
-                setPaymentVisible={setPaymentVisible}
-                totalPay={totalPay}
-                description={`Order Bikes Email: ${currentOrder.email ? currentOrder.email : ""}`}
-            />}
+            {paymentVisible &&
+                <Payments
+                    setCurrentOrder={setCurrentOrder}
+                    setPaymentVisible={setPaymentVisible}
+                    totalPay={totalPay}
+                    description={`Order Bikes Email: ${currentOrder.email ? currentOrder.email : ""}`}
+                />}
 
             <ToastContainer
-            position="top-center"
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover={false}
-            theme="colored"
+                position="top-center"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover={false}
+                theme="colored"
             />
         </div>
     );

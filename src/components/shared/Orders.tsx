@@ -12,7 +12,7 @@ export const Orders = (props: Props) => {
 
     return(
         <div className="order">
-            <button disabled={type > 0}
+            <button disabled={type <= 0}
             onClick={() => {
                 type > 0 &&
                 setType((prev: number) => prev - 1)

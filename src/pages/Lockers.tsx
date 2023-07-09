@@ -15,26 +15,26 @@ import { Payments } from '../components/stripe/Payments';
 // DayJs
 import dayjs from 'dayjs';
 // Toast
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // Icons
 import { IoReturnDownBackSharp } from 'react-icons/io5';
 import { BsCheck2 } from 'react-icons/bs';
-//  Email
-import emailjs from '@emailjs/browser';
+import { sendEmail } from '../shared/emails';
+import { notifySuccess } from '../shared/notify';
 
 export const Lockers = () => {
     const dateNow = new Date();
-    const [ page, setPage ] = useState<number>(0);
-    const [ currentOrder, setCurrentOrder ] = useState<any>(null);
-    const [ date, setDate ] = useState<any>(dayjs(dateNow));
-    const [ small, setSmall ] = useState<number>(0);
-    const [ medium, setMedium ] = useState<number>(0);
-    const [ normal, setNormal ] = useState<number>(0);
-    const [ time, setTime ] = useState<string | null>(null);
-    const [ subTotal, setSubTotal ] = useState<number>(0);
-    const [ totalPay, setTotalPay ] = useState<number>(0);
-    const [ paymentVisible, setPaymentVisible ] = useState<boolean>(false);
+    const [page, setPage] = useState<number>(0);
+    const [currentOrder, setCurrentOrder] = useState<any>(null);
+    const [date, setDate] = useState<any>(dayjs(dateNow));
+    const [small, setSmall] = useState<number>(0);
+    const [medium, setMedium] = useState<number>(0);
+    const [normal, setNormal] = useState<number>(0);
+    const [time, setTime] = useState<string | null>(null);
+    const [subTotal, setSubTotal] = useState<number>(0);
+    const [totalPay, setTotalPay] = useState<number>(0);
+    const [paymentVisible, setPaymentVisible] = useState<boolean>(false);
     const navigate = useNavigate();
 
     const templateParams: any = {
@@ -102,63 +102,37 @@ export const Lockers = () => {
         },
     }
 
-    const handleInput = (e: any) => {
-        const { name, value } = e.target;
-
-        setCurrentOrder((prev: any) => ({...prev, [name]: value}));
-    }
-
     const handleSubmit = (e: any) => {
-        e.preventDefault();
-        
-        if(currentOrder !== null && currentOrder !== undefined) {
-            if(currentOrder.name !== null && currentOrder.name !== undefined && currentOrder.name !== '') {
-                if(currentOrder.email !== null && currentOrder.email !== undefined && currentOrder.email !== '') {
-                    if(currentOrder.phone !== null && currentOrder.phone !== undefined && currentOrder.phone !== '') {
-                        
-                        if(totalPay > 0) {
-                            notifySuccess('We will proceed to the payment.')
-                        } else {
-                            notifySuccess('Order sent.')
+        const { name, email, phone, comment } = e;
 
-                            setTimeout(() => {
-                                navigate("/")
-                            }, 2000);
-                        }
-                        setCurrentOrder((prev: any) => ({...prev, total: totalPay}));
-                        {totalPay > 0 && setPaymentVisible(true); }
-
-                        emailjs.send(
-                            import.meta.env.VITE_BASE_EMAIL_SERVICE, 
-                            import.meta.env.VITE_BASE_EMAIL_TEMPLATELOCKERS, 
-                            templateParams,
-                            import.meta.env.VITE_BASE_EMAIL_PUBLIC
-                        )
-                        .then(function(response) {
-                        console.log('SUCCESS!', response.status, response.text);
-                        }, function(error) {
-                        console.log('FAILED...', error);
-                        });
-
-                        e.target.reset();
-                    } else {
-                        notifyError("You must enter a correct Phone.");
-                    }
-                } else {
-                    notifyError("You must enter a correct Email.");
-                }
-            } else {
-                notifyError("You must enter a correct Name.");
-            }
+        if (totalPay > 0) {
+            notifySuccess('We will proceed to the payment.')
         } else {
-            notifyError("You must complete the fields.");
+            notifySuccess('Order sent.')
+
+            setTimeout(() => {
+                navigate("/")
+            }, 2000);
         }
+        
+        setCurrentOrder((prev: any) => ({
+            ...prev,
+            name,
+            email,
+            phone,
+            comment,
+            total: totalPay
+        }));
+
+        { totalPay > 0 && setPaymentVisible(true); }
+
+        sendEmail(templateParams, import.meta.env.VITE_BASE_EMAIL_TEMPLATELOCKERS)
     }
 
     const handleOk = () => {
-        if(page < 3) {
-            if(page === 0 && time !== null && time !== undefined) {
-                setCurrentOrder((prev: any) => ({...prev, time: time}));
+        if (page < 3) {
+            if (page === 0 && time !== null && time !== undefined) {
+                setCurrentOrder((prev: any) => ({ ...prev, time: time }));
                 setPage(prev => prev + 1);
             } else if (page === 1 && (small !== 0 || medium !== 0 || normal !== 0)) {
                 setCurrentOrder((prev: any) => ({
@@ -168,19 +142,19 @@ export const Lockers = () => {
                     large: normal,
                 }));
                 setPage(prev => prev + 1);
-            } else if(page === 2 && date !== null && date !== undefined) {
+            } else if (page === 2 && date !== null && date !== undefined) {
                 const total = totalCalculate(small, medium, normal, time);
 
                 setSubTotal(total);
                 setTotalPay(total);
-                setCurrentOrder((prev: any) => ({...prev, date: dayjs(date.$d).format('DD/MM/YYYY')}));
+                setCurrentOrder((prev: any) => ({ ...prev, date: dayjs(date.$d).format('DD/MM/YYYY') }));
                 setPage(prev => prev + 1);
             }
         }
     };
 
     const handleBack = () => {
-        if(page > 0) {
+        if (page > 0) {
             setPage(prev => prev - 1)
         }
     };
@@ -190,11 +164,11 @@ export const Lockers = () => {
         let totalMedium = 0;
         let totalNormal = 0;
 
-        if(timeValue === '2-Hours') {
+        if (timeValue === '2-Hours') {
             totalSmall = smallOrder > 0 ? (smallOrder * 3) : 0;
             totalMedium = mediumOrder > 0 ? (mediumOrder * 5) : 0;
             totalNormal = normalOrder > 0 ? (normalOrder * 8) : 0;
-        } 
+        }
         else if (timeValue === 'All-Day') {
             totalSmall = smallOrder > 0 ? (smallOrder * 5) : 0;
             totalMedium = mediumOrder > 0 ? (mediumOrder * 8) : 0;
@@ -209,35 +183,13 @@ export const Lockers = () => {
         return totalSmall + totalMedium + totalNormal;
     }
 
-    const notifyError = (message: string) => toast.error(message, {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-    });
-
-    const notifySuccess = (message: string) => toast.success(message, {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-    });
-
-    return(
+    return (
         <div className="lockers">
             <div className='lockers_img'>
                 <picture>
                     <source srcSet={lockersW} type="image/webp" />
 
-                    <img src={lockers} alt="img/lockers" loading='lazy'/>
+                    <img src={lockers} alt="img/lockers" loading='lazy' />
                 </picture>
             </div>
 
@@ -248,7 +200,7 @@ export const Lockers = () => {
                     <Link to={'/more-services'}><img src={logo} alt="img/logo" /></Link>
                 </div>
 
-                { page === 0 && <First 
+                {page === 0 && <First
                     title="For how long would you like to storage your belongings?"
                     subtitle="¿Por cuánto tiempo le gustaría almacenar sus pertenencias?"
                     longerTime={true}
@@ -258,11 +210,11 @@ export const Lockers = () => {
                     setPage={setPage}
                 />}
 
-                 
-                { page === 1 && <Second
+
+                {page === 1 && <Second
                     title="How many pieces?"
-                    subtitle="¿Cuantas piezas?" 
-                    small={small} 
+                    subtitle="¿Cuantas piezas?"
+                    small={small}
                     setSmall={setSmall}
                     medium={medium}
                     setMedium={setMedium}
@@ -273,24 +225,21 @@ export const Lockers = () => {
                     product={product}
                 />}
 
-                { page === 2 && <Third 
+                {page === 2 && <Third
                     title="When?"
-                    subtitle="¿Que día necesitas guardar tus pertenencias?" 
+                    subtitle="¿Que día necesitas guardar tus pertenencias?"
                     date={date}
                     setDate={setDate}
-                    
+
                 />}
 
-                { page === 3 && <Complete 
+                {page === 3 && <Complete
                     title="All set!"
                     subtitle="Todo listo!"
-                    handleInput={handleInput}
                     handleSubmit={handleSubmit}
                     subTotal={subTotal}
                     totalPay={totalPay}
                     setTotalPay={setTotalPay}
-                    notifyError={notifyError}
-                    notifySuccess={notifySuccess}
                     data={data}
                     small={small}
                     medium={medium}
@@ -298,37 +247,37 @@ export const Lockers = () => {
                     setCurrentOrder={setCurrentOrder}
                 />}
 
-                { page !== 3 &&
+                {page !== 3 &&
                     <div className='btn_ok'>
                         <button onClick={handleOk}>Ok<BsCheck2 /></button>
                     </div>
                 }
 
-                { page !== 0 &&
+                {page !== 0 &&
                     <div className='btn_back'>
                         <button onClick={handleBack}><IoReturnDownBackSharp />Back</button>
                     </div>
                 }
             </div>
 
-            {paymentVisible && 
-            <Payments 
-                setCurrentOrder={setCurrentOrder}
-                setPaymentVisible={setPaymentVisible}
-                totalPay={totalPay}
-                description={`Order Lockers Email: ${currentOrder.email ? currentOrder.email : ""}`}
-            />}
+            {paymentVisible &&
+                <Payments
+                    setCurrentOrder={setCurrentOrder}
+                    setPaymentVisible={setPaymentVisible}
+                    totalPay={totalPay}
+                    description={`Order Lockers Email: ${currentOrder.email ? currentOrder.email : ""}`}
+                />}
 
             <ToastContainer
-            position="top-center"
-            autoClose={2000}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover={false}
-            theme="colored"
+                position="top-center"
+                autoClose={2000}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover={false}
+                theme="colored"
             />
         </div>
     );

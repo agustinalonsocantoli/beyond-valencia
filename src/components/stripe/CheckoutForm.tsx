@@ -10,6 +10,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { ModalPaySuccess } from "../modals/ModalPaySuccess";
 // Icons
 import { GrFormClose } from "react-icons/gr"
+import { notifySuccess } from "../../shared/notify";
 
 interface Props {
     setPaymentVisible: (action: boolean) => void;
@@ -74,8 +75,8 @@ export const CheckoutForm = (props: Props) => {
         }),
         })
         .then((res) => res.json())
-        .then((data) => {
-            console.log(data.status);
+        .then(() => {
+            notifySuccess('Order canceled successfully')
         })
         .catch((error) => console.error(error));
 

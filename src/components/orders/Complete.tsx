@@ -6,17 +6,15 @@ import { CodeOrders } from "./CodeOrders";
 import { FormBook } from "../shared/Form";
 // Interfaces
 import { OrdersDataInt } from "../../interfaces/orders.model";
+import { notifyError, notifySuccess } from "../../shared/notify";
 
 interface Props {
     title: string; 
-    subtitle: string; 
-    handleInput: (action: any) => void; 
+    subtitle: string;
     handleSubmit: (action: any) => void; 
     totalPay: number; 
     setTotalPay: (action: number) => void; 
     subTotal: number; 
-    notifySuccess: (action: string) => void; 
-    notifyError: (action: string) => void;
     data: OrdersDataInt;
     small: number;
     medium: number;
@@ -28,13 +26,10 @@ export const Complete = (props: Props) => {
     const { 
         title, 
         subtitle, 
-        handleInput, 
         handleSubmit, 
         totalPay, 
         setTotalPay, 
         subTotal, 
-        notifySuccess, 
-        notifyError,
         data,
         small,
         medium,
@@ -103,7 +98,6 @@ export const Complete = (props: Props) => {
                 
                 <FormBook
                 handleSubmit={handleSubmit} 
-                handleInput={handleInput} 
                 labelButton={totalPay <= 0 ? "SEND ORDER" : "PAY NOW"}
                 nameClass="contents_complete-form"
                 />

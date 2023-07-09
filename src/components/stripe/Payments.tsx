@@ -30,7 +30,6 @@ export const Payments = (props: Props) => {
     const onOpenError = () => setOpenError(true);
     const onCloseError = () => { 
         setOpenError(false); 
-        console.log("hola");
         navigate("/");
     }
 
