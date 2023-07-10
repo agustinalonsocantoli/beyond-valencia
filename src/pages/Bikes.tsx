@@ -22,7 +22,6 @@ import 'react-toastify/dist/ReactToastify.css';
 // Icons
 import { IoReturnDownBackSharp } from 'react-icons/io5';
 import { BsCheck2 } from 'react-icons/bs';
-import { sendEmail } from '../shared/emails';
 import { notifySuccess } from '../shared/notify';
 // Emails
 import emailjs from '@emailjs/browser';
