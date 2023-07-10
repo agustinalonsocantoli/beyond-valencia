@@ -41,16 +41,12 @@ export const Bikes = () => {
     const [paymentVisible, setPaymentVisible] = useState<boolean>(false);
     const navigate = useNavigate();
 
-    const templateParams: any = {
-        name: currentOrder !== null && currentOrder?.name,
-        email: currentOrder !== null && currentOrder?.email,
-        phone: currentOrder !== null && currentOrder?.phone,
+    let templateParams: any = {
         time: currentOrder !== null && currentOrder?.time,
         date: currentOrder !== null && currentOrder?.date,
         small: currentOrder !== null && currentOrder?.small,
         medium: currentOrder !== null && currentOrder?.medium,
         childrenBike: currentOrder !== null && currentOrder?.childrenBike,
-        comment: currentOrder !== null && currentOrder.comment ? currentOrder?.comment : 'No comment entered',
         total: `${totalPay}€`,
         discountCode: currentOrder !== null && currentOrder?.discountCode ? currentOrder?.discountCode : 'No code used',
     }
@@ -95,7 +91,7 @@ export const Bikes = () => {
 
     const handleSubmit = (e: any) => {
         const { name, email, phone, comment } = e;
-
+                
         if (totalPay > 0) {
             notifySuccess('We will proceed to the payment.')
         } else {
@@ -116,6 +112,14 @@ export const Bikes = () => {
         }));
 
         { totalPay > 0 && setPaymentVisible(true); }
+
+        templateParams = {
+            ...prev,
+            name: name !== null && name,
+            email: email !== null && email,
+            phone: phone !== null && phone,
+            comment: (comment !== null && comment !== "") ? comment : 'No comment entered',
+        }
 
         emailjs.send(
         import.meta.env.VITE_BASE_EMAIL_SERVICE, 
