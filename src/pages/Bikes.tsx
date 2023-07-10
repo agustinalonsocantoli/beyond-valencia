@@ -114,7 +114,7 @@ export const Bikes = () => {
         { totalPay > 0 && setPaymentVisible(true); }
 
         templateParams = {
-            ...prev,
+            ...templateParams,
             name: name !== null && name,
             email: email !== null && email,
             phone: phone !== null && phone,
