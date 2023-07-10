@@ -8,4 +8,6 @@ export function sendEmail(templateParams: any, isCalling: any) {
         templateParams,
         import.meta.env.VITE_BASE_EMAIL_PUBLIC
     )
+    .then(() => console.log("Send Emails"))
+    .catch((error) => console.error(error))
 };
