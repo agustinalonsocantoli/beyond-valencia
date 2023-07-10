@@ -37,20 +37,6 @@ export const Lockers = () => {
     const [paymentVisible, setPaymentVisible] = useState<boolean>(false);
     const navigate = useNavigate();
 
-    const templateParams: any = {
-        name: currentOrder !== null && currentOrder.name,
-        email: currentOrder !== null && currentOrder.email,
-        phone: currentOrder !== null && currentOrder.phone,
-        time: currentOrder !== null && currentOrder.time,
-        date: currentOrder !== null && currentOrder.date,
-        small: currentOrder !== null && currentOrder.small,
-        medium: currentOrder !== null && currentOrder.medium,
-        normal: currentOrder !== null && currentOrder.normal,
-        comment: currentOrder !== null && currentOrder.comment ? currentOrder.comment : 'No comment entered',
-        total: `${totalPay}€`,
-        discountCode: currentOrder !== null && currentOrder.discountCode ? currentOrder.discountCode : 'No code used',
-    }
-
     const data = {
         s: {
             name: 'Small',
@@ -126,7 +112,19 @@ export const Lockers = () => {
 
         { totalPay > 0 && setPaymentVisible(true); }
 
-        sendEmail(templateParams, import.meta.env.VITE_BASE_EMAIL_TEMPLATELOCKERS)
+        sendEmail({
+            name: name,
+            email: email,
+            phone: phone,
+            time: currentOrder !== null && currentOrder.time,
+            date: currentOrder !== null && currentOrder.date,
+            small: currentOrder !== null && currentOrder.small,
+            medium: currentOrder !== null && currentOrder.medium,
+            normal: currentOrder !== null && currentOrder.normal,
+            comment: comment === null || comment === "" ? 'No comment entered' : comment,
+            total: `${totalPay}€`,
+            discountCode: currentOrder !== null && currentOrder.discountCode ? currentOrder.discountCode : 'No code used',
+        }, import.meta.env.VITE_BASE_EMAIL_TEMPLATELOCKERS)
     }
 
     const handleOk = () => {

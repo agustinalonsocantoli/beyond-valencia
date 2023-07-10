@@ -24,7 +24,7 @@ import { IoReturnDownBackSharp } from 'react-icons/io5';
 import { BsCheck2 } from 'react-icons/bs';
 import { notifySuccess } from '../shared/notify';
 // Emails
-import emailjs from '@emailjs/browser';
+import { sendEmail } from '../shared/emails';
 
 export const Bikes = () => {
     const dateNow = new Date();
@@ -40,16 +40,6 @@ export const Bikes = () => {
     const [totalPay, setTotalPay] = useState<number>(0);
     const [paymentVisible, setPaymentVisible] = useState<boolean>(false);
     const navigate = useNavigate();
-
-    let templateParams: any = {
-        time: currentOrder !== null && currentOrder?.time,
-        date: currentOrder !== null && currentOrder?.date,
-        small: currentOrder !== null && currentOrder?.small,
-        medium: currentOrder !== null && currentOrder?.medium,
-        childrenBike: currentOrder !== null && currentOrder?.childrenBike,
-        total: `${totalPay}€`,
-        discountCode: currentOrder !== null && currentOrder?.discountCode ? currentOrder?.discountCode : 'No code used',
-    }
 
     const data = {
         s: {
@@ -113,22 +103,19 @@ export const Bikes = () => {
 
         { totalPay > 0 && setPaymentVisible(true); }
 
-        templateParams = {
-            ...templateParams,
-            name: name !== null && name,
-            email: email !== null && email,
-            phone: phone !== null && phone,
-            comment: (comment !== null && comment !== "") ? comment : 'No comment entered',
-        }
-
-        emailjs.send(
-        import.meta.env.VITE_BASE_EMAIL_SERVICE, 
-        import.meta.env.VITE_BASE_EMAIL_TEMPLATEBIKES, 
-        templateParams,
-        import.meta.env.VITE_BASE_EMAIL_PUBLIC
-        )
-        .then(() => console.log("Send Emails"))
-        .catch((error) => console.error(error));
+        sendEmail({
+            name: name,
+            email: email,
+            phone: phone,
+            time: currentOrder !== null && currentOrder?.time,
+            date: currentOrder !== null && currentOrder?.date,
+            small: currentOrder !== null && currentOrder?.small,
+            medium: currentOrder !== null && currentOrder?.medium,
+            childrenBike: currentOrder !== null && currentOrder?.childrenBike,
+            comment: comment === null || comment === "" ? 'No comment entered' : comment,
+            total: `${totalPay}€`,
+            discountCode: currentOrder !== null && currentOrder?.discountCode ? currentOrder?.discountCode : 'No code used',
+        }, import.meta.env.VITE_BASE_EMAIL_TEMPLATEBIKES)
     }
 
     const handleOk = () => {
