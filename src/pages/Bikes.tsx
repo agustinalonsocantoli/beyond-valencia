@@ -24,6 +24,8 @@ import { IoReturnDownBackSharp } from 'react-icons/io5';
 import { BsCheck2 } from 'react-icons/bs';
 import { sendEmail } from '../shared/emails';
 import { notifySuccess } from '../shared/notify';
+// Emails
+import emailjs from '@emailjs/browser';
 
 export const Bikes = () => {
     const dateNow = new Date();
@@ -116,7 +118,14 @@ export const Bikes = () => {
 
         { totalPay > 0 && setPaymentVisible(true); }
 
-        sendEmail(templateParams, import.meta.env.VITE_BASE_EMAIL_TEMPLATEBIKES)
+        emailjs.send(
+        import.meta.env.VITE_BASE_EMAIL_SERVICE, 
+        import.meta.env.VITE_BASE_EMAIL_TEMPLATEBIKES, 
+        templateParams,
+        import.meta.env.VITE_BASE_EMAIL_PUBLIC
+        )
+        .then(() => console.log("Send Emails"))
+        .catch((error) => console.error(error));
     }
 
     const handleOk = () => {
