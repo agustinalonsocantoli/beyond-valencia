@@ -7,13 +7,13 @@ import { Events } from "../components/shared/Events";
 import { Wine } from "../components/shared/Wine";
 import { Whatsapp } from '../components/shared/Whatsapp';
 // Video & Img
-import expA from '../assets/video/expA.mp4';
-import expB from '../assets/img/expB.jpg';
-import expC from '../assets/img/expC.jpg';
+import expA from '../assets/img/tipsy.jpg';
+import expB from '../assets/img/home.jpg';
+import expC from '../assets/img/huerta.jpg';
 import expD from '../assets/video/expD.mp4';
 import imgS1 from '../assets/img/exp1.jpg';
-import imgS2 from '../assets/img/exp2.jpg';
-import imgS3 from '../assets/img/exp3.jpg';
+import imgS3 from '../assets/img/exp2.jpg';
+import imgS2 from '../assets/img/exp3.jpg';
 // Interfaces
 import { DataInt } from "../interfaces/services.model";
 import { MultimediaInt } from "../interfaces/exposure.model";
@@ -23,24 +23,29 @@ export const Experiences = () => {
     const multimedia: MultimediaInt= {
         A: {
             src: expA,
-            h3: "Wine tasting with a local at home!",
-            type: "video"
+            h3: "Tipsy Tour like a local!",
+            p: "El Carmen",
+            span: "Neighborhood:",
+            type: "image"
         },
         B: {
             src: expB,
-            h3: "Street Art",
-            p: "3x2 people in regular booking",
+            h3: "Bike Tour to the seaside",
+            p: "El cabañal",
+            span: "Neighborhood:",
             type: "image"
         },
         C: {
             src: expC,
-            h3: "Old town",
-            p: "Regular tour everyday",
+            h3: "Bike tour to the Valencian Orchard",
+            p: "La huerta valenciana",
+            span: "Neighborhood:",
             type: "image"
         },
         D: {
             src: expD,
-            h3: "Private tour of The Old Town",
+            h3: "All you can wine, while having a picnic",
+            p: "Private and Regular",
             type: "video"
         },
     }
@@ -52,20 +57,19 @@ export const Experiences = () => {
             link: "",
             img: imgS1,
             type: "image",
-            h3: "Regular Tour in city of Art and Ciències",
+            h3: "All you can wine while painting in the dark",
         },
         S2: {
             link: "",
             img: imgS2,
             type: "image",
-            h3: "Private tour of City of Art and Sciences & Oceanographic",
+            h3: "Saturday we brunch on a boat",
         },
         S3: {
             link: "",
             img: imgS3,
             type: "image",
-            h3: "Five musuems tour",
-            p: "City scape to Albufera including the traditional boat ride.",
+            h3: "Private boat expeirence",
         },
     }
 

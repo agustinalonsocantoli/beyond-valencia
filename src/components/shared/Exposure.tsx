@@ -23,7 +23,7 @@ export const Exposure = ({ data }: Props) => {
 
                 <div className="content-a">
                     <h3>{A.h3}</h3>
-                    <p>{A.p}</p>
+                    <p><strong>{A?.span}</strong> {A.p}</p>
                 </div>
             </div>
 
@@ -32,7 +32,7 @@ export const Exposure = ({ data }: Props) => {
 
                 <div className="content-b">
                     <h3>{B.h3}</h3>
-                    <p>{B.p}</p>
+                    <p><strong>{B?.span}</strong> {B.p}</p>
                 </div>
             </div>
 
@@ -41,7 +41,7 @@ export const Exposure = ({ data }: Props) => {
 
                 <div className="content-c">
                     <h3>{C.h3}</h3>
-                    <p>{C.p}</p>
+                    <p><strong>{C?.span}</strong> {C.p}</p>
                 </div>
             </div>
 
@@ -58,7 +58,7 @@ export const Exposure = ({ data }: Props) => {
 
                 <div className="content-d">
                     <h3>{D.h3}</h3>
-                    <p>{D.p}</p>
+                    <p><strong>{D?.span}</strong> {D.p}</p>
                 </div>
             </div>
 

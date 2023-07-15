@@ -27,7 +27,7 @@ export const Home = () => {
         h1: "Easy, safe and unique... #valencia",
         h2: <Link to={"/more-services"}>LOCKERS & BIKE RENTALS </Link>,
         S1: {
-            link: "",
+            link: "/experiences",
             img: exp,
             imgW: expW,
             type: "image",
@@ -35,7 +35,7 @@ export const Home = () => {
             p: "Carefully selected and exclusive experiences in Valencia capital city",
         },
         S2: {
-            link: "",
+            link: "daytrips",
             img: day,
             imgW: dayW,
             type: "image",
