@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import { Home } from "./pages/Home";
 import { Experiences } from "./pages/Experiences";
 import { Daytrips } from "./pages/Daytrips";
-import { Food } from "./pages/Food";
+// import { Food } from "./pages/Food";
 import { Details } from "./pages/Details";
 import { Options } from "./pages/Options";
 import { Lockers } from "./pages/Lockers";
@@ -18,10 +18,12 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="experiences/*" element={<Experiences />} />
+            <Route path="experiences/:slug" element={<Details />} />
             <Route path="daytrips/*" element={<Daytrips />} />
-            <Route path="food/*" element={<Food />} />
-            <Route path="aboutus/*" element={<div>About Us</div>} />
+            {/* <Route path="food/*" element={<Food />} /> */}
+            {/* <Route path="aboutus/*" element={<div>About Us</div>} /> */}
             <Route path="details/*" element={<Details />} />
+            <Route path="details/:slug" element={<Details />} />
             <Route path="more-services/*" element={<Options />} />
             <Route path="lockers/*" element={<Lockers />} />
             <Route path="bikes/*" element={<Bikes />} />

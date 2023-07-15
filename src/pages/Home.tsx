@@ -24,7 +24,7 @@ import { DataInt } from "../interfaces/services.model";
 export const Home = () => {
 
     const data: DataInt = {
-        h1: "Easy, safe and unique... #valencia",
+        h1: "Easy, safe and unique... #Valencia",
         h2: <Link to={"/more-services"}>LOCKERS & BIKE RENTALS </Link>,
         S1: {
             link: "/experiences",
@@ -47,7 +47,7 @@ export const Home = () => {
             img: food,
             imgW: foodW,
             type: "image",
-            h3: "Food & Dinning",
+            h3: "Food & Dining",
             p: "Access to the best deals in town at run by local spots with authenticity",
         },
     }

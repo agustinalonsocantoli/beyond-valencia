@@ -4,6 +4,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+    padding-bottom: 30px;
     background-color: #000000;
 
     @include m.phone {

@@ -30,4 +30,31 @@ export interface DataInt {
         p?: string;
         span?: string;
     }
+    S4?: {
+        link: string;
+        img: string;
+        imgW?: string;
+        type: string;
+        h3: string;
+        p?: string;
+        span?: string;
+    }
+    S5?: {
+        link: string;
+        img: string;
+        imgW?: string;
+        type: string;
+        h3: string;
+        p?: string;
+        span?: string;
+    }
+    S6?: {
+        link: string;
+        img: string;
+        imgW?: string;
+        type: string;
+        h3: string;
+        p?: string;
+        span?: string;
+    }
 }

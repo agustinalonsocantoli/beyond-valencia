@@ -2,63 +2,62 @@
 import { MultimediaInt } from "../../interfaces/exposure.model";
 
 interface Props {
-    data: MultimediaInt;
+    data: MultimediaInt | undefined;
 }
 
 export const Exposure = ({ data }: Props) => {
-    const { A, B, C, D } = data;
 
     return(
         <div className="exposure">
             <div className="grid-a">
-                { A.type === "video" &&
+                { data?.A?.type === "video" &&
                 <video autoPlay muted loop>
-                    <source src={A.src} />
+                    <source src={data?.A?.src} />
                 </video>
                 }
 
-                { A.type === "image" && 
-                <img src={A.src} alt={`img`} />
+                { data?.A?.type === "image" && 
+                <img src={data?.A?.src} alt={`img`} />
                 }
 
                 <div className="content-a">
-                    <h3>{A.h3}</h3>
-                    <p><strong>{A?.span}</strong> {A.p}</p>
+                    <h3>{data?.A?.h3}</h3>
+                    <p><strong>{data?.A?.span}</strong> {data?.A?.p}</p>
                 </div>
             </div>
 
             <div className="grid-b">
-                <img src={B.src} alt={`img`} />
+                <img src={data?.B?.src} alt={`img`} />
 
                 <div className="content-b">
-                    <h3>{B.h3}</h3>
-                    <p><strong>{B?.span}</strong> {B.p}</p>
+                    <h3>{data?.B?.h3}</h3>
+                    <p><strong>{data?.B?.span}</strong> {data?.B?.p}</p>
                 </div>
             </div>
 
             <div className="grid-c">
-                <img src={C.src} alt={`img`} />
+                <img src={data?.C?.src} alt={`img`} />
 
                 <div className="content-c">
-                    <h3>{C.h3}</h3>
-                    <p><strong>{C?.span}</strong> {C.p}</p>
+                    <h3>{data?.C?.h3}</h3>
+                    <p><strong>{data?.C?.span}</strong> {data?.C?.p}</p>
                 </div>
             </div>
 
             <div className="grid-d">
-                { D.type === "video" &&
+                { data?.D?.type === "video" &&
                 <video autoPlay muted loop>
-                    <source src={D.src} />
+                    <source src={data?.D?.src} />
                 </video>
                 }
 
-                { D.type === "image" && 
-                <img src={D.src} alt={`img`} />
+                { data?.D?.type === "image" && 
+                <img src={data?.D?.src} alt={`img`} />
                 }
 
                 <div className="content-d">
-                    <h3>{D.h3}</h3>
-                    <p><strong>{D?.span}</strong> {D.p}</p>
+                    <h3>{data?.D?.h3}</h3>
+                    <p><strong>{data?.D?.span}</strong> {data?.D?.p}</p>
                 </div>
             </div>
 

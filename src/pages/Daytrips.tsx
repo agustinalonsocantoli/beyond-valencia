@@ -14,6 +14,9 @@ import dayD from '../assets/img/villareal.jpg';
 import imgS1 from '../assets/img/day1.jpg';
 import imgS2 from '../assets/img/day2.jpg';
 import imgS3 from '../assets/img/day3.jpg';
+import imgS4 from '../assets/img/exp1.jpg';
+import imgS5 from '../assets/img/exp2.jpg';
+import imgS6 from '../assets/img/exp3.jpg';
 // Interfaces
 import { DataInt } from "../interfaces/services.model";
 import { MultimediaInt } from "../interfaces/exposure.model";
@@ -71,6 +74,24 @@ export const Daytrips = () => {
             img: imgS3,
             type: "image",
             h3: "Private dining & sunset on a boat",
+        },
+        S4: {
+            link: "",
+            img: imgS4,
+            type: "image",
+            h3: "All you can wine while painting in the dark",
+        },
+        S5: {
+            link: "",
+            img: imgS5,
+            type: "image",
+            h3: "Saturday we brunch on a boat",
+        },
+        S6: {
+            link: "",
+            img: imgS6,
+            type: "image",
+            h3: "Private boat expeirence",
         },
     }
 

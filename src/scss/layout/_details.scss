@@ -45,9 +45,7 @@
             
             h1 {
                 font-size: 60px;
-                text-align: center;
-                margin-bottom: 50px;
-
+                text-align: left;
 
             @include m.phone {
                 text-align: left;
@@ -61,8 +59,13 @@
             }
             }
 
-            h2 {
-                font-size: 25px;
+            .subtitle {
+                margin-bottom: 10px;
+                font-size: 30px;
+                text-align: left;
+            }
+
+            h3 {
                 text-decoration: underline;
                 margin-bottom: 20px;
                 font-weight: 400;
@@ -73,14 +76,25 @@
             }
 
             &_text {
-                font-size: 18px;
+                font-size: 20px;
                 font-weight: 300;
                 margin-bottom: 50px;
 
                 @include m.phone {
-                    font-size: 15px;
+                    font-size: 17px;
                 }
             }
+
+            &_slogan {
+                font-size: 20px;
+                font-weight: 200;
+                margin-bottom: 50px;
+
+                @include m.phone {
+                    font-size: 17px;
+                }
+            }
+
 
             h3 {
                 font-size: 22px;
@@ -124,6 +138,16 @@
                     margin-bottom: 40px;
                 }
 
+                .location {
+                    svg {
+                        font-size: 75px;
+
+                        @include m.phone {
+                            font-size: 65px;
+                        }
+                    }
+                }
+
                 p {
                     display: flex;
                     align-items: center;
@@ -163,4 +187,13 @@
         }
     }
 
+}
+
+.css-1elwnq4-MuiPaper-root-MuiAccordion-root {
+    box-shadow: none !important;
+    border-bottom: 1px solid #000000;
+}
+
+.css-1elwnq4-MuiPaper-root-MuiAccordion-root:before {
+    background: none !important;
 }

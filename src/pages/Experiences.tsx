@@ -14,6 +14,9 @@ import expD from '../assets/video/expD.mp4';
 import imgS1 from '../assets/img/exp1.jpg';
 import imgS3 from '../assets/img/exp2.jpg';
 import imgS2 from '../assets/img/exp3.jpg';
+import imgS4 from '../assets/img/day1.jpg';
+import imgS5 from '../assets/img/day2.jpg';
+import imgS6 from '../assets/img/day3.jpg';
 // Interfaces
 import { DataInt } from "../interfaces/services.model";
 import { MultimediaInt } from "../interfaces/exposure.model";
@@ -54,7 +57,7 @@ export const Experiences = () => {
         h1: "Meeting point in the City",
         h2: "PERSONALIZED EXPERIENCE",
         S1: {
-            link: "",
+            link: "/experiences/tipsy-tour",
             img: imgS1,
             type: "image",
             h3: "All you can wine while painting in the dark",
@@ -70,6 +73,24 @@ export const Experiences = () => {
             img: imgS3,
             type: "image",
             h3: "Private boat expeirence",
+        },
+        S4: {
+            link: "",
+            img: imgS4,
+            type: "image",
+            h3: "Visiting three wineries in one day",
+        },
+        S5: {
+            link: "",
+            img: imgS5,
+            type: "image",
+            h3: "Chulilla and the hanging bridges, in a private tour",
+        },
+        S6: {
+            link: "",
+            img: imgS6,
+            type: "image",
+            h3: "Private dining & sunset on a boat",
         },
     }
 
