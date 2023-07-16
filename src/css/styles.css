@@ -198,7 +198,6 @@ body {
 }
 .services .services_conteiner {
   display: flex;
-  padding: 0 3%;
 }
 @media (max-width: 480px) {
   .services .services_conteiner {
@@ -528,169 +527,165 @@ body {
 .exposure p {
   font-size: 17px;
 }
-.exposure .grid-a {
+.exposure .grid-1 {
   grid-column: 1/2;
   grid-row: 1/3;
   position: relative;
 }
 @media (max-width: 480px) {
-  .exposure .grid-a {
+  .exposure .grid-1 {
     grid-column: 1/1;
     grid-row: 1/1;
     height: 550px;
   }
 }
 @media (min-width: 481px) and (max-width: 768px) {
-  .exposure .grid-a {
+  .exposure .grid-1 {
     grid-column: 1/1;
     grid-row: 1/1;
     height: 550px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .exposure .grid-a {
+  .exposure .grid-1 {
     grid-column: 1/1;
     grid-row: 1/1;
     height: 550px;
   }
 }
-.exposure .grid-a video, .exposure .grid-a img {
+.exposure .grid-1 video, .exposure .grid-1 img {
   object-fit: cover;
   width: 100%;
   height: 100%;
   border-radius: 20px;
 }
-.exposure .grid-a .content-a {
+.exposure .grid-1 .content-1 {
   position: absolute;
   color: #000;
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 5px 0 5px 20px;
   border-radius: 0 0 12px 12px;
   background: rgba(255, 255, 255, 0.5);
 }
-.exposure .grid-a h3 {
+.exposure .grid-1 h3 {
   width: 100%;
 }
-.exposure .grid-b {
+.exposure .grid-2 {
   grid-column: 2/3;
   grid-row: 1/2;
   height: 275px;
   position: relative;
 }
 @media (max-width: 480px) {
-  .exposure .grid-b {
+  .exposure .grid-2 {
     grid-column: 1/1;
     grid-row: 2/2;
   }
 }
 @media (min-width: 481px) and (max-width: 768px) {
-  .exposure .grid-b {
+  .exposure .grid-2 {
     grid-column: 1/1;
     grid-row: 2/2;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .exposure .grid-b {
+  .exposure .grid-2 {
     grid-column: 1/1;
     grid-row: 2/2;
   }
 }
-.exposure .grid-b video, .exposure .grid-b img {
+.exposure .grid-2 video, .exposure .grid-2 img {
   object-fit: cover;
   width: 100%;
   height: 100%;
   border-radius: 20px;
 }
-.exposure .grid-b .content-b {
+.exposure .grid-2 .content-2 {
   position: absolute;
   color: #000000;
   bottom: 0;
   right: 0;
   text-align: left;
   width: 100%;
-  padding: 5px 0 5px 20px;
   border-radius: 0 0 12px 12px;
   background: rgba(255, 255, 255, 0.5);
 }
-.exposure .grid-c {
+.exposure .grid-3 {
   grid-column: 3/4;
   grid-row: 1/2;
   height: 275px;
   position: relative;
 }
 @media (max-width: 480px) {
-  .exposure .grid-c {
+  .exposure .grid-3 {
     grid-column: 1/1;
     grid-row: 3/3;
   }
 }
 @media (min-width: 481px) and (max-width: 768px) {
-  .exposure .grid-c {
+  .exposure .grid-3 {
     grid-column: 1/1;
     grid-row: 3/3;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .exposure .grid-c {
+  .exposure .grid-3 {
     grid-column: 1/1;
     grid-row: 3/3;
   }
 }
-.exposure .grid-c video, .exposure .grid-c img {
+.exposure .grid-3 video, .exposure .grid-3 img {
   object-fit: cover;
   width: 100%;
   height: 100%;
   border-radius: 20px;
 }
-.exposure .grid-c .content-c {
+.exposure .grid-3 .content-3 {
   position: absolute;
   color: #000;
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 5px 0 5px 20px;
   border-radius: 0 0 12px 12px;
   background: rgba(255, 255, 255, 0.5);
 }
-.exposure .grid-d {
+.exposure .grid-4 {
   grid-column: 2/4;
   grid-row: 2/3;
   height: 275px;
   position: relative;
 }
 @media (max-width: 480px) {
-  .exposure .grid-d {
+  .exposure .grid-4 {
     grid-column: 1/1;
     grid-row: 4/4;
   }
 }
 @media (min-width: 481px) and (max-width: 768px) {
-  .exposure .grid-d {
+  .exposure .grid-4 {
     grid-column: 1/1;
     grid-row: 4/4;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .exposure .grid-d {
+  .exposure .grid-4 {
     grid-column: 1/1;
     grid-row: 4/4;
   }
 }
-.exposure .grid-d video, .exposure .grid-d img {
+.exposure .grid-4 video, .exposure .grid-4 img {
   object-fit: cover;
   width: 100%;
   height: 100%;
   border-radius: 20px;
 }
-.exposure .grid-d .content-d {
+.exposure .grid-4 .content-4 {
   position: absolute;
   color: #000;
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 5px 0 5px 20px;
   border-radius: 0 0 12px 12px;
   background: rgba(255, 255, 255, 0.5);
 }
@@ -699,7 +694,7 @@ body {
   background-color: #000000;
   display: flex;
   justify-content: space-between;
-  padding: 10px 35px 10px 35px;
+  padding: 10px;
   color: #FFFFFF;
 }
 @media (max-width: 480px) {
@@ -955,7 +950,7 @@ body {
 }
 
 .details_exposure {
-  padding: 0 5% 10px 5%;
+  padding: 0 0 10px 0;
   background-color: #000000;
 }
 .details_exposure img {
@@ -1155,6 +1150,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 .book .Mui-selected {
   background-color: #000000 !important;

@@ -3,7 +3,7 @@ import { useState } from 'react';
 // Components
 import { Navbar } from '../components/shared/Navbar';
 import { Exposure } from "../components/shared/Exposure";
-import { Book } from "../components/book/Book";
+import { NewBook } from "../components/book/NewBook";
 import { Payments } from '../components/stripe/Payments';
 import { Footer } from '../components/shared/Footer';
 import { Whatsapp } from '../components/shared/Whatsapp';
@@ -18,8 +18,8 @@ import { FaUniversalAccess } from "react-icons/fa"
 import { SlLocationPin } from "react-icons/sl"
 import { MdAccessible } from "react-icons/md"
 // Data
-import { experiencesData } from "../API/experiences";
-import { useParams } from 'react-router-dom';
+import { experiencesApi } from '../data/Api/experiences';
+import { Navigate, useParams } from 'react-router-dom';
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 import { BsTicket } from 'react-icons/bs';
 
@@ -30,9 +30,10 @@ export const Details = () => {
     const [formVisible, setFormVisible] = useState<boolean>(false);
     const [currentOrder, setCurrentOrder] = useState<any>(null);
     const [totalPay, setTotalPay] = useState<number | null>(null);
-    const data = experiencesData.find(((experience: any) => experience?.slug === slug))
+    const data = experiencesApi.find(((experience: any) => experience?.slug === slug))
 
     return (
+        data ?
         <div className="details">
 
             <Navbar title={"Experiences"} subtitle={"Experiences"} />
@@ -136,12 +137,11 @@ export const Details = () => {
                     </Accordion>
                 </div>
 
-                <Book
+                <NewBook
                     setCurrentOrder={setCurrentOrder}
                     setPaymentVisible={setPaymentVisible}
                     setTotalPay={setTotalPay}
                     totalPay={totalPay}
-                    formVisible={formVisible}
                     setFormVisible={setFormVisible}
                 />
             </div>
@@ -159,5 +159,6 @@ export const Details = () => {
 
             <Footer />
         </div>
+        : <Navigate to={"/"} />
     );
 }

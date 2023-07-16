@@ -1,66 +1,41 @@
 // Interfaces
 import { MultimediaInt } from "../../interfaces/exposure.model";
+// React
+import { Link } from "react-router-dom";
 
 interface Props {
-    data: MultimediaInt | undefined;
+    data: MultimediaInt[] | undefined;
 }
 
 export const Exposure = ({ data }: Props) => {
 
-    return(
+    return (
         <div className="exposure">
-            <div className="grid-a">
-                { data?.A?.type === "video" &&
-                <video autoPlay muted loop>
-                    <source src={data?.A?.src} />
-                </video>
-                }
+            {data?.map((item: MultimediaInt, index: number) => (
+                <div key={index} className={`grid-${index + 1}`}>
+                    <Link to={item?.navigate ? item?.navigate : ""}>
+                        {item?.type === "video" &&
+                            <video autoPlay muted loop>
+                                <source src={item?.src} />
+                            </video>
+                        }
 
-                { data?.A?.type === "image" && 
-                <img src={data?.A?.src} alt={`img`} />
-                }
+                        {item?.type === "image" &&
+                            <img src={item?.src} alt={`img`} />
+                        }
 
-                <div className="content-a">
-                    <h3>{data?.A?.h3}</h3>
-                    <p><strong>{data?.A?.span}</strong> {data?.A?.p}</p>
+                        <div 
+                        className={`content-${index + 1}`} 
+                        style={{
+                            padding: item?.h3 || item?.p ? "5px 0 5px 20px" : 0
+                        }}
+                        >
+                            <h3>{item?.h3}</h3>
+                            <p><strong>{item?.span}</strong> {item?.p}</p>
+                        </div>
+                    </Link>
                 </div>
-            </div>
-
-            <div className="grid-b">
-                <img src={data?.B?.src} alt={`img`} />
-
-                <div className="content-b">
-                    <h3>{data?.B?.h3}</h3>
-                    <p><strong>{data?.B?.span}</strong> {data?.B?.p}</p>
-                </div>
-            </div>
-
-            <div className="grid-c">
-                <img src={data?.C?.src} alt={`img`} />
-
-                <div className="content-c">
-                    <h3>{data?.C?.h3}</h3>
-                    <p><strong>{data?.C?.span}</strong> {data?.C?.p}</p>
-                </div>
-            </div>
-
-            <div className="grid-d">
-                { data?.D?.type === "video" &&
-                <video autoPlay muted loop>
-                    <source src={data?.D?.src} />
-                </video>
-                }
-
-                { data?.D?.type === "image" && 
-                <img src={data?.D?.src} alt={`img`} />
-                }
-
-                <div className="content-d">
-                    <h3>{data?.D?.h3}</h3>
-                    <p><strong>{data?.D?.span}</strong> {data?.D?.p}</p>
-                </div>
-            </div>
-
+            ))}
         </div>
     );
 }

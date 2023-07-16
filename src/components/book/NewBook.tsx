@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // React
 import { useState } from "react";
 // Calendar
@@ -21,13 +22,12 @@ interface Props {
     setCurrentOrder: (order: any) => void;
     setTotalPay: (action: number | null) => void;
     totalPay: number | null;
-    formVisible: boolean;
     setFormVisible: (action: boolean) => void;
 }
 
-export const Book = (props: Props) => {
+export const NewBook = (props: Props) => {
     const dateNow: Date = new Date();
-    const { setPaymentVisible, setCurrentOrder, setTotalPay, totalPay, formVisible, setFormVisible } = props;
+    const { setPaymentVisible, setCurrentOrder, setTotalPay, totalPay, setFormVisible } = props;
     const [date, setDate] = useState<any>(null);
     const [selectedValue, setSelectedValue] = useState<string | null>(null);
     const [time, setTime] = useState<string | null>(null);
@@ -138,12 +138,10 @@ export const Book = (props: Props) => {
     return (
         <div className="book">
             <div className="book_fixed">
-                <div>
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <h3>Select Date</h3>
-                        <DateCalendar value={date} onChange={(value) => setDate(value)} minDate={dayjs(dateNow)} />
-                    </LocalizationProvider>
-                </div>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <h3>Select Date</h3>
+                    <DateCalendar value={date} onChange={(value) => setDate(value)} minDate={dayjs(dateNow)} />
+                </LocalizationProvider>
 
                 <SelectDetail
                     selectedValue={selectedValue}
@@ -151,39 +149,6 @@ export const Book = (props: Props) => {
                     time={time}
                     setTime={setTime}
                 />
-
-                <SelectQuantity
-                    adults={adults}
-                    setAdults={setAdults}
-                    children={children}
-                    setChildren={setChildren}
-                    infants={infants}
-                    setInfants={setInfants}
-                />
-
-                <div className="book_btn">
-                    <button onClick={handleCheck}>BOOK</button>
-                </div>
-
-                {formVisible &&
-                    <div>
-                        <CodeBook
-                            adults={adults}
-                            children={children}
-                            subTotal={subTotal}
-                            discount={discount}
-                            totalPay={totalPay}
-                            handleGetCode={handleGetCode}
-                            validateCode={validateCode}
-                        />
-
-                        <FormBook
-                            handleSubmit={handleSubmit}
-                            labelButton="PAY NOW"
-                            nameClass="book_form"
-                        />
-                    </div>
-                }
 
                 <ToastContainer
                     position="top-center"

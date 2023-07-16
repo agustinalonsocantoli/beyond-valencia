@@ -76,8 +76,6 @@
 
     .services_conteiner {
         display: flex;
-        padding: 0 3%;
-
 
         @include m.phone {
             display: grid;
