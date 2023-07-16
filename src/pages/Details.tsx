@@ -3,7 +3,7 @@ import { useState } from 'react';
 // Components
 import { Navbar } from '../components/shared/Navbar';
 import { Exposure } from "../components/shared/Exposure";
-import { NewBook } from "../components/book/NewBook";
+import { Book } from "../components/book/Book";
 import { Payments } from '../components/stripe/Payments';
 import { Footer } from '../components/shared/Footer';
 import { Whatsapp } from '../components/shared/Whatsapp';
@@ -22,7 +22,6 @@ import { experiencesApi } from '../data/Api/experiences';
 import { Navigate, useParams } from 'react-router-dom';
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 import { BsTicket } from 'react-icons/bs';
-
 
 export const Details = () => {
     const { slug } = useParams();
@@ -137,13 +136,16 @@ export const Details = () => {
                     </Accordion>
                 </div>
 
-                <NewBook
-                    setCurrentOrder={setCurrentOrder}
-                    setPaymentVisible={setPaymentVisible}
-                    setTotalPay={setTotalPay}
-                    totalPay={totalPay}
-                    setFormVisible={setFormVisible}
-                />
+                <div>
+                    <Book
+                        setCurrentOrder={setCurrentOrder}
+                        setPaymentVisible={setPaymentVisible}
+                        setTotalPay={setTotalPay}
+                        totalPay={totalPay}
+                        setFormVisible={setFormVisible}
+                        data={data}
+                    />
+                </div>
             </div>
 
             {paymentVisible &&

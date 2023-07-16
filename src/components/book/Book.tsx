@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // React
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // Calendar
 import dayjs from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -9,28 +10,30 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // Components
-import { FormBook } from "../shared/Form";
-import { CodeBook } from "./CodeBook"
-import { SelectQuantity } from "./SelectQuantity";
-import { SelectDetail } from "./SelectDetail";
+import { SelectGroup } from "./SelectGroup";
+import { ModalBook } from "../modals/ModalBook"
 // Interfaces
 import { notifyError, notifySuccess } from "../../shared/notify";
+import { ExperiencesInt } from "../../data/Api/experiences";
+import { OrdersGroupsInt } from "../../interfaces/books.model";
+;
 
 interface Props {
     setPaymentVisible: (action: boolean) => void;
     setCurrentOrder: (order: any) => void;
     setTotalPay: (action: number | null) => void;
     totalPay: number | null;
-    formVisible: boolean;
     setFormVisible: (action: boolean) => void;
+    data: ExperiencesInt;
 }
 
 export const Book = (props: Props) => {
     const dateNow: Date = new Date();
-    const { setPaymentVisible, setCurrentOrder, setTotalPay, totalPay, formVisible, setFormVisible } = props;
+    const { setPaymentVisible, setCurrentOrder, setTotalPay, totalPay, data } = props;
     const [date, setDate] = useState<any>(null);
-    const [selectedValue, setSelectedValue] = useState<string | null>(null);
     const [time, setTime] = useState<string | null>(null);
+    const [hoursOptions, setHoursOptions] = useState<string[]>([]);
+    const [typeOrder, setTypeOrder] = useState<string | null>(null);
     const [adults, setAdults] = useState<number>(0);
     const [children, setChildren] = useState<number>(0);
     const [infants, setInfants] = useState<number>(0);
@@ -38,9 +41,26 @@ export const Book = (props: Props) => {
     const [discount, setDiscount] = useState<number>(0);
     const [isDiscountAdd, setIsDescountAdd] = useState<boolean>(false);
     const [codeDiscount, setCodeDiscount] = useState<string | null>(null);
+
     const codesFive = import.meta.env.VITE_BASE_DISCOUNT_FIVE.split(',')
     const codesTen = import.meta.env.VITE_BASE_DISCOUNT_TEN.split(',')
     const codesTwenty = import.meta.env.VITE_BASE_DISCOUNT_TWENTY.split(',')
+
+    // Modal Book
+    const [openBook, setOpenBook] = useState<boolean>(false);
+    const onOpenBook = () => setOpenBook(true);
+    const onCloseBook = () => { 
+        setOpenBook(false); 
+    }
+
+    useEffect(() => {
+        if(typeOrder) {
+            const total = totalCalculate(adults, children, typeOrder);
+            setSubTotal(total);
+            setTotalPay(total)
+        }
+
+    }, [adults, children, infants])
 
     const totalCalculate = (adults: number, children: number, typeOrder: string) => {
         let totalAdults = 0;
@@ -57,36 +77,23 @@ export const Book = (props: Props) => {
         return totalAdults + totalChildren;
     }
 
-    const handleCheck = () => {
-        if (selectedValue !== null) {
-            if (time !== null) {
-                if (adults !== 0 || children !== 0) {
+    const handleSelect = (type: string) => {
+        const { groups } = data;
+        const group = groups?.find((group: OrdersGroupsInt) => group?.type === type)
 
-                    setCurrentOrder({
-                        tourName: "One Day in Calpe",
-                        date: dayjs(date.$d).format('DD/MM/YYYY'),
-                        time: time,
-                        typeOrder: selectedValue,
-                        adults: adults,
-                        children: children,
-                        infants: infants,
-                    });
+        setCurrentOrder({
+            tourName: "One Day in Calpe",
+            date: dayjs(date.$d).format('DD/MM/YYYY'),
+            time: time,
+            typeOrder: type,
+            adults: adults,
+            children: children,
+            infants: infants,
+        });
 
-                    setFormVisible(true);
-
-                    const total = totalCalculate(adults, children, selectedValue);
-                    setSubTotal(total);
-                    setTotalPay(total)
-
-                } else {
-                    notifyError("You must select the number of people.");
-                }
-            } else {
-                notifyError("You must select a time.");
-            }
-        } else {
-            notifyError("You must enter an option.");
-        }
+        setHoursOptions(group?.deapertureTime ? group?.deapertureTime : [])
+        setTypeOrder(type);
+        onOpenBook();
     }
 
     const handleSubmit = (e: any) => {
@@ -101,7 +108,8 @@ export const Book = (props: Props) => {
         }));
 
         notifySuccess('We will proceed to the payment.');
-        setPaymentVisible(true)
+        onCloseBook();
+        setPaymentVisible(true);
     }
 
     const handleGetCode = ({ target }: any) => {
@@ -138,52 +146,37 @@ export const Book = (props: Props) => {
     return (
         <div className="book">
             <div className="book_fixed">
-                <div>
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <h3>Select Date</h3>
-                        <DateCalendar value={date} onChange={(value) => setDate(value)} minDate={dayjs(dateNow)} />
-                    </LocalizationProvider>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <h3>Select Date</h3>
+                    <DateCalendar value={date} onChange={(value) => setDate(value)} minDate={dayjs(dateNow)} />
+                </LocalizationProvider>
+
+                <div style={{ opacity: date === null ? "0.5" : "1" }}>
+                    <SelectGroup
+                        handleSelect={handleSelect}
+                        groups={data?.groups}
+                    />
                 </div>
 
-                <SelectDetail
-                    selectedValue={selectedValue}
-                    setSelectedValue={setSelectedValue}
+                <ModalBook 
+                    handleClose={onCloseBook}
+                    open={openBook}
+                    adults={adults}
+                    children={children}
+                    discount={discount}
+                    handleGetCode={handleGetCode}
+                    validateCode={validateCode}
+                    totalPay={totalPay}
+                    subTotal={subTotal}
+                    handleSubmit={handleSubmit}
+                    infants={infants}
+                    setAdults={setAdults}
+                    setChildren={setChildren}
+                    setInfants={setInfants}
                     time={time}
                     setTime={setTime}
+                    hours={hoursOptions}
                 />
-
-                <SelectQuantity
-                    adults={adults}
-                    setAdults={setAdults}
-                    children={children}
-                    setChildren={setChildren}
-                    infants={infants}
-                    setInfants={setInfants}
-                />
-
-                <div className="book_btn">
-                    <button onClick={handleCheck}>BOOK</button>
-                </div>
-
-                {formVisible &&
-                    <div>
-                        <CodeBook
-                            adults={adults}
-                            children={children}
-                            subTotal={subTotal}
-                            discount={discount}
-                            totalPay={totalPay}
-                            handleGetCode={handleGetCode}
-                            validateCode={validateCode}
-                        />
-
-                        <FormBook
-                            handleSubmit={handleSubmit}
-                            labelButton="PAY NOW"
-                            nameClass="book_form"
-                        />
-                    </div>
-                }
 
                 <ToastContainer
                     position="top-center"

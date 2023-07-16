@@ -3,10 +3,11 @@ import tipsy1 from "../../assets/typsi-tour/tipsy1.jpg"
 import tipsy2 from "../../assets/typsi-tour/tipsy2.jpg"
 import tipsy3 from "../../assets/typsi-tour/tipsy3.jpg"
 import tipsy4 from "../../assets/typsi-tour/tipsy4.jpg"
+import { OrdersGroupsInt } from "../../interfaces/books.model";
 // Interfaces
 import { MultimediaInt } from "../../interfaces/exposure.model";
 
-interface ExperiencesInt {
+export interface ExperiencesInt {
     slug: string;
     title: string;
     subtitle: {
@@ -37,20 +38,7 @@ interface ExperiencesInt {
             state: boolean;
         }[];
     takeWithYou: string[];
-    prices: {
-        regular: {
-            adults: number;
-            children: number | null;
-        }
-        private: {
-            adults: number;
-            children: number | null;
-        }
-    }
-    deapertureTime: {
-        regular: string[];
-        private: string[];
-    }
+    groups: OrdersGroupsInt[];
     block: string;
     subBlock: string;
 }
@@ -133,20 +121,26 @@ export const experiencesApi: ExperiencesInt[] = [
             }
         ],
         takeWithYou: ["Your ID showing you are +18 years old"],
-        prices: {
-            regular: {
-                adults: 25,
-                children: null
+        groups: [
+            {
+                title: "Shared Group",
+                type: "group",
+                prices: {
+                    adults: 25,
+                    children: null
+                },
+                deapertureTime: ["20:00"]
             },
-            private: {
-                adults: 45,
-                children: null
+            {
+                title: "Private Group",
+                type: "private",
+                prices: {
+                    adults: 25,
+                    children: null
+                },
+                deapertureTime: ["20:00"]
             }
-        },
-        deapertureTime: {
-            regular: ["20:00"],
-            private: ["20:00"],
-        },
+        ],
         block: "",
         subBlock: "",
     }
