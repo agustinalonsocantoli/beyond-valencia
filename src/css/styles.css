@@ -1095,6 +1095,9 @@ body {
     margin-bottom: 40px;
   }
 }
+.details_description .description .information .location {
+  width: 120%;
+}
 .details_description .description .information .location svg {
   font-size: 75px;
 }
@@ -1146,6 +1149,10 @@ body {
   background: none !important;
 }
 
+.book_container {
+  position: relative;
+}
+
 .book {
   display: flex;
   flex-direction: column;
@@ -1157,6 +1164,7 @@ body {
   -webkit-box-shadow: 0px 3px 10px -5px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 0px 3px 10px -5px rgba(0, 0, 0, 0.6);
   box-shadow: 0px 3px 10px -5px rgba(0, 0, 0, 0.6);
+  position: sticky;
 }
 .book .Mui-selected {
   background-color: #000000 !important;
@@ -1227,32 +1235,6 @@ body {
 }
 .book_type .btn_select button:hover {
   background-color: rgb(0, 0, 0);
-}
-.book_type .time {
-  margin-bottom: 10px;
-  opacity: 0.2;
-}
-.book_type .time .disable {
-  border-radius: 20px;
-  background-color: transparent;
-  border: 1px solid transparent;
-  padding: 7px 15px;
-  font-size: 15px;
-  margin-right: 5px;
-  cursor: pointer;
-}
-.book_type .time .active {
-  border-radius: 20px;
-  background-color: transparent;
-  padding: 7px 15px;
-  font-size: 15px;
-  margin-right: 5px;
-  cursor: pointer;
-  border: 1px solid #000000;
-  color: #000000;
-}
-.book_type .time_selected {
-  opacity: 1;
 }
 .book .amount_conteiner {
   margin-top: 20px;
@@ -1332,6 +1314,16 @@ body {
   padding: 10px;
   border-radius: 12px;
   width: 400px;
+}
+.book_total-container {
+  justify-content: space-between;
+  margin-right: 10px;
+}
+.book_total .book_date, .book_total .book_info {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  gap: 0;
 }
 .book_total h3 {
   font-size: 15px;
@@ -2866,6 +2858,73 @@ body {
   display: flex;
   gap: 100px;
   justify-content: center;
+  width: 70%;
+  margin: 3% auto;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+.time_container {
+  padding: 20px;
+  border-radius: 12px;
+  width: 400px;
+}
+.time_container h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.time_container .time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.time_container .time .disable {
+  border-radius: 20px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 7px 15px;
+  font-size: 15px;
+  margin-right: 5px;
+  cursor: pointer;
+  opacity: 0.2;
+}
+.time_container .time .active {
+  border-radius: 20px;
+  background-color: transparent;
+  padding: 7px 15px;
+  font-size: 15px;
+  margin-right: 5px;
+  cursor: pointer;
+  border: 1px solid #000000;
+  color: #000000;
+  opacity: 1;
+}
+
+.modal_flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.modal_flex .btn_cancel {
+  margin: -25px auto 0 auto;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 8px 15px;
+  border-radius: 20px;
+  width: 50%;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+}
+.modal_flex .btn_cancel:active {
+  transform: scale(0.9);
+  transition: all 200ms ease;
+}
+.modal_flex .btn_cancel:hover {
+  background-color: rgb(0, 0, 0);
 }
 
 /*# sourceMappingURL=styles.css.map */

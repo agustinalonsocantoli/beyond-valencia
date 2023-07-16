@@ -18,7 +18,7 @@ export interface OrdersGroupsInt {
     type: string;
     prices: {
         adults: number;
-        children: null;
+        children: number | null;
     }
     deapertureTime: string[];
 }

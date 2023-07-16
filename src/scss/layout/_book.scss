@@ -1,6 +1,10 @@
 @use '../base/variables' as v;
 @use '../base/mixins' as m;
 
+.book_container {
+    position: relative;
+}
+
 .book {
     display: flex;
     flex-direction: column;
@@ -12,11 +16,8 @@
     -webkit-box-shadow: 0px 3px 10px -5px rgba(0,0,0,0.6);
     -moz-box-shadow: 0px 3px 10px -5px rgba(0,0,0,0.6);
     box-shadow: 0px 3px 10px -5px rgba(0,0,0,0.6);
+    position: sticky;
 
-    // &_fixed{
-    //     position: fixed;
-    //     top: 0;
-    // }
 
     .Mui-selected {
         background-color: #000000 !important;
@@ -99,36 +100,6 @@
                     background-color: rgba(0, 0, 0, 1);
                 }
             }
-        }
-
-        .time {
-            margin-bottom: 10px;
-            opacity: .2;
-            
-            .disable {
-                border-radius: 20px;
-                background-color: transparent;
-                border: 1px solid transparent;
-                padding: 7px 15px;
-                font-size: 15px;
-                margin-right: 5px;
-                cursor: pointer;
-            }
-
-            .active {
-                border-radius: 20px;
-                background-color: transparent;
-                padding: 7px 15px;
-                font-size: 15px;
-                margin-right: 5px;
-                cursor: pointer;
-                border: 1px solid #000000;
-                color: #000000;
-            }
-        }
-
-        .time_selected {
-            opacity: 1;
         }
     }
 
@@ -223,6 +194,18 @@
         padding: 10px;
         border-radius: 12px;
         width: 400px;
+
+        &-container {
+            justify-content: space-between;
+            margin-right: 10px;
+        }
+
+        .book_date, .book_info {
+            display: flex;
+            align-items: start;
+            flex-direction: column;
+            gap: 0;
+        }
 
         h3 {
             font-size: 15px;

@@ -16,11 +16,10 @@ interface Props {
     setPaymentVisible: (action: boolean) => void;
     setCurrentOrder: (action: any) => void;
     id: string;
-    setFormVisible?: (action: boolean) => void;
 }
 
 export const CheckoutForm = (props: Props) => {
-    const { setPaymentVisible, setCurrentOrder, id, setFormVisible } = props;
+    const { setPaymentVisible, setCurrentOrder, id } = props;
     const navigate = useNavigate();
     const stripe: any = useStripe();
     const elements = useElements();
@@ -82,7 +81,6 @@ export const CheckoutForm = (props: Props) => {
 
         setPaymentVisible(false);
         setCurrentOrder(null);
-        setFormVisible && setFormVisible(false);
         navigate('/more-services')
     };   
 

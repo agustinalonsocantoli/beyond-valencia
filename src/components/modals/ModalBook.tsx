@@ -6,7 +6,7 @@ import { SelectTime } from "../book/SelectTime";
 
 interface Props {
     open: boolean;
-    handleClose: () => void;    
+    handleClose: () => void;
     adults: number;
     children: number;
     infants: number;
@@ -20,20 +20,23 @@ interface Props {
     setChildren: (action: number) => void;
     setInfants: (action: number) => void;
     time: string | null;
-    setTime: (action: string) => void;
+    setTime: (action: string | null) => void;
     hours: string[]
+    date: any;
+    setDate: (date: any) => void;
+    setCurrentOrder: (order: any) => void;
 }
 
 export const ModalBook = (props: Props) => {
-    const { 
-        handleClose, 
+    const {
+        handleClose,
         open,
-        adults, 
-        children, 
-        subTotal, 
-        validateCode, 
-        handleGetCode, 
-        discount, 
+        adults,
+        children,
+        subTotal,
+        validateCode,
+        handleGetCode,
+        discount,
         totalPay,
         handleSubmit,
         infants,
@@ -42,19 +45,41 @@ export const ModalBook = (props: Props) => {
         setInfants,
         time,
         setTime,
-        hours
+        hours,
+        date,
+        setDate,
+        setCurrentOrder
     } = props;
 
-    return(
+    const handleCancel = () => {
+        setCurrentOrder(null);
+        setAdults(0)
+        setChildren(0)
+        setInfants(0)
+        setTime(null)
+        setDate(null)
+        handleClose();
+    };
+
+    return (
         <div>
             <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
             >
                 <div className="modal_book">
-                    <div>
+                    <div className="modal_flex">
+                        <SelectQuantity
+                            adults={adults}
+                            setAdults={setAdults}
+                            children={children}
+                            setChildren={setChildren}
+                            infants={infants}
+                            setInfants={setInfants}
+                        />
+
                         <CodeBook
                             adults={adults}
                             children={children}
@@ -63,34 +88,41 @@ export const ModalBook = (props: Props) => {
                             totalPay={totalPay}
                             handleGetCode={handleGetCode}
                             validateCode={validateCode}
+                            date={date}
+                            time={time}
                         />
+
+                        <button 
+                            className="btn_cancel"
+                            onClick={handleCancel}
+                        >
+                            CANCEL
+                        </button>
+                    </div>
+
+                    <div className="modal_flex">
+                        <div className="time_container">
+                            <h3>Select Departure Time</h3>
+
+                            <div className="time">
+                                {hours?.map((hour: string, index: number) => (
+                                    <SelectTime
+                                        time={time}
+                                        setTime={setTime}
+                                        hour={hour}
+                                        key={index}
+                                    />
+
+                                ))}
+                            </div>
+                        </div>
 
                         <FormBook
                             handleSubmit={handleSubmit}
                             labelButton="PAY NOW"
                             nameClass="book_form"
                         />
-                    </div>
 
-                    <div>
-                        {hours?.map((hour: string, index: number) => (
-                            <div key={index}>
-                                <SelectTime 
-                                    time={time}
-                                    setTime={setTime}
-                                    hour={hour}
-                                />
-                            </div>
-                        ))}
-
-                        <SelectQuantity 
-                            adults={adults}
-                            setAdults={setAdults}
-                            children={children}
-                            setChildren={setChildren}
-                            infants={infants}
-                            setInfants={setInfants}
-                        />
                     </div>
                 </div>
             </Modal>

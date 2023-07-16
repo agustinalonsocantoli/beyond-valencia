@@ -20,6 +20,7 @@ export const multimediaExperiences: MultimediaInt[] = [
         type: "image"
     },
     {
+        navigate: "/experiences/bike-ride",
         src: expB,
         h3: "Bike Tour to the seaside",
         p: "El cabañal",
@@ -27,6 +28,7 @@ export const multimediaExperiences: MultimediaInt[] = [
         type: "image"
     },
     {
+        navigate: "/experiences/bike-tour",
         src: expC,
         h3: "Bike tour to the Valencian Orchard",
         p: "La huerta valenciana",
@@ -34,6 +36,7 @@ export const multimediaExperiences: MultimediaInt[] = [
         type: "image"
     },
     {
+        navigate: "/experiences/wine-picnic",
         src: expD,
         h3: "All you can wine, while having a picnic",
         p: "Private and Regular",

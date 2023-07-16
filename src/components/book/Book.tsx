@@ -23,13 +23,13 @@ interface Props {
     setCurrentOrder: (order: any) => void;
     setTotalPay: (action: number | null) => void;
     totalPay: number | null;
-    setFormVisible: (action: boolean) => void;
     data: ExperiencesInt;
+    scroll: number;
 }
 
 export const Book = (props: Props) => {
     const dateNow: Date = new Date();
-    const { setPaymentVisible, setCurrentOrder, setTotalPay, totalPay, data } = props;
+    const { setPaymentVisible, setCurrentOrder, setTotalPay, totalPay, data, scroll } = props;
     const [date, setDate] = useState<any>(null);
     const [time, setTime] = useState<string | null>(null);
     const [hoursOptions, setHoursOptions] = useState<string[]>([]);
@@ -49,12 +49,12 @@ export const Book = (props: Props) => {
     // Modal Book
     const [openBook, setOpenBook] = useState<boolean>(false);
     const onOpenBook = () => setOpenBook(true);
-    const onCloseBook = () => { 
-        setOpenBook(false); 
+    const onCloseBook = () => {
+        setOpenBook(false);
     }
 
     useEffect(() => {
-        if(typeOrder) {
+        if (typeOrder) {
             const total = totalCalculate(adults, children, typeOrder);
             setSubTotal(total);
             setTotalPay(total)
@@ -82,13 +82,8 @@ export const Book = (props: Props) => {
         const group = groups?.find((group: OrdersGroupsInt) => group?.type === type)
 
         setCurrentOrder({
-            tourName: "One Day in Calpe",
             date: dayjs(date.$d).format('DD/MM/YYYY'),
-            time: time,
             typeOrder: type,
-            adults: adults,
-            children: children,
-            infants: infants,
         });
 
         setHoursOptions(group?.deapertureTime ? group?.deapertureTime : [])
@@ -101,10 +96,15 @@ export const Book = (props: Props) => {
 
         setCurrentOrder((prev: any) => ({
             ...prev,
+            tourName: data?.title,
             name,
             email,
             phone,
-            comment
+            comment,
+            time: time,
+            adults: adults,
+            children: children,
+            infants: infants,
         }));
 
         notifySuccess('We will proceed to the payment.');
@@ -144,54 +144,59 @@ export const Book = (props: Props) => {
     }
 
     return (
-        <div className="book">
-            <div className="book_fixed">
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <h3>Select Date</h3>
-                    <DateCalendar value={date} onChange={(value) => setDate(value)} minDate={dayjs(dateNow)} />
-                </LocalizationProvider>
+        <div 
+            className="book" 
+            style={{
+                top: `${scroll <= 40 && (scroll - 35)}%`
+            }}
+        >
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <h3>Select Date</h3>
+                <DateCalendar value={date} onChange={(value) => setDate(value)} minDate={dayjs(dateNow)} />
+            </LocalizationProvider>
 
-                <div style={{ opacity: date === null ? "0.5" : "1" }}>
-                    <SelectGroup
-                        handleSelect={handleSelect}
-                        groups={data?.groups}
-                    />
-                </div>
-
-                <ModalBook 
-                    handleClose={onCloseBook}
-                    open={openBook}
-                    adults={adults}
-                    children={children}
-                    discount={discount}
-                    handleGetCode={handleGetCode}
-                    validateCode={validateCode}
-                    totalPay={totalPay}
-                    subTotal={subTotal}
-                    handleSubmit={handleSubmit}
-                    infants={infants}
-                    setAdults={setAdults}
-                    setChildren={setChildren}
-                    setInfants={setInfants}
-                    time={time}
-                    setTime={setTime}
-                    hours={hoursOptions}
+            <div style={{ opacity: date === null ? "0.5" : "1" }}>
+                <SelectGroup
+                    handleSelect={handleSelect}
+                    groups={data?.groups}
                 />
-
-                <ToastContainer
-                    position="top-center"
-                    autoClose={2000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover={false}
-                    theme="colored"
-                />
-
             </div>
+
+            <ModalBook
+                handleClose={onCloseBook}
+                open={openBook}
+                adults={adults}
+                children={children}
+                discount={discount}
+                handleGetCode={handleGetCode}
+                validateCode={validateCode}
+                totalPay={totalPay}
+                subTotal={subTotal}
+                handleSubmit={handleSubmit}
+                infants={infants}
+                setAdults={setAdults}
+                setChildren={setChildren}
+                setInfants={setInfants}
+                time={time}
+                setTime={setTime}
+                hours={hoursOptions}
+                date={date && dayjs(date.$d).format('DD/MM')}
+                setCurrentOrder={setCurrentOrder}
+                setDate={setDate}
+            />
+
+            <ToastContainer
+                position="top-center"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover={false}
+                theme="colored"
+            />
         </div>
     );
 }

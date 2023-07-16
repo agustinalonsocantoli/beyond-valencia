@@ -17,12 +17,11 @@ interface Props {
     setPaymentVisible: (action: boolean) => void;
     totalPay: number | null;
     setCurrentOrder: (action: any) => void;
-    setFormVisible?: (action: boolean) => void;
     description: string;
 }
 
 export const Payments = (props: Props) => {
-    const { setPaymentVisible, totalPay, setCurrentOrder, setFormVisible, description } = props;
+    const { setPaymentVisible, totalPay, setCurrentOrder, description } = props;
     const navigate = useNavigate();
     const [ clientSecret, setClientSecret ] = useState<any>(null);
     const [ id, setId ] = useState<string>('');
@@ -76,7 +75,6 @@ export const Payments = (props: Props) => {
                 setPaymentVisible={setPaymentVisible} 
                 setCurrentOrder={setCurrentOrder} 
                 id={id} 
-                setFormVisible={setFormVisible}
                 />
             </Elements>
             </div>
