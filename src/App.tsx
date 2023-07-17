@@ -9,12 +9,14 @@ import { Details } from "./pages/Details";
 import { Options } from "./pages/Options";
 import { Lockers } from "./pages/Lockers";
 import { Bikes } from "./pages/Bikes";
+import { StyledEngineProvider } from "@mui/material";
 
 function App() {
 
   return (
     <div className="app">
       <Router basename="/">
+        <StyledEngineProvider injectFirst>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="experiences/*" element={<Experiences />} />
@@ -28,6 +30,7 @@ function App() {
             <Route path="bikes/*" element={<Bikes />} />
             <Route path="*" element={<Navigate to={"/"} />} />
           </Routes>
+        </StyledEngineProvider>
       </Router>
     </div>
   )
