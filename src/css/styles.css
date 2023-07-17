@@ -808,7 +808,7 @@ body {
   }
 }
 
-.css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
+.MuiDrawer-paper {
   width: 300px !important;
   box-shadow: 0 4px 30px rgba(255, 255, 255, 0.1) !important;
   backdrop-filter: blur(13px) !important;
@@ -818,7 +818,7 @@ body {
   padding: 30px 20px 0 20px !important;
   gap: 15px !important;
 }
-.css-4t3x6l-MuiPaper-root-MuiDrawer-paper a {
+.MuiDrawer-paper a {
   color: #000000 !important;
   text-decoration: none !important;
   display: block !important;
@@ -826,7 +826,7 @@ body {
   text-align: center !important;
   cursor: pointer !important;
 }
-.css-4t3x6l-MuiPaper-root-MuiDrawer-paper a span {
+.MuiDrawer-paper a span {
   padding: 7px !important;
   display: block !important;
   width: 100% !important;
@@ -834,31 +834,31 @@ body {
   font-weight: 300 !important;
   border-radius: 8px !important;
 }
-.css-4t3x6l-MuiPaper-root-MuiDrawer-paper a span:hover {
+.MuiDrawer-paper a span:hover {
   background: rgba(255, 230, 103, 0.5) !important;
 }
-.css-4t3x6l-MuiPaper-root-MuiDrawer-paper a span:active {
+.MuiDrawer-paper a span:active {
   transform: scale(0.9) !important;
 }
-.css-4t3x6l-MuiPaper-root-MuiDrawer-paper .banner {
+.MuiDrawer-paper .banner {
   background: rgba(255, 230, 103, 0.3) !important;
   padding: 15px !important;
   border-radius: 12px !important;
   color: #FFFFFF !important;
   margin-top: 15px !important;
 }
-.css-4t3x6l-MuiPaper-root-MuiDrawer-paper .banner h3 {
+.MuiDrawer-paper .banner h3 {
   text-align: center !important;
   margin-bottom: 10px !important;
   font-size: 20px !important;
 }
-.css-4t3x6l-MuiPaper-root-MuiDrawer-paper .banner img {
+.MuiDrawer-paper .banner img {
   object-fit: contain !important;
   height: auto !important;
   width: 100% !important;
   border-radius: 8px !important;
 }
-.css-4t3x6l-MuiPaper-root-MuiDrawer-paper .banner span {
+.MuiDrawer-paper .banner span {
   padding: 7px !important;
   margin-top: 10px !important;
   display: block !important;
@@ -873,10 +873,10 @@ body {
   text-transform: uppercase !important;
   cursor: pointer !important;
 }
-.css-4t3x6l-MuiPaper-root-MuiDrawer-paper .banner span:hover {
+.MuiDrawer-paper .banner span:hover {
   background: rgba(255, 230, 103, 0.5) !important;
 }
-.css-4t3x6l-MuiPaper-root-MuiDrawer-paper .banner span:active {
+.MuiDrawer-paper .banner span:active {
   transform: scale(0.9) !important;
 }
 
