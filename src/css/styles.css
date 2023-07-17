@@ -1140,12 +1140,12 @@ body {
   }
 }
 
-.css-1elwnq4-MuiPaper-root-MuiAccordion-root {
+.MuiAccordion-root {
   box-shadow: none !important;
   border-bottom: 1px solid #000000;
 }
 
-.css-1elwnq4-MuiPaper-root-MuiAccordion-root:before {
+.MuiAccordion-root::before {
   background: none !important;
 }
 
