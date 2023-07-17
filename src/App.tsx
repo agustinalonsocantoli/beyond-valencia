@@ -18,9 +18,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="experiences/*" element={<Experiences />} />
-            <Route path="experiences/:slug" element={<Details />} />
+            <Route path="experiences/:slug" element={<Details title="Experiences" />} />
             <Route path="daytrips/*" element={<Daytrips />} />
-            <Route path="daytrips/slug" element={<Daytrips />} />
+            <Route path="daytrips/:slug" element={<Details title="DayTrips"/>} />
             {/* <Route path="food/*" element={<Food />} /> */}
             {/* <Route path="aboutus/*" element={<div>About Us</div>} /> */}
             <Route path="more-services/*" element={<Options />} />

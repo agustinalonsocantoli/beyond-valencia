@@ -809,75 +809,75 @@ body {
 }
 
 .css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
-  width: 300px;
-  box-shadow: 0 4px 30px rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(13px);
+  width: 300px !important;
+  box-shadow: 0 4px 30px rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(13px) !important;
   background: rgba(0, 0, 0, 0.1) !important;
-  display: flex;
-  flex-direction: column;
-  padding: 30px 20px 0 20px;
-  gap: 15px;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 30px 20px 0 20px !important;
+  gap: 15px !important;
 }
 .css-4t3x6l-MuiPaper-root-MuiDrawer-paper a {
-  color: #000000;
-  text-decoration: none;
-  display: block;
-  width: 100%;
-  text-align: center;
-  cursor: pointer;
+  color: #000000 !important;
+  text-decoration: none !important;
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  cursor: pointer !important;
 }
 .css-4t3x6l-MuiPaper-root-MuiDrawer-paper a span {
-  padding: 7px;
-  display: block;
-  width: 100%;
-  font-size: 20px;
-  font-weight: 300;
-  border-radius: 8px;
+  padding: 7px !important;
+  display: block !important;
+  width: 100% !important;
+  font-size: 20px !important;
+  font-weight: 300 !important;
+  border-radius: 8px !important;
 }
 .css-4t3x6l-MuiPaper-root-MuiDrawer-paper a span:hover {
   background: rgba(255, 230, 103, 0.5) !important;
 }
 .css-4t3x6l-MuiPaper-root-MuiDrawer-paper a span:active {
-  transform: scale(0.9);
+  transform: scale(0.9) !important;
 }
 .css-4t3x6l-MuiPaper-root-MuiDrawer-paper .banner {
-  background: rgba(255, 230, 103, 0.3);
-  padding: 15px;
-  border-radius: 12px;
-  color: #FFFFFF;
-  margin-top: 15px;
+  background: rgba(255, 230, 103, 0.3) !important;
+  padding: 15px !important;
+  border-radius: 12px !important;
+  color: #FFFFFF !important;
+  margin-top: 15px !important;
 }
 .css-4t3x6l-MuiPaper-root-MuiDrawer-paper .banner h3 {
-  text-align: center;
-  margin-bottom: 10px;
-  font-size: 20px;
+  text-align: center !important;
+  margin-bottom: 10px !important;
+  font-size: 20px !important;
 }
 .css-4t3x6l-MuiPaper-root-MuiDrawer-paper .banner img {
-  object-fit: contain;
-  height: auto;
-  width: 100%;
-  border-radius: 8px;
+  object-fit: contain !important;
+  height: auto !important;
+  width: 100% !important;
+  border-radius: 8px !important;
 }
 .css-4t3x6l-MuiPaper-root-MuiDrawer-paper .banner span {
-  padding: 7px;
-  margin-top: 10px;
-  display: block;
-  width: 100%;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 8px;
-  background: rgb(255, 230, 103);
-  text-align: center;
-  margin-top: 30px;
-  color: #000000;
-  text-transform: uppercase;
-  cursor: pointer;
+  padding: 7px !important;
+  margin-top: 10px !important;
+  display: block !important;
+  width: 100% !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  background: rgb(255, 230, 103) !important;
+  text-align: center !important;
+  margin-top: 30px !important;
+  color: #000000 !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
 }
 .css-4t3x6l-MuiPaper-root-MuiDrawer-paper .banner span:hover {
   background: rgba(255, 230, 103, 0.5) !important;
 }
 .css-4t3x6l-MuiPaper-root-MuiDrawer-paper .banner span:active {
-  transform: scale(0.9);
+  transform: scale(0.9) !important;
 }
 
 .footer {

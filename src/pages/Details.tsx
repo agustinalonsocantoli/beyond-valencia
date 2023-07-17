@@ -18,18 +18,29 @@ import { FaUniversalAccess } from "react-icons/fa"
 import { SlLocationPin } from "react-icons/sl"
 import { MdAccessible } from "react-icons/md"
 // Data
-import { experiencesApi } from '../data/Api/experiences';
+import { ExperiencesInt, experiencesApi } from '../data/Api/experiences';
 import { Navigate, useParams } from 'react-router-dom';
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 import { BsTicket } from 'react-icons/bs';
+import { DaystripsInt, daytripsApi } from '../data/Api/daytrips';
 
-export const Details = () => {
+interface Props {
+    title: string;
+}
+export const Details = (props: Props) => {
+    const { title } = props;
     const { slug } = useParams();
     const [paymentVisible, setPaymentVisible] = useState<boolean>(false);
     const [currentOrder, setCurrentOrder] = useState<any>(null);
     const [totalPay, setTotalPay] = useState<number | null>(null);
     const [scroll, setScroll] = useState<number>(0)
-    const data = experiencesApi.find(((experience: any) => experience?.slug === slug))
+
+    let data: ExperiencesInt | DaystripsInt | undefined;
+    data = experiencesApi.find(((experience: ExperiencesInt) => experience?.slug === slug)) ||
+    daytripsApi.find(((daytrip: DaystripsInt) => daytrip?.slug === slug))
+
+
+    console.log(experiencesApi.find(((experience: ExperiencesInt) => experience?.slug === slug)));
     
     useEffect(() => { console.log(currentOrder) }, [currentOrder])
 
@@ -54,7 +65,7 @@ export const Details = () => {
         data ?
             <div className="details">
 
-                <Navbar title={"Experiences"} subtitle={"Experiences"} />
+                <Navbar title={title} subtitle={title} />
 
                 <div className="details_exposure">
                     <Exposure data={data?.multimedia} />
