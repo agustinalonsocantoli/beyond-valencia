@@ -99,4 +99,5 @@ export const bikeRide: ExperiencesInt = {
     ],
     policies: "Cancel up to 72 hours in advance for a full refund",
     conditions: "Beyond Valencia has embraced the United Nations' 17 Sustainable Development Goals (SDGs) as a global framework for promoting sustainable development until 2030. As part of our commitment to sustainable tourism practices, we have incorporated four of these SDGs into our business operations: Good Health and Wellbeing, Industry, Innovation and Infrastructure, Sustainable Cities and Communities, and Climate Action.",
+    published: true
 }

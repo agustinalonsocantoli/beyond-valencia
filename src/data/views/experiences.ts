@@ -49,19 +49,19 @@ export const dataExperiences: DataInt = {
     h2: "PERSONALIZED EXPERIENCE",
     content: [
         {
-            link: "",
+            link: "/experiences/wine-painting",
             img: imgS1,
             type: "image",
             h3: "All you can wine while painting in the dark",
         },
         {
-            link: "",
+            link: "/experiences/brunch-boat",
             img: imgS2,
             type: "image",
             h3: "Saturday we brunch on a boat",
         },
         {
-            link: "",
+            link: "/experiences/private-boat",
             img: imgS3,
             type: "image",
             h3: "Private boat expeirence",

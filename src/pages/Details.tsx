@@ -37,11 +37,11 @@ export const Details = (props: Props) => {
 
     let data: ExperiencesInt | DaystripsInt | undefined;
     data = experiencesApi.find(((experience: ExperiencesInt) => experience?.slug === slug)) ||
-    daytripsApi.find(((daytrip: DaystripsInt) => daytrip?.slug === slug))
+        daytripsApi.find(((daytrip: DaystripsInt) => daytrip?.slug === slug))
 
 
     console.log(experiencesApi.find(((experience: ExperiencesInt) => experience?.slug === slug)));
-    
+
     useEffect(() => { console.log(currentOrder) }, [currentOrder])
 
     useEffect(() => {
@@ -54,7 +54,7 @@ export const Details = (props: Props) => {
             setScroll(scrollTotal);
         }
 
-        window.addEventListener('scroll' ,handleScroll , false);
+        window.addEventListener('scroll', handleScroll, false);
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
@@ -74,7 +74,7 @@ export const Details = (props: Props) => {
                 <div className="details_description">
                     <div className="description">
                         <h1>{data?.title}</h1>
-                        <p className='subtitle'><strong>{data?.subtitle?.label}</strong>: {data?.subtitle?.text}</p>
+                        <p className='subtitle'><strong>{data?.subtitle?.label && `${data?.subtitle?.label}: `}</strong>{data?.subtitle?.text}</p>
 
                         <div className="description_slogan">
                             <p>
@@ -96,18 +96,22 @@ export const Details = (props: Props) => {
                             ))}
                         </ul>
 
-                        <h3>Included</h3>
-                        <ul className="highlights">
-                            {data?.included?.map((item: any, index: number) => (
-                                <li style={{ listStyle: 'none' }} key={index}>
-                                    {item?.state
-                                        ? <RxCheck style={{ color: 'green', marginRight: 5, }} />
-                                        : <RxCross1 style={{ color: 'red', marginRight: 5 }} />
-                                    }
-                                    {item?.text}
-                                </li>
-                            ))}
-                        </ul>
+                        {data?.included &&
+                            <>
+                                <h3>Included</h3>
+                                <ul className="highlights">
+                                    {data?.included?.map((item: any, index: number) => (
+                                        <li style={{ listStyle: 'none' }} key={index}>
+                                            {item?.state
+                                                ? <RxCheck style={{ color: 'green', marginRight: 5, }} />
+                                                : <RxCross1 style={{ color: 'red', marginRight: 5 }} />
+                                            }
+                                            {item?.text}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </>
+                        }
 
                         <h3>Details</h3>
                         <div className="information">
@@ -137,19 +141,21 @@ export const Details = (props: Props) => {
                             </AccordionDetails>
                         </Accordion>
 
-                        <Accordion>
-                            <AccordionSummary
-                                expandIcon={<RiArrowDownSFill />}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header"
-                            >
-                                <p>Cancelation polices</p>
-                            </AccordionSummary>
+                        {data?.policies &&
+                            <Accordion>
+                                <AccordionSummary
+                                    expandIcon={<RiArrowDownSFill />}
+                                    aria-controls="panel1a-content"
+                                    id="panel1a-header"
+                                >
+                                    <p>Cancelation polices</p>
+                                </AccordionSummary>
 
-                            <AccordionDetails>
-                                <p>{data?.policies}</p>
-                            </AccordionDetails>
-                        </Accordion>
+                                <AccordionDetails>
+                                    <p>{data?.policies}</p>
+                                </AccordionDetails>
+                            </Accordion>
+                        }
 
                         <Accordion style={{ marginBottom: "50px" }}>
                             <AccordionSummary
@@ -166,16 +172,18 @@ export const Details = (props: Props) => {
                         </Accordion>
                     </div>
 
-                    <div className='book_container'>
-                        <Book
-                            setCurrentOrder={setCurrentOrder}
-                            setPaymentVisible={setPaymentVisible}
-                            setTotalPay={setTotalPay}
-                            totalPay={totalPay}
-                            data={data}
-                            scroll={scroll}
-                        />
-                    </div>
+                    { data?.published &&
+                        <div className='book_container'>
+                            <Book
+                                setCurrentOrder={setCurrentOrder}
+                                setPaymentVisible={setPaymentVisible}
+                                setTotalPay={setTotalPay}
+                                totalPay={totalPay}
+                                data={data}
+                                scroll={scroll}
+                            />
+                        </div>
+                    }
                 </div>
 
                 {paymentVisible &&

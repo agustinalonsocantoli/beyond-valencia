@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { PricesInt } from "../../interfaces/books.model";
+
 interface Props {
     adults: number;
     children: number;
@@ -9,17 +10,27 @@ interface Props {
     totalPay: number | null;
     date: any;
     time: string | null;
+    prices: PricesInt | undefined;
 }
 
 export const CodeBook = (props: Props) => {
-    const { adults, children, subTotal, validateCode, handleGetCode, discount, totalPay, date, time } = props;
+    const { adults, children, subTotal, validateCode, handleGetCode, discount, totalPay, date, time, prices } = props;
 
     return (
         <div className="book_total">
             <div className="book_total-container">
                 <div className="book_info">
-                    <h3>Adults {adults !== null ? adults : 0} x €35</h3>
-                    <h3>Children {children !== null ? children : 0} x €30</h3>
+                    {prices?.adults && 
+                        <h3>
+                            Adults {adults !== null ? adults : 0} x €{prices?.adults}
+                        </h3>
+                    }
+
+                    {prices?.children && 
+                        <h3>
+                            Children {children !== null ? children : 0} x €{prices?.children}
+                        </h3>
+                    }
                 </div>
 
                 <div className="book_date">

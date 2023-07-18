@@ -7,12 +7,15 @@ import { villareal } from "./daytrips/villareal";
 import { albufera } from "./daytrips/albufera";
 import { sunset } from "./daytrips/sunset";
 import { chulilla } from "./daytrips/chulilla";
+import { winary } from "./daytrips/winary";
+import { madrid } from "./daytrips/madrid";
+import { boat } from "./daytrips/boat";
 
 export interface DaystripsInt {
     slug: string;
     title: string;
     subtitle: {
-        label: string;
+        label: string | null;
         text: string;
     }
     headline: string;
@@ -40,13 +43,17 @@ export interface DaystripsInt {
         }[];
     takeWithYou: string[];
     groups: OrdersGroupsInt[];
-    policies: string;
+    policies: string | null;
     conditions: string;
+    published: boolean;
 }
 
 export const daytripsApi: DaystripsInt[] = [
     villareal,
     albufera,
     sunset,
-    chulilla
+    chulilla,
+    winary,
+    madrid,
+    boat
 ]

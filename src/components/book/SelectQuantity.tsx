@@ -7,10 +7,11 @@ interface Props {
     setChildren: (action: number) => void;
     infants: number;
     setInfants: (action: number) => void;
+    isDisable?: boolean;
 }
 
 export const SelectQuantity = (props: Props) => {
-    const { adults, setAdults, children, setChildren, infants, setInfants } = props;
+    const { adults, setAdults, children, setChildren, infants, setInfants, isDisable } = props;
 
     return(
         <div className="amount_conteiner">
@@ -20,7 +21,10 @@ export const SelectQuantity = (props: Props) => {
                     <p>Age 18 - 99</p>
                 </div>
 
-                <Orders type={adults} setType={setAdults} />
+                <Orders 
+                    type={adults} 
+                    setType={setAdults} 
+                />
             </div>
 
             <div className="book_amount">
@@ -29,7 +33,18 @@ export const SelectQuantity = (props: Props) => {
                     <p>Age 6 - 17</p>
                 </div>
 
-                <Orders type={children} setType={setChildren} />
+                {isDisable
+                    ?
+                    <div className="not_amount">
+                        <p>No disponible</p>    
+                    </div>
+                    :
+                    <Orders 
+                        type={children} 
+                        setType={setChildren} 
+                        isDisable={isDisable}
+                    />
+                }
             </div>
 
             <div className="book_amount">
@@ -38,7 +53,18 @@ export const SelectQuantity = (props: Props) => {
                     <p>Age 0 - 5</p>
                 </div>
 
-                <Orders type={infants} setType={setInfants} />
+                {isDisable
+                    ?
+                    <div className="not_amount">
+                        <p>No disponible</p>    
+                    </div>
+                    :
+                    <Orders 
+                        type={infants} 
+                        setType={setInfants}
+                        isDisable={isDisable} 
+                    />
+                }
             </div>
         </div>
     );

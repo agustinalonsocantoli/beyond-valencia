@@ -15,7 +15,8 @@ import { ModalBook } from "../modals/ModalBook"
 // Interfaces
 import { notifyError, notifySuccess } from "../../shared/notify";
 import { ExperiencesInt } from "../../data/Api/experiences";
-import { OrdersGroupsInt } from "../../interfaces/books.model";
+import { OrdersGroupsInt, PricesInt } from "../../interfaces/books.model";
+import { DaystripsInt } from "../../data/Api/daytrips";
 ;
 
 interface Props {
@@ -23,7 +24,7 @@ interface Props {
     setCurrentOrder: (order: any) => void;
     setTotalPay: (action: number | null) => void;
     totalPay: number | null;
-    data: ExperiencesInt;
+    data: ExperiencesInt | DaystripsInt;
     scroll: number;
 }
 
@@ -41,6 +42,7 @@ export const Book = (props: Props) => {
     const [discount, setDiscount] = useState<number>(0);
     const [isDiscountAdd, setIsDescountAdd] = useState<boolean>(false);
     const [codeDiscount, setCodeDiscount] = useState<string | null>(null);
+    const [prices, setPrices] = useState<PricesInt>()
 
     const codesFive = import.meta.env.VITE_BASE_DISCOUNT_FIVE.split(',')
     const codesTen = import.meta.env.VITE_BASE_DISCOUNT_TEN.split(',')
@@ -55,24 +57,19 @@ export const Book = (props: Props) => {
 
     useEffect(() => {
         if (typeOrder) {
-            const total = totalCalculate(adults, children, typeOrder);
+            const total = totalCalculate(adults, children);
             setSubTotal(total);
             setTotalPay(total)
         }
 
     }, [adults, children, infants])
 
-    const totalCalculate = (adults: number, children: number, typeOrder: string) => {
+    const totalCalculate = (adults: number, children: number) => {
         let totalAdults = 0;
         let totalChildren = 0;
 
-        if (typeOrder === 'group') {
-            totalAdults = adults > 0 ? (adults * 25) : 0;
-            totalChildren = children > 0 ? (children * 20) : 0;
-        } else if (typeOrder === 'private') {
-            totalAdults = adults > 0 ? (adults * 35) : 0;
-            totalChildren = children > 0 ? (children * 30) : 0;
-        }
+        if(prices?.adults) totalAdults = adults > 0 ? (adults * prices?.adults) : 0;
+        if(prices?.children) totalChildren = children > 0 ? (children * prices?.children) : 0;
 
         return totalAdults + totalChildren;
     }
@@ -86,6 +83,7 @@ export const Book = (props: Props) => {
             typeOrder: type,
         });
 
+        setPrices(group?.prices)
         setHoursOptions(group?.deapertureTime ? group?.deapertureTime : [])
         setTypeOrder(type);
         onOpenBook();
@@ -183,6 +181,7 @@ export const Book = (props: Props) => {
                 date={date && dayjs(date.$d).format('DD/MM')}
                 setCurrentOrder={setCurrentOrder}
                 setDate={setDate}
+                prices={prices}
             />
 
             <ToastContainer

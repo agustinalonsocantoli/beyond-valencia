@@ -50,19 +50,19 @@ export const dataDaytrips: DataInt = {
     h2: "SPORTS EXPERIENCES",
     content: [
         {
-            link: "",
+            link: "/daytrips/visiting-winary",
             img: imgS1,
             type: "image",
             h3: "Visiting three wineries in one day",
         },
         {
-            link: "",
+            link: "/daytrips/madrid",
             img: imgS2,
             type: "image",
             h3: "Private transfer to Madrid, curated experiences available",
         },
         {
-            link: "",
+            link: "/daytrips/boat",
             img: imgS3,
             type: "image",
             h3: "Private dining & sunset on a boat",

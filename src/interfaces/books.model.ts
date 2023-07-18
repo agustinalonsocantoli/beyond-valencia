@@ -16,9 +16,11 @@ export interface OrderBookInt {
 export interface OrdersGroupsInt {
     title: string;
     type: string;
-    prices: {
-        adults: number;
-        children: number | null;
-    }
+    prices: PricesInt
     deapertureTime: string[];
+}
+
+export interface PricesInt {
+    adults: number;
+    children: number | null;
 }

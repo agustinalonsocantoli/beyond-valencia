@@ -3,6 +3,7 @@ import { FormBook } from "../shared/Form";
 import { CodeBook } from "../book/CodeBook";
 import { SelectQuantity } from "../book/SelectQuantity";
 import { SelectTime } from "../book/SelectTime";
+import { PricesInt } from "../../interfaces/books.model";
 
 interface Props {
     open: boolean;
@@ -25,6 +26,7 @@ interface Props {
     date: any;
     setDate: (date: any) => void;
     setCurrentOrder: (order: any) => void;
+    prices: PricesInt | undefined;
 }
 
 export const ModalBook = (props: Props) => {
@@ -48,7 +50,8 @@ export const ModalBook = (props: Props) => {
         hours,
         date,
         setDate,
-        setCurrentOrder
+        setCurrentOrder,
+        prices
     } = props;
 
     const handleCancel = () => {
@@ -78,6 +81,7 @@ export const ModalBook = (props: Props) => {
                             setChildren={setChildren}
                             infants={infants}
                             setInfants={setInfants}
+                            isDisable={prices?.children ? false : true}
                         />
 
                         <CodeBook
@@ -90,6 +94,7 @@ export const ModalBook = (props: Props) => {
                             validateCode={validateCode}
                             date={date}
                             time={time}
+                            prices={prices}
                         />
 
                         <button 
