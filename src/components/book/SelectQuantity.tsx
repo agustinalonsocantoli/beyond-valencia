@@ -36,7 +36,7 @@ export const SelectQuantity = (props: Props) => {
                 {isDisable
                     ?
                     <div className="not_amount">
-                        <p>No disponible</p>    
+                        <p>Not available</p>    
                     </div>
                     :
                     <Orders 
@@ -56,7 +56,7 @@ export const SelectQuantity = (props: Props) => {
                 {isDisable
                     ?
                     <div className="not_amount">
-                        <p>No disponible</p>    
+                        <p>Not available</p>    
                     </div>
                     :
                     <Orders 
