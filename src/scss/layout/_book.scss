@@ -50,6 +50,14 @@
         min-width: 350px;
         margin-bottom: 10px;
 
+        @include m.phone {
+            min-width: 200px;
+        }
+
+        @include m.tablet {
+            min-width: 250px;
+        }
+
         .type-flex {
             display: flex;
             align-items: center;
@@ -114,6 +122,10 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: 10px;
+
+        @include m.phone {
+            width: 300px;
+        }
 
         h3 {
             font-size: 18px;
@@ -205,6 +217,13 @@
         padding: 10px;
         border-radius: 12px;
         width: 400px;
+
+        @include m.phone {
+            width: 300px;
+        }
+        @include m.tablet {
+            width: 350px;
+        }
 
         &-container {
             justify-content: space-between;

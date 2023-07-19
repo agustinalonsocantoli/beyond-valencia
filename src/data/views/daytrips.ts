@@ -14,7 +14,7 @@ export const multimediaDaytrips: MultimediaInt[] = [
     {
         navigate: "/daytrips/chulilla",
         src: dayA,
-        h3: "Chulilla",
+        h3: "Chulilla and the hanging bridges",
         p: "Chulilla",
         span: "Destination:",
         type: "image"

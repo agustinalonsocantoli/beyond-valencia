@@ -9,12 +9,15 @@ import { Details } from "./pages/Details";
 import { Options } from "./pages/Options";
 import { Lockers } from "./pages/Lockers";
 import { Bikes } from "./pages/Bikes";
+import ScrollToTop from "./components/helpers/ScrollToTop";
 
 function App() {
 
   return (
     <div className="app">
       <Router basename="/">
+        <ScrollToTop />
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="experiences/*" element={<Experiences />} />

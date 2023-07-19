@@ -9,12 +9,15 @@
 
     @include m.phone {
         grid-template-columns: repeat(1, 1fr);
+        padding: 0 3% 10px 3%;
     }
     @include m.tablet {
         grid-template-columns: repeat(1, 1fr);
+        padding: 0 3% 10px 3%;
     }
     @include m.desktopS {
         grid-template-columns: repeat(1, 1fr);
+        padding: 0 3% 10px 3%;
     }
 
     h3 {

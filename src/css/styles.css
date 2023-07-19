@@ -509,16 +509,19 @@ body {
 @media (max-width: 480px) {
   .exposure {
     grid-template-columns: repeat(1, 1fr);
+    padding: 0 3% 10px 3%;
   }
 }
 @media (min-width: 481px) and (max-width: 768px) {
   .exposure {
     grid-template-columns: repeat(1, 1fr);
+    padding: 0 3% 10px 3%;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .exposure {
     grid-template-columns: repeat(1, 1fr);
+    padding: 0 3% 10px 3%;
   }
 }
 .exposure h3 {
@@ -999,7 +1002,8 @@ body {
   }
 }
 .details_description .description h1 {
-  font-size: 60px;
+  text-decoration: underline;
+  font-size: 50px;
   text-align: left;
 }
 @media (max-width: 480px) {
@@ -1088,22 +1092,34 @@ body {
 }
 @media (max-width: 480px) {
   .details_description .description .information {
-    column-gap: 30px;
-    row-gap: 15px;
+    column-gap: 20px;
+    row-gap: 30px;
     width: 95%;
     margin: auto;
     margin-bottom: 40px;
   }
 }
 .details_description .description .information .location {
-  width: 120%;
+  width: 100%;
+}
+@media (max-width: 480px) {
+  .details_description .description .information .location {
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    text-align: center;
+  }
 }
 .details_description .description .information .location svg {
   font-size: 75px;
 }
 @media (max-width: 480px) {
   .details_description .description .information .location svg {
-    font-size: 65px;
+    margin-top: 30px;
+    font-size: 30px;
   }
 }
 .details_description .description .information p {
@@ -1115,7 +1131,13 @@ body {
 }
 @media (max-width: 480px) {
   .details_description .description .information p {
-    font-size: 13px;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    text-align: center;
   }
 }
 .details_description .description .information p svg {
@@ -1123,7 +1145,7 @@ body {
 }
 @media (max-width: 480px) {
   .details_description .description .information p svg {
-    font-size: 45px;
+    font-size: 30px;
   }
 }
 .details_description .description_policy p {
@@ -1195,6 +1217,16 @@ body {
   min-width: 350px;
   margin-bottom: 10px;
 }
+@media (max-width: 480px) {
+  .book_type {
+    min-width: 200px;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .book_type {
+    min-width: 250px;
+  }
+}
 .book_type .type-flex {
   display: flex;
   align-items: center;
@@ -1246,6 +1278,11 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+}
+@media (max-width: 480px) {
+  .book_amount {
+    width: 300px;
+  }
 }
 .book_amount h3 {
   font-size: 18px;
@@ -1323,6 +1360,16 @@ body {
   padding: 10px;
   border-radius: 12px;
   width: 400px;
+}
+@media (max-width: 480px) {
+  .book_total {
+    width: 300px;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .book_total {
+    width: 350px;
+  }
 }
 .book_total-container {
   justify-content: space-between;
@@ -2872,6 +2919,27 @@ body {
   padding: 30px;
   border-radius: 12px;
 }
+@media (max-width: 480px) {
+  .modal_book {
+    flex-direction: column;
+    gap: 20px;
+    width: 95%;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .modal_book {
+    flex-direction: column;
+    gap: 20px;
+    width: 90%;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .modal_book {
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+  }
+}
 
 .time_container {
   padding: 20px;
@@ -2916,17 +2984,31 @@ body {
   gap: 10px;
 }
 .modal_flex .btn_cancel {
-  margin: -25px auto 0 auto;
+  margin: -20px auto 0 0;
   border: none;
   background-color: rgba(0, 0, 0, 0.7);
   padding: 8px 15px;
   border-radius: 20px;
-  width: 50%;
   color: #FFFFFF;
   cursor: pointer;
   font-family: "Poppins", sans-serif;
   font-weight: 300;
-  font-size: 15px;
+  font-size: 13px;
+}
+@media (max-width: 480px) {
+  .modal_flex .btn_cancel {
+    margin: 0 auto 0 auto;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .modal_flex .btn_cancel {
+    margin: 0 auto 0 auto;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .modal_flex .btn_cancel {
+    margin: 0 auto 0 auto;
+  }
 }
 .modal_flex .btn_cancel:active {
   transform: scale(0.9);

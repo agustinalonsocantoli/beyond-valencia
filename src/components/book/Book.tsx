@@ -149,7 +149,7 @@ export const Book = (props: Props) => {
             }}
         >
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <h3>Select Date</h3>
+                <h3>Choose a Date</h3>
                 <DateCalendar value={date} onChange={(value) => setDate(value)} minDate={dayjs(dateNow)} />
             </LocalizationProvider>
 

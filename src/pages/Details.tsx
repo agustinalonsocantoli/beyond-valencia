@@ -34,6 +34,7 @@ export const Details = (props: Props) => {
     const [currentOrder, setCurrentOrder] = useState<any>(null);
     const [totalPay, setTotalPay] = useState<number | null>(null);
     const [scroll, setScroll] = useState<number>(0)
+    const isMobile = window.innerWidth < 1025 ? true : false;
 
     let data: ExperiencesInt | DaystripsInt | undefined;
     data = experiencesApi.find(((experience: ExperiencesInt) => experience?.slug === slug)) ||
@@ -89,14 +90,18 @@ export const Details = (props: Props) => {
                             </p>
                         </div>
 
-                        <h3>Highlights</h3>
-                        <ul className="highlights">
-                            {data?.highlights?.map((item: string, index: number) => (
-                                <li key={index}>{item}</li>
-                            ))}
-                        </ul>
+                        {!isMobile &&
+                            <>
+                                <h3>Highlights</h3>
+                                <ul className="highlights">
+                                    {data?.highlights?.map((item: string, index: number) => (
+                                        <li key={index}>{item}</li>
+                                    ))}
+                                </ul>
+                            </>
+                        }
 
-                        {data?.included &&
+                        {(data?.included && !isMobile) &&
                             <>
                                 <h3>Included</h3>
                                 <ul className="highlights">
@@ -125,7 +130,51 @@ export const Details = (props: Props) => {
                             <p><MdAccessible /><strong>Mobility</strong> {data?.details?.mobility}</p>
                         </div>
 
+                        {isMobile &&
+                            <>
+                                <Accordion>
+                                    <AccordionSummary
+                                        expandIcon={<RiArrowDownSFill />}
+                                        aria-controls="panel1a-content"
+                                        id="panel1a-header"
+                                    >
+                                        <p>Highlights</p>
+                                    </AccordionSummary>
 
+                                    <AccordionDetails>
+                                        <ul className="highlights">
+                                            {data?.highlights?.map((item: string, index: number) => (
+                                                <li key={index}>{item}</li>
+                                            ))}
+                                        </ul>
+                                    </AccordionDetails>
+                                </Accordion>
+
+                                <Accordion>
+                                    <AccordionSummary
+                                        expandIcon={<RiArrowDownSFill />}
+                                        aria-controls="panel1a-content"
+                                        id="panel1a-header"
+                                    >
+                                        <p>Included</p>
+                                    </AccordionSummary>
+
+                                    <AccordionDetails>
+                                        <ul className="highlights">
+                                            {data?.included?.map((item: any, index: number) => (
+                                                <li style={{ listStyle: 'none' }} key={index}>
+                                                    {item?.state
+                                                        ? <RxCheck style={{ color: 'green', marginRight: 5, }} />
+                                                        : <RxCross1 style={{ color: 'red', marginRight: 5 }} />
+                                                    }
+                                                    {item?.text}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </AccordionDetails>
+                                </Accordion>
+                            </>
+                        }
 
                         <Accordion>
                             <AccordionSummary
@@ -172,7 +221,7 @@ export const Details = (props: Props) => {
                         </Accordion>
                     </div>
 
-                    { data?.published &&
+                    {data?.published &&
                         <div className='book_container'>
                             <Book
                                 setCurrentOrder={setCurrentOrder}

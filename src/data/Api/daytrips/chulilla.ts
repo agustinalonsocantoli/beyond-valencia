@@ -8,7 +8,7 @@ import { DaystripsInt } from "../daytrips"
 
 export const chulilla: DaystripsInt = {
     slug: "chulilla",
-    title: "Chulilla",
+    title: "Chulilla and the hanging bridges",
     subtitle: {
         label: "Destination",
         text: "Chulilla"

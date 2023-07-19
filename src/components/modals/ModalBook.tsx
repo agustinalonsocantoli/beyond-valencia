@@ -64,6 +64,8 @@ export const ModalBook = (props: Props) => {
         handleClose();
     };
 
+    const isMobile = window.innerWidth < 1025 ? true : false;
+
     return (
         <div>
             <Modal
@@ -71,9 +73,11 @@ export const ModalBook = (props: Props) => {
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
+                style={{ overflow: "auto" }}
             >
                 <div className="modal_book">
                     <div className="modal_flex">
+                        <h3>Participants</h3>
                         <SelectQuantity
                             adults={adults}
                             setAdults={setAdults}
@@ -97,17 +101,19 @@ export const ModalBook = (props: Props) => {
                             prices={prices}
                         />
 
-                        <button 
-                            className="btn_cancel"
-                            onClick={handleCancel}
-                        >
-                            CANCEL
-                        </button>
+                        {!isMobile &&
+                            <button
+                                className="btn_cancel"
+                                onClick={handleCancel}
+                            >
+                                CANCEL
+                            </button>
+                        }
                     </div>
 
                     <div className="modal_flex">
                         <div className="time_container">
-                            <h3>Select Departure Time</h3>
+                            <h3>Select Time</h3>
 
                             <div className="time">
                                 {hours?.map((hour: string, index: number) => (
@@ -124,9 +130,18 @@ export const ModalBook = (props: Props) => {
 
                         <FormBook
                             handleSubmit={handleSubmit}
-                            labelButton="PAY NOW"
+                            labelButton="BOOK AND PAY"
                             nameClass="book_form"
                         />
+
+                        {isMobile &&
+                            <button
+                                className="btn_cancel"
+                                onClick={handleCancel}
+                            >
+                                CANCEL
+                            </button>
+                        }
 
                     </div>
                 </div>
