@@ -1,5 +1,5 @@
 // Components
-import { Services } from "../components/shared/Services";
+import { GroupServices } from "../components/shared/GroupServices";
 import { Footer } from "../components/shared/Footer";
 import { Events } from "../components/shared/Events";
 import { Wine } from "../components/shared/Wine";
@@ -42,7 +42,7 @@ export const Home = () => {
                 </picture>
             </div>
 
-            <Services
+            <GroupServices
                 sliderPage1={dataHome}
             />
 

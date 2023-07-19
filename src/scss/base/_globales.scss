@@ -26,3 +26,7 @@ li {
 body {
     font-family: v.$poppins !important;
 }
+
+video::-webkit-media-controls {
+    display: none;
+}
