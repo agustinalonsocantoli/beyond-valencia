@@ -81,7 +81,7 @@ export const CheckoutForm = (props: Props) => {
 
         setPaymentVisible(false);
         setCurrentOrder(null);
-        navigate('/more-services')
+        navigate('/')
     };   
 
     const handleChange = (e: any) => {

@@ -51,7 +51,6 @@ export const Payments = (props: Props) => {
             onOpenError();
         })
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
 
