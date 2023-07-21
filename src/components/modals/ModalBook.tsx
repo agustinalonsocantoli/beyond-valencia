@@ -4,6 +4,7 @@ import { CodeBook } from "../book/CodeBook";
 import { SelectQuantity } from "../book/SelectQuantity";
 import { SelectTime } from "../book/SelectTime";
 import { PricesInt } from "../../interfaces/books.model";
+import { IoReturnDownBackSharp } from "react-icons/io5";
 
 interface Props {
     open: boolean;
@@ -102,12 +103,9 @@ export const ModalBook = (props: Props) => {
                         />
 
                         {!isMobile &&
-                            <button
-                                className="btn_cancel"
-                                onClick={handleCancel}
-                            >
-                                CANCEL
-                            </button>
+                            <div className='btn_cancel '>
+                                <button onClick={handleCancel}><IoReturnDownBackSharp />Back</button>
+                            </div>
                         }
                     </div>
 
@@ -135,12 +133,9 @@ export const ModalBook = (props: Props) => {
                         />
 
                         {isMobile &&
-                            <button
-                                className="btn_cancel"
-                                onClick={handleCancel}
-                            >
-                                CANCEL
-                            </button>
+                            <div className='btn_cancel '>
+                                <button onClick={handleCancel}><IoReturnDownBackSharp />Back</button>
+                            </div>
                         }
 
                     </div>

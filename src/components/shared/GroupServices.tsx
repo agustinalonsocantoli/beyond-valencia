@@ -1,12 +1,14 @@
 // React
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 // interfaces
 import { ContentInt, DataInt } from "../../interfaces/services.model";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
 // Import Swiper styles
 import 'swiper/css';
-import { useEffect, useState } from "react";
+import 'swiper/css/navigation';
 
 interface Props {
     sliderPage1: DataInt;
@@ -41,9 +43,11 @@ export const GroupServices = (props: Props) => {
             </div>
 
             <Swiper
-                spaceBetween={70}
+                modules={[Navigation]}
+                navigation
+                spaceBetween={80}
                 slidesPerView={1}
-                style={{ padding: "15px 3%" }}
+                style={{ padding: "15px 5%" }}
             >
                 <SwiperSlide className="services_conteiner" style={{ gap: "70px" }}>
                     {sliderPage1?.content?.map((item: ContentInt, index: number) => (
@@ -109,5 +113,4 @@ export const GroupServices = (props: Props) => {
 
         </div>
     );
-
 }
