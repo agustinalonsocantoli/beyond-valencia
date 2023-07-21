@@ -38,7 +38,7 @@ export const multimediaDaytrips: MultimediaInt[] = [
     {
         navigate: "/daytrips/villareal",
         src: dayD,
-        h3: "Villareal Football Club in one day (The Yellow Submarine experience)",
+        h3: "Villareal Football Club in one day",
         p: "Villarreal (with transportation, meals and guided tour included)",
         span: "Destination:",
         type: "image"

@@ -533,15 +533,17 @@ video::-webkit-media-controls {
   }
 }
 .exposure h3 {
-  font-size: 25px;
+  font-size: 20px;
 }
 .exposure p {
-  font-size: 17px;
+  font-size: 15px;
 }
 .exposure .grid-1 {
   grid-column: 1/2;
   grid-row: 1/3;
   position: relative;
+  border: 1px solid #FFF;
+  border-radius: 20px;
 }
 @media (max-width: 480px) {
   .exposure .grid-1 {
@@ -572,12 +574,12 @@ video::-webkit-media-controls {
 }
 .exposure .grid-1 .content-1 {
   position: absolute;
-  color: #000;
+  color: #FFF;
   bottom: 0;
   left: 0;
   width: 100%;
   border-radius: 0 0 20px 20px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.7);
 }
 .exposure .grid-1 h3 {
   width: 100%;
@@ -587,6 +589,8 @@ video::-webkit-media-controls {
   grid-row: 1/2;
   height: 275px;
   position: relative;
+  border: 1px solid #FFF;
+  border-radius: 20px;
 }
 @media (max-width: 480px) {
   .exposure .grid-2 {
@@ -614,19 +618,21 @@ video::-webkit-media-controls {
 }
 .exposure .grid-2 .content-2 {
   position: absolute;
-  color: #000000;
+  color: #FFF;
   bottom: 0;
   right: 0;
   text-align: left;
   width: 100%;
   border-radius: 0 0 20px 20px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.7);
 }
 .exposure .grid-3 {
   grid-column: 3/4;
   grid-row: 1/2;
   height: 275px;
   position: relative;
+  border: 1px solid #FFF;
+  border-radius: 20px;
 }
 @media (max-width: 480px) {
   .exposure .grid-3 {
@@ -654,18 +660,20 @@ video::-webkit-media-controls {
 }
 .exposure .grid-3 .content-3 {
   position: absolute;
-  color: #000;
+  color: #FFF;
   bottom: 0;
   left: 0;
   width: 100%;
   border-radius: 0 0 20px 20px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.7);
 }
 .exposure .grid-4 {
   grid-column: 2/4;
   grid-row: 2/3;
   height: 275px;
   position: relative;
+  border: 1px solid #FFF;
+  border-radius: 20px;
 }
 @media (max-width: 480px) {
   .exposure .grid-4 {
@@ -693,12 +701,12 @@ video::-webkit-media-controls {
 }
 .exposure .grid-4 .content-4 {
   position: absolute;
-  color: #000;
+  color: #FFF;
   bottom: 0;
   left: 0;
   width: 100%;
   border-radius: 0 0 20px 20px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .nav {
@@ -971,6 +979,13 @@ video::-webkit-media-controls {
 .details_exposure {
   padding: 0 0 10px 0;
   background-color: #000000;
+}
+.details_exposure .grid-1,
+.details_exposure .grid-2,
+.details_exposure .grid-3,
+.details_exposure .grid-4 {
+  border: none !important;
+  border-radius: 0 !important;
 }
 .details_exposure img {
   border-radius: 0 !important;
