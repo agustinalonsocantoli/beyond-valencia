@@ -111,7 +111,9 @@ export const Book = (props: Props) => {
     }
 
     const handleGetCode = ({ target }: any) => {
-        setCodeDiscount(target.value);
+        const code = target?.value?.toUpperCase();
+        const trimCode = code.trim();
+        setCodeDiscount(trimCode);
     }
 
     const addedDiscount = (porcent: number, code: string) => {

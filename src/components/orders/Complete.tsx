@@ -45,7 +45,8 @@ export const Complete = (props: Props) => {
 
     const handleGetCode = ({ target }: any) => {
         const code = target?.value?.toUpperCase();
-        setCodeDiscount(code);
+        const trimCode = code.trim();
+        setCodeDiscount(trimCode);
     }
     
     const addedDiscount = (porcent: number, code: string) => {
