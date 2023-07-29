@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // React
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 // Img
 import bikes from '../assets/Options/bikes.jpg';
@@ -25,6 +25,9 @@ import { BsCheck2 } from 'react-icons/bs';
 import { notifySuccess } from '../shared/notify';
 // Emails
 import { sendEmail } from '../shared/emails';
+import { OrdersDataInt, ProductInt } from '../interfaces/orders.model';
+import { bikesProducts } from '../data/Api/bikes';
+import { getProdruct } from '../shared/getProduct';
 
 export const Bikes = () => {
     const dateNow = new Date();
@@ -40,8 +43,9 @@ export const Bikes = () => {
     const [totalPay, setTotalPay] = useState<number>(0);
     const [paymentVisible, setPaymentVisible] = useState<boolean>(false);
     const navigate = useNavigate();
+    const [selectedProduct, setSelectedProduct] = useState<ProductInt>()
 
-    const data = {
+    const data: OrdersDataInt = {
         s: {
             name: 'Small',
             description: "26 inches",
@@ -58,26 +62,12 @@ export const Bikes = () => {
         }
     }
 
-    const product = {
-        allDay: {
-            time: 'All day',
-            description: 'Todo el día',
-            select: 'All-Day',
-            price: {
-                small: 14,
-                medium: 14,
-            }
-        },
-        threeDays: {
-            time: '3 days',
-            description: 'Tres días',
-            select: 'Three-Days',
-            price: {
-                small: 38,
-                medium: 38,
-            }
-        },
-    }
+    useEffect(() => {
+        const product = getProdruct(bikesProducts, time)
+
+
+        setSelectedProduct(product)
+    }, [time])
 
     const handleSubmit = (e: any) => {
         const { name, email, phone, comment } = e;
@@ -175,10 +165,9 @@ export const Bikes = () => {
                 {page === 0 && <First
                     title="For how long would you like to rent the bike?"
                     subtitle="¿Por cuánto tiempo le gustaría rentar la bici?"
-                    longerTime={false}
                     time={time}
                     setTime={setTime}
-                    product={product}
+                    products={bikesProducts}
                     setPage={setPage}
                 />}
 
@@ -192,8 +181,7 @@ export const Bikes = () => {
                     normal={normal}
                     setNormal={setNormal}
                     data={data}
-                    time={time}
-                    product={product}
+                    product={selectedProduct}
                 />}
 
                 {page === 2 && <Third

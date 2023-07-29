@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 // Interfaces
 import { OrdersDataInt } from "../../interfaces/orders.model";
 

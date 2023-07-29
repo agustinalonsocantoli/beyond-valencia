@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // React
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 // Img
 import lockers from '../assets/Options/lockers.jpg';
@@ -22,6 +22,9 @@ import { IoReturnDownBackSharp } from 'react-icons/io5';
 import { BsCheck2 } from 'react-icons/bs';
 import { sendEmail } from '../shared/emails';
 import { notifySuccess } from '../shared/notify';
+import { OrdersDataInt, ProductInt } from '../interfaces/orders.model';
+import { lockersProducts } from '../data/Api/lockers';
+import { getProdruct } from '../shared/getProduct';
 
 export const Lockers = () => {
     const dateNow = new Date();
@@ -36,8 +39,9 @@ export const Lockers = () => {
     const [totalPay, setTotalPay] = useState<number>(0);
     const [paymentVisible, setPaymentVisible] = useState<boolean>(false);
     const navigate = useNavigate();
+    const [selectedProduct, setSelectedProduct] = useState<ProductInt>()
 
-    const data = {
+    const data: OrdersDataInt = {
         s: {
             name: 'Small',
             description: "Bags and backpacks",
@@ -55,38 +59,12 @@ export const Lockers = () => {
         }
     }
 
-    const product = {
-        h: {
-            time: '2 hours',
-            description: '2 horas',
-            select: '2-Hours',
-            price: {
-                small: 3,
-                medium: 5,
-                normal: 8
-            }
-        },
-        allDay: {
-            time: 'All day',
-            description: 'Todo el día',
-            select: 'All-Day',
-            price: {
-                small: 5,
-                medium: 8,
-                normal: 12
-            }
-        },
-        longer: {
-            time: 'Longer time?',
-            description: '¿Cuántos días necesitas?',
-            select: ['2-Days', '3-Days', '4-Days', '5-Days', '6-Days', '7-Days', '8-Days', '9-Days', '10-Days'],
-            price: {
-                small: 4,
-                medium: 7,
-                normal: 11
-            }
-        },
-    }
+    useEffect(() => {
+        const product = getProdruct(lockersProducts, time)
+
+
+        setSelectedProduct(product)
+    }, [time])
 
     const handleSubmit = (e: any) => {
         const { name, email, phone, comment } = e;
@@ -201,10 +179,9 @@ export const Lockers = () => {
                 {page === 0 && <First
                     title="For how long would you like to storage your belongings?"
                     subtitle="¿Por cuánto tiempo le gustaría almacenar sus pertenencias?"
-                    longerTime={true}
                     time={time}
                     setTime={setTime}
-                    product={product}
+                    products={lockersProducts}
                     setPage={setPage}
                 />}
 
@@ -219,8 +196,7 @@ export const Lockers = () => {
                     normal={normal}
                     setNormal={setNormal}
                     data={data}
-                    time={time}
-                    product={product}
+                    product={selectedProduct}
                 />}
 
                 {page === 2 && <Third

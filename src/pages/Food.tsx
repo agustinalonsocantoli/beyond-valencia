@@ -7,33 +7,40 @@ import { Events } from "../components/shared/Events";
 import { Wine } from "../components/shared/Wine";
 import { Whatsapp } from '../components/shared/Whatsapp';
 // Data
-import { multimediaFood, dataFood } from "../data/views/food";
+import { multimediaFood, contentFood } from "../data/views/food";
 import { Services } from "../components/shared/Services";
+import { DataInt } from "../interfaces/services.model";
 
 export const Food = () => {
     const isMobile = window.innerWidth < 1025 ? true : false;
 
-    return(
+    const dataFood: DataInt = {
+        h1: "New deals every week!",
+        h2: "DO YOU NEED A CATERING?",
+        content: contentFood
+    }
+
+    return (
         <div>
             <Navbar title={"Beyond food"} subtitle={"food"} />
 
-            <Exposure data={multimediaFood}  />
+            <Exposure data={multimediaFood} />
 
             {isMobile
-            ? 
+                ?
                 <Services
-                    sliderPage1={dataFood} 
+                    sliderPage1={dataFood}
                 />
-            :
-                <GroupServices 
-                    sliderPage1={dataFood} 
+                :
+                <GroupServices
+                    sliderPage1={dataFood}
                 />
             }
 
             <Events />
 
             <Wine />
-            
+
             <Whatsapp />
 
             <Footer />

@@ -10,8 +10,8 @@ import { useEffect, useState } from "react";
 
 interface Props {
     sliderPage1: DataInt;
-    sliderPage2?: DataInt;
-    sliderPage3?: DataInt;
+    sliderPage2?: ContentInt[];
+    sliderPage3?: ContentInt[];
 }
 
 export const Services = (props: Props) => {
@@ -64,7 +64,7 @@ export const Services = (props: Props) => {
                     </SwiperSlide>
                 ))}
 
-                {sliderPage2?.content?.map((item: ContentInt, index: number) => (
+                {sliderPage2?.map((item: ContentInt, index: number) => (
                     <SwiperSlide className="services_conteiner" style={{ gap: "70px" }}>
                         <Link key={index} className="services_img" to={item?.link}>
                             <picture>
@@ -82,7 +82,7 @@ export const Services = (props: Props) => {
                     </SwiperSlide>
                 ))}
 
-                {sliderPage3?.content?.map((item: ContentInt, index: number) => (
+                {sliderPage3?.map((item: ContentInt, index: number) => (
                     <SwiperSlide className="services_conteiner" style={{ gap: "70px" }}>
                         <Link key={index} className="services_img" to={item?.link}>
                             <picture>

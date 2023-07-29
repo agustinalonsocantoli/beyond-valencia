@@ -7,7 +7,7 @@ import imgS1 from '../../assets/img/exp1.jpg';
 import imgS3 from '../../assets/img/exp2.jpg';
 import imgS2 from '../../assets/img/exp3.jpg';
 // Interfaces
-import { DataInt } from '../../interfaces/services.model';
+import { ContentInt } from '../../interfaces/services.model';
 import { MultimediaInt } from '../../interfaces/exposure.model';
 
 export const multimediaExperiences: MultimediaInt[] = [
@@ -44,27 +44,23 @@ export const multimediaExperiences: MultimediaInt[] = [
     },
 ]
 
-export const dataExperiences: DataInt = {
-    h1: "Meeting point in the City",
-    h2: "PERSONALIZED EXPERIENCE",
-    content: [
-        {
-            link: "/experiences/wine-painting",
-            img: imgS1,
-            type: "image",
-            h3: "All you can wine while painting in the dark",
-        },
-        {
-            link: "/experiences/brunch-boat",
-            img: imgS2,
-            type: "image",
-            h3: "Saturday we brunch on a boat",
-        },
-        {
-            link: "/experiences/private-boat",
-            img: imgS3,
-            type: "image",
-            h3: "Private boat expeirence",
-        }
-    ]
-}
+export const contentExperiences: ContentInt[] = [
+    {
+        link: "/experiences/wine-painting",
+        img: imgS1,
+        type: "image",
+        h3: "All you can wine while painting in the dark",
+    },
+    {
+        link: "/experiences/brunch-boat",
+        img: imgS2,
+        type: "image",
+        h3: "Saturday we brunch on a boat",
+    },
+    {
+        link: "/experiences/private-boat",
+        img: imgS3,
+        type: "image",
+        h3: "Private boat expeirence",
+    }
+]

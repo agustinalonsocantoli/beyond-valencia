@@ -1,3 +1,5 @@
+import { TypeProductEnum } from "../shared/types";
+
 export interface BikesInt {
     small: number;
     medium: number;
@@ -45,44 +47,13 @@ export interface OrdersDataInt {
 }
 
 export interface ProductInt {
-    h?: {
-        time: string,
-        description: string,
-        select: string,
-        price: {
-            small: number,
-            medium: number,
-            normal: number
-        }
-    },
-    threeDays?: {
-        time: string,
-        description: string,
-        select: string,
-        price: {
-            small: number,
-            medium: number,
-            normal?: number
-        }
-    },
-    allDay: {
-        time: string,
-        description: string,
-        select: string,
-        price: {
-            small: number,
-            medium: number,
-            normal?: number
-        }
-    },
-    longer?: {
-        time: string,
-        description: string,
-        select: string[],
-        price: {
-            small: number,
-            medium: number,
-            normal: number
-        }
-    },
+    title: string;
+    type: TypeProductEnum;
+    description: string;
+    select: any;
+    price: {
+        small: number;
+        medium: number;
+        normal?: number;
+    }
 }

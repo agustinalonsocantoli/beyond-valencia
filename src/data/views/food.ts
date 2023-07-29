@@ -7,7 +7,7 @@ import imgS1 from '../../assets/img/food1.jpg';
 import imgS2 from '../../assets/video/food2.mp4';
 import imgS3 from '../../assets/img/food3.jpg';
 // Interfaces
-import { DataInt } from '../../interfaces/services.model';
+import { ContentInt } from '../../interfaces/services.model';
 import { MultimediaInt } from '../../interfaces/exposure.model';
 
 export const multimediaFood: MultimediaInt[] = [
@@ -35,28 +35,24 @@ export const multimediaFood: MultimediaInt[] = [
     },
 ]
 
-export const dataFood: DataInt = {
-    h1: "New deals every week!",
-    h2: "DO YOU NEED A CATERING?",
-    content: [
-        {
-            link: "",
-            img: imgS1,
-            type: "image",
-            h3: "Eat the paella, or cook it yourself",
-        },
-        {
-            link: "",
-            img: imgS2,
-            type: "video",
-            h3: "Tacos in the old town",
-        },
-        {
-            link: "",
-            img: imgS3,
-            type: "image",
-            h3: "the best italian deal in town",
-            p: "Charming, cozy Italian trattoria with focaccia, fresh pasta & carpaccio opened everyday!",
-        }
-    ]
-}
+export const contentFood: ContentInt[] = [
+    {
+        link: "",
+        img: imgS1,
+        type: "image",
+        h3: "Eat the paella, or cook it yourself",
+    },
+    {
+        link: "",
+        img: imgS2,
+        type: "video",
+        h3: "Tacos in the old town",
+    },
+    {
+        link: "",
+        img: imgS3,
+        type: "image",
+        h3: "the best italian deal in town",
+        p: "Charming, cozy Italian trattoria with focaccia, fresh pasta & carpaccio opened everyday!",
+    }
+]

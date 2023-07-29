@@ -7,7 +7,7 @@ import imgS1 from '../../assets/img/day1.jpg';
 import dayA from '../../assets/img/day2.jpg';
 import imgS3 from '../../assets/img/day3.jpg';
 // Interfaces
-import { DataInt } from '../../interfaces/services.model';
+import { ContentInt } from '../../interfaces/services.model';
 import { MultimediaInt } from '../../interfaces/exposure.model';
 
 export const multimediaDaytrips: MultimediaInt[] = [
@@ -45,27 +45,23 @@ export const multimediaDaytrips: MultimediaInt[] = [
     },
 ]
 
-export const dataDaytrips: DataInt = {
-    h1: "Transportation and tiquets included",
-    h2: "SPORTS EXPERIENCES",
-    content: [
-        {
-            link: "/daytrips/visiting-winary",
-            img: imgS1,
-            type: "image",
-            h3: "Visiting three wineries in one day",
-        },
-        {
-            link: "/daytrips/madrid",
-            img: imgS2,
-            type: "image",
-            h3: "Private transfer to Madrid, curated experiences available",
-        },
-        {
-            link: "/daytrips/boat",
-            img: imgS3,
-            type: "image",
-            h3: "Private dining & sunset on a boat",
-        }
-    ]
-}
+export const contentDaytrips: ContentInt[] = [
+    {
+        link: "/daytrips/visiting-winary",
+        img: imgS1,
+        type: "image",
+        h3: "Visiting three wineries in one day",
+    },
+    {
+        link: "/daytrips/madrid",
+        img: imgS2,
+        type: "image",
+        h3: "Private transfer to Madrid, curated experiences available",
+    },
+    {
+        link: "/daytrips/boat",
+        img: imgS3,
+        type: "image",
+        h3: "Private dining & sunset on a boat",
+    }
+]

@@ -4,24 +4,23 @@ import { OrdersDataInt, ProductInt } from '../../interfaces/orders.model';
 import { Orders } from '../shared/Orders'
 
 interface Props {
-    title: string; 
-    subtitle: string; 
-    small: number; 
+    title: string;
+    subtitle: string;
+    small: number;
     setSmall: (action: number) => void;
     medium: number;
-    setMedium:(action: number) => void;
+    setMedium: (action: number) => void;
     normal: number;
     setNormal: (action: number) => void;
     data: OrdersDataInt;
-    product: ProductInt;
-    time: string | null;
+    product: ProductInt | undefined;
 }
 
 export const Second = (props: Props) => {
-    const { 
-        title, 
-        subtitle, 
-        small, 
+    const {
+        title,
+        subtitle,
+        small,
         setSmall,
         medium,
         setMedium,
@@ -29,13 +28,11 @@ export const Second = (props: Props) => {
         setNormal,
         data,
         product,
-        time
     } = props;
     const resposive = window.innerWidth < 1024 ? true : false;
     const { s, m, n } = data;
-    const { h, allDay, longer, threeDays } = product;
-    
-    return(
+
+    return (
         <div className='contents_second'>
             <h2>{title}</h2>
             <h3>{subtitle}</h3>
@@ -53,13 +50,7 @@ export const Second = (props: Props) => {
                     </div>
 
                     <span>
-                        <span>Price per item </span>
-                        {
-                        h && time === h.select && h.price.small ||
-                        time === allDay.select && allDay.price.small || 
-                        longer && longer.select.map(item => item === time) && longer.price.small ||
-                        threeDays && time === threeDays.select && threeDays.price.small
-                        }€
+                        <span>Price per item {product?.price?.small}€</span>
                     </span>
                 </div>
             </div>
@@ -75,15 +66,9 @@ export const Second = (props: Props) => {
                         <span>{m.description}</span>
                         <span>{m.others}</span>
                     </div>
-                    
+
                     <span>
-                        <span>Price per item </span>
-                        {
-                        h && time === h.select && h.price.medium ||
-                        time === allDay.select && allDay.price.medium || 
-                        longer && longer.select.map(item => item === time) && longer.price.medium ||
-                        threeDays && time === threeDays.select && threeDays.price.medium
-                        }€
+                        <span>Price per item {product?.price.medium}€</span>
                     </span>
                 </div>
             </div>
@@ -95,25 +80,23 @@ export const Second = (props: Props) => {
                 </div>
 
                 <div className='type_select-info'>
-                    <div style={{width: resposive ? '55%' : '50%'}}>
+                    <div style={{ width: resposive ? '55%' : '50%' }}>
                         <span>{n.description}</span>
                         <span>{n.others}</span>
                     </div>
-                    
-                    { threeDays && (!allDay.price.normal || !threeDays.price.normal ) ? <span>Free</span> :
-                    <span>
-                        <span>Price per item </span>
-                        {
-                        h && time === h.select && h.price.normal ||
-                        time === allDay.select && allDay.price.normal || 
-                        longer && longer.select.map(item => item === time) && longer.price.normal ||
-                        threeDays && time === threeDays.select && threeDays.price.normal
-                        }€
-                    </span>
-                    } 
-                   
+
+                    {!product?.price?.normal
+                        ? 
+                        <span>Free</span> 
+                        :
+                        <span>
+                            <span>Price per item {product?.price?.normal}€</span>
+                        </span>
+                    }
+
                 </div>
             </div>
         </div>
     );
 };
+

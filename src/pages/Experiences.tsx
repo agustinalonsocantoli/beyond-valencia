@@ -7,12 +7,19 @@ import { Events } from "../components/shared/Events";
 import { Wine } from "../components/shared/Wine";
 import { Whatsapp } from '../components/shared/Whatsapp';
 // Data
-import { multimediaExperiences, dataExperiences } from "../data/views/experiences";
-import { dataDaytrips } from "../data/views/daytrips";
+import { multimediaExperiences, contentExperiences } from "../data/views/experiences";
+import { contentDaytrips } from "../data/views/daytrips";
 import { Services } from "../components/shared/Services";
+import { DataInt } from "../interfaces/services.model";
 
 export const Experiences = () => {
     const isMobile = window.innerWidth < 1025 ? true : false;
+
+    const dataExperiences: DataInt = {
+        h1: "Meeting point in the City",
+        h2: "PERSONALIZED EXPERIENCE",
+        content: contentExperiences
+    }
 
     return(
         <div >
@@ -24,12 +31,12 @@ export const Experiences = () => {
             ? 
                 <Services
                     sliderPage1={dataExperiences} 
-                    sliderPage2={dataDaytrips}
+                    sliderPage2={contentDaytrips}
                 />
             :
                 <GroupServices 
                     sliderPage1={dataExperiences} 
-                    sliderPage2={dataDaytrips}
+                    sliderPage2={contentDaytrips}
                 />
             }
 

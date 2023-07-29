@@ -12,10 +12,18 @@ import logo from '../assets/logoW.png';
 import { AiOutlineInstagram } from 'react-icons/ai';
 // React
 import { Link } from "react-router-dom";
-import { dataHome } from "../data/views/home";
+import { contentHome } from "../data/views/home";
+import { DataInt } from "../interfaces/services.model";
 
 
 export const Home = () => {
+
+    const dataHome: DataInt = {
+        h1: "Easy, safe and unique... #Valencia",
+        h2: "LOCKERS & BIKE RENTALS",
+        navigate: "/more-services",
+        content: contentHome
+    }
 
     return(
         <div className="home">

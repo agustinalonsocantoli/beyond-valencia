@@ -1,3 +1,5 @@
+import { TypeLanding } from "../shared/types";
+
 export interface DataInt {
     h1: string;
     h2: string;
@@ -6,10 +8,11 @@ export interface DataInt {
 }
 
 export interface ContentInt {
+    landing?: TypeLanding;
     link: string;
     img: string;
     imgW?: string;
-    type: string;
+    type: 'image' | "video";
     h3: string;
     p?: string;
     span?: string;

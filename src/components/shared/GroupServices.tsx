@@ -12,8 +12,8 @@ import 'swiper/css/navigation';
 
 interface Props {
     sliderPage1: DataInt;
-    sliderPage2?: DataInt;
-    sliderPage3?: DataInt;
+    sliderPage2?: ContentInt[];
+    sliderPage3?: ContentInt[];
 }
 
 export const GroupServices = (props: Props) => {
@@ -70,7 +70,7 @@ export const GroupServices = (props: Props) => {
 
                 {sliderPage2 &&
                     <SwiperSlide className="services_conteiner" style={{ gap: "70px" }}>
-                        {sliderPage2?.content?.map((item: ContentInt, index: number) => (
+                        {sliderPage2?.map((item: ContentInt, index: number) => (
                             <Link key={index} className="services_img" to={item?.link}>
                                 <picture>
                                     <source srcSet={item?.imgW} type="image/webp" />
@@ -90,7 +90,7 @@ export const GroupServices = (props: Props) => {
 
                 {sliderPage3 &&
                     <SwiperSlide className="services_conteiner" style={{ gap: "70px" }}>
-                        {sliderPage3?.content?.map((item: ContentInt, index: number) => (
+                        {sliderPage3?.map((item: ContentInt, index: number) => (
                             <Link key={index} className="services_img" to={item?.link}>
                                 <picture>
                                     <source srcSet={item?.imgW} type="image/webp" />
