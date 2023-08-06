@@ -2,7 +2,6 @@
 import { GroupServices } from "../components/shared/GroupServices";
 import { Footer } from "../components/shared/Footer";
 import { Events } from "../components/shared/Events";
-import { Wine } from "../components/shared/Wine";
 import { Whatsapp } from "../components/shared/Whatsapp";
 // Video & Img
 import home from '../assets/img/home.jpg';
@@ -14,6 +13,7 @@ import { AiOutlineInstagram } from 'react-icons/ai';
 import { Link } from "react-router-dom";
 import { contentHome } from "../data/views/home";
 import { DataInt } from "../interfaces/services.model";
+import { Options } from "../components/shared/Options";
 
 
 export const Home = () => {
@@ -21,7 +21,7 @@ export const Home = () => {
     const dataHome: DataInt = {
         h1: "Easy, safe and unique... #Valencia",
         h2: "LOCKERS & BIKE RENTALS",
-        navigate: "/more-services",
+        navigate: "#options",
         content: contentHome
     }
 
@@ -56,7 +56,9 @@ export const Home = () => {
 
             <Events />
 
-            <Wine />
+            <div id="options">
+                <Options />
+            </div>
 
             <Whatsapp />
             

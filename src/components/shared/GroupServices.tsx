@@ -36,7 +36,7 @@ export const GroupServices = (props: Props) => {
                 <h1>{sliderPage1?.h1}</h1>
                 <h2>
                     {sliderPage1?.navigate
-                        ? <Link to={sliderPage1?.navigate}>{sliderPage1?.h2}</Link>
+                        ? <a href={sliderPage1?.navigate}>{sliderPage1?.h2}</a>
                         : sliderPage1?.h2
                     }
                 </h2>

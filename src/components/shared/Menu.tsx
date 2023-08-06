@@ -15,8 +15,8 @@ export const Menu = (props: Props) => {
         { href: "/", text: "Home" },
         { href: "/experiences", text: "Experiences" },
         { href: "/daytrips", text: "Day Trips" },
-        { href: "/more-services", text: "Bike Rentals" },
-        { href: "/more-services", text: "Locker Services" },
+        { href: "/bikes", text: "Bike Rentals" },
+        { href: "/lockers", text: "Locker Services" },
         // { href: "/food", text: "Food & Dinning" }, 
         // { href: "/aboutus", text: "About Us" }
     ]

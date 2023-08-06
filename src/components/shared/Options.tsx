@@ -1,7 +1,7 @@
-import lockers from '../assets/Options/lockers.jpg';
-import bikes from '../assets/Options/bikes.jpg';
-import lockersW from '../assets/Options/lockers.webp';
-import bikesW from '../assets/Options/bikes.webp';
+import lockers from '../../assets/Options/lockers.jpg';
+import bikes from '../../assets/Options/bikes.jpg';
+import lockersW from '../../assets/Options/lockers.webp';
+import bikesW from '../../assets/Options/bikes.webp';
 import { Link } from 'react-router-dom';
 
 export const Options = () => {

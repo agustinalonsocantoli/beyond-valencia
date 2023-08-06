@@ -4,12 +4,12 @@ import { Exposure } from '../components/shared/Exposure';
 import { GroupServices } from "../components/shared/GroupServices";
 import { Footer } from "../components/shared/Footer";
 import { Events } from "../components/shared/Events";
-import { Wine } from "../components/shared/Wine";
 import { Whatsapp } from '../components/shared/Whatsapp';
 // Data
 import { multimediaFood, contentFood } from "../data/views/food";
 import { Services } from "../components/shared/Services";
 import { DataInt } from "../interfaces/services.model";
+import { Options } from "../components/shared/Options";
 
 export const Food = () => {
     const isMobile = window.innerWidth < 1025 ? true : false;
@@ -39,7 +39,7 @@ export const Food = () => {
 
             <Events />
 
-            <Wine />
+            <Options />
 
             <Whatsapp />
 
