@@ -911,9 +911,8 @@ video::-webkit-media-controls {
   background-color: #000000;
   color: #FFFFFF;
   display: flex;
-  justify-content: space-between;
-  padding: 2%;
-  align-items: center;
+  flex-direction: column;
+  padding: 4% 2%;
 }
 @media (max-width: 480px) {
   .footer {
@@ -940,37 +939,160 @@ video::-webkit-media-controls {
     margin-right: 10%;
   }
 }
-.footer_methods {
+.footer .content {
+  display: flex;
+  justify-content: space-around;
+}
+@media (max-width: 480px) {
+  .footer .content {
+    flex-direction: column;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .footer .content {
+    flex-direction: column;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .footer .content {
+    flex-direction: column;
+  }
+}
+.footer .content .content_items {
+  width: 25%;
+  margin-bottom: 50px;
+}
+@media (max-width: 480px) {
+  .footer .content .content_items {
+    width: 100%;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .footer .content .content_items {
+    margin: 0 auto 50px auto;
+    width: 80%;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .footer .content .content_items {
+    margin: 0 auto 50px auto;
+    width: 80%;
+  }
+}
+.footer .content .content_items h3 {
+  margin-bottom: 15px;
+  font-size: 25px;
+}
+.footer .content .content_items p, .footer .content .content_items a {
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.5);
+}
+.footer .content .content_items p span, .footer .content .content_items a span {
+  color: #FFFFFF;
+}
+.footer .content .content_items li {
+  list-style: disc;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.7);
+}
+.footer .content .content_items li a {
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.7);
+}
+.footer .content .content_items .items-card {
+  border: 1px solid #FFFFFF;
+  padding: 10px 20px 30px 20px;
+  margin-bottom: 20px;
+}
+.footer .content .content_items .items-card .social, .footer .content .content_items .items-card a {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: #FFFFFF !important;
+}
+.footer .content .content_items .items-card .location {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.footer .content .content_items .items-card .location svg {
+  font-size: 45px;
+  color: red;
+}
+.footer .content .content_items .items-card .icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+  margin-bottom: 35px;
+}
+.footer .content .content_items .items-card .icons .icon {
+  border: 1px solid #FFFFFF;
+  border-radius: 100%;
+  padding: 10px 10px 5px 10px;
+}
+.footer .content .content_items .items-card .icons .icon svg {
+  font-size: 30px;
+}
+.footer .content .content_items .items-card .buttons {
+  border: 1px solid #FFFFFF;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 25px;
+  border-radius: 50px;
+}
+.footer .content .content_items .items-card .buttons span {
+  font-weight: 200;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.footer .content .content_items .items-card .buttons:last-child {
+  margin-bottom: 15px;
+}
+.footer .content .footer_logo {
+  width: 150px;
+  margin-left: auto;
+}
+.footer .content .footer_logo img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.footer .information {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer .information .methods {
   display: flex;
   gap: 10px;
 }
 @media (max-width: 480px) {
-  .footer_methods {
+  .footer .information .methods {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 5px;
   }
 }
-.footer_methods img {
+.footer .information .methods img {
   object-fit: cover;
   width: 45px;
   height: 25px;
   border-radius: 2px;
 }
 @media (max-width: 480px) {
-  .footer_methods img {
+  .footer .information .methods img {
     width: 30px;
     height: 15px;
   }
 }
 @media (min-width: 481px) and (max-width: 768px) {
-  .footer_methods img {
+  .footer .information .methods img {
     width: 35px;
     height: 15px;
   }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .footer_methods img {
+  .footer .information .methods img {
     width: 35px;
     height: 15px;
   }
