@@ -93,7 +93,7 @@
         .services_img {
             display: flex;
             flex: 1;
-            height: 600px;
+            min-height: 600px;
             position: relative;
 
             &:hover {
