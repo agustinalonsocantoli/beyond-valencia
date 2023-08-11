@@ -62,7 +62,7 @@ export const Book = (props: Props) => {
             setTotalPay(total)
         }
 
-    }, [adults, children, infants])
+    }, [adults, children, infants, typeOrder])
 
     const totalCalculate = (adults: number, children: number) => {
         let totalAdults = 0;
