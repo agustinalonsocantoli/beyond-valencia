@@ -35,7 +35,7 @@ export const Book = (props: Props) => {
     const [time, setTime] = useState<string | null>(null);
     const [hoursOptions, setHoursOptions] = useState<string[]>([]);
     const [typeOrder, setTypeOrder] = useState<string | null>(null);
-    const [adults, setAdults] = useState<number>(0);
+    const [adults, setAdults] = useState<number>(1);
     const [children, setChildren] = useState<number>(0);
     const [infants, setInfants] = useState<number>(0);
     const [subTotal, setSubTotal] = useState<number>(0);
