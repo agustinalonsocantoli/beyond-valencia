@@ -1,8 +1,9 @@
-import { LandingEnumTypes } from "../shared/Types/LadingEnumTypes";
+import { TypeLanding } from "../shared/types";
+
 
 export interface ContentInt {
     _id?: string;
-    landing?: LandingEnumTypes;
+    landing?: TypeLanding;
     link: string;
     img: string;
     imgW?: string;

@@ -16,3 +16,10 @@ export enum TypeLanding {
     DAYTRIPS = "daytrips",
     FOOD = "food"
 }
+
+export enum TypeProductEnum {
+    "hours",
+    "allday",
+    "days",
+    "longer"
+}

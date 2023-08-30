@@ -1,4 +1,4 @@
-import { LandingEnumTypes } from "../shared/Types/LadingEnumTypes";
+import { TypeLanding } from "../shared/types";
 
 export interface MultimediaInt {
     _id?: string;
@@ -8,5 +8,5 @@ export interface MultimediaInt {
     p?: string;
     span?: string;
     type: 'image' | "video";
-    landing?: LandingEnumTypes;
+    landing?: TypeLanding;
 }

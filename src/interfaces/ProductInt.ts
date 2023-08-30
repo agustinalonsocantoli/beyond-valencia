@@ -1,9 +1,8 @@
-import { string } from "yup";
-import { ProductsEnumTypes } from "../shared/Types/ProductsEnumTypes";
+import { TypeProductEnum } from "../shared/types";
 
 export interface ProductInt {
     title?: string;
-    type?: ProductsEnumTypes;
+    type?: TypeProductEnum;
     description?: string;
     select?: string | string[];
     price?: {
