@@ -7,7 +7,7 @@ interface Props {
     subtitle: string;
     time: string | null;
     setTime: (action: string) => void;
-    products: ProductInt[];
+    products: ProductInt[] | undefined;
     setPage: (action: any) => void;
 }
 

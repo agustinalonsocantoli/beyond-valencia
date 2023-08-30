@@ -11,19 +11,37 @@ import logo from '../assets/logoW.png';
 import { AiOutlineInstagram } from 'react-icons/ai';
 // React
 import { Link } from "react-router-dom";
-import { contentHome } from "../data/views/home";
-import { DataInt } from "../interfaces/services.model";
+import { ContentInt, DataInt } from "../interfaces/services.model";
 import { Options } from "../components/shared/Options";
+import { useEffect, useState } from "react";
+import { getAllContent } from "../middlewares/content.middlewares";
+import { AxiosResponse } from "axios";
 
 
 export const Home = () => {
+    const [contentHome, setContentHome] = useState<ContentInt[]>()
+    const [dataHome, setDataHome] = useState<DataInt>()
+    const [loading, setLoading] = useState<boolean>(true)
 
-    const dataHome: DataInt = {
-        h1: "Easy, safe and unique... #Valencia",
-        h2: "LOCKERS & BIKE RENTALS",
-        navigate: "#options",
-        content: contentHome
-    }
+    useEffect(() => {
+        setLoading(true);
+
+        getAllContent("?landing=home")
+        .then((response: AxiosResponse) => {
+            setContentHome(response?.data?.data);
+            setTimeout(() => { setLoading(false) }, 500)
+        })
+    }, [])
+
+    useEffect(() => {
+        setDataHome({
+            h1: "Easy, safe and unique... #Valencia",
+            h2: "LOCKERS & BIKE RENTALS",
+            navigate: "#options",
+            content: contentHome
+        })
+
+    }, [contentHome])
 
     return(
         <div className="home">
@@ -52,6 +70,7 @@ export const Home = () => {
 
             <GroupServices
                 sliderPage1={dataHome}
+                loading={loading}
             />
 
             <Events />

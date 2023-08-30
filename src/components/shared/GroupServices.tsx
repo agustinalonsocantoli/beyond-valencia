@@ -1,6 +1,5 @@
 // React
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 // interfaces
 import { ContentInt, DataInt } from "../../interfaces/services.model";
 // Import Swiper React components
@@ -9,26 +8,17 @@ import { Navigation } from 'swiper/modules';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { Skeleton } from "@mui/material";
 
 interface Props {
-    sliderPage1: DataInt;
+    loading: boolean;
+    sliderPage1: DataInt | undefined;
     sliderPage2?: ContentInt[];
     sliderPage3?: ContentInt[];
 }
 
 export const GroupServices = (props: Props) => {
-    const { sliderPage1, sliderPage2, sliderPage3 } = props;
-    const [loading, setLoading] = useState<boolean>(true);
-
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            setLoading(false);
-        }, 500)
-
-        return () => {
-            clearTimeout(timeout)
-        }
-    }, [])
+    const { loading, sliderPage1, sliderPage2, sliderPage3, } = props;
 
     const resposive = window.innerWidth < 1920 ? true : false;
 
@@ -52,21 +42,33 @@ export const GroupServices = (props: Props) => {
                 style={{ padding: resposive ? "15px 5%" : "15px 3%" }}
             >
                 <SwiperSlide className="services_conteiner" style={{ gap: "70px" }}>
-                    {sliderPage1?.content?.map((item: ContentInt, index: number) => (
-                        <Link key={index} className="services_img" to={item?.link}>
-                            <picture>
-                                <source srcSet={item?.imgW} type="image/webp" />
-                                <img src={item?.img} alt={`img/${item?.h3}`} />
-                            </picture>
+                    {
+                    !loading ?
+                        sliderPage1?.content?.map((item: ContentInt, index: number) => (
+                            <Link key={index} className="services_img" to={item?.link}>
+                                <picture>
+                                    <source srcSet={item?.imgW} type="image/webp" />
+                                    <img src={item?.img} alt={`img/${item?.h3}`} />
+                                </picture>
 
-                            {!loading &&
                                 <div className="img_content">
                                     <h3>{item?.h3}</h3>
                                     <p>{item?.p}</p>
                                 </div>
-                            }
-                        </Link>
-                    ))}
+                            </Link>
+                        ))
+                        :
+                        sliderPage1?.content?.map((_item: ContentInt, index: number) => (
+                            <Skeleton
+                                key={index}
+                                className="services_img"
+                                sx={{ bgcolor: "rgba(255, 255, 255, .2)", borderRadius: "20px" }}
+                                variant="rectangular"
+                            >
+
+                            </Skeleton>
+                        ))
+                    }
                 </SwiperSlide>
 
 
@@ -79,12 +81,10 @@ export const GroupServices = (props: Props) => {
                                     <img src={item?.img} alt={`img/${item?.h3}`} />
                                 </picture>
 
-                                {!loading &&
-                                    <div className="img_content">
-                                        <h3>{item?.h3}</h3>
-                                        <p>{item?.p}</p>
-                                    </div>
-                                }
+                                <div className="img_content">
+                                    <h3>{item?.h3}</h3>
+                                    <p>{item?.p}</p>
+                                </div>
                             </Link>
                         ))}
                     </SwiperSlide>
@@ -99,12 +99,10 @@ export const GroupServices = (props: Props) => {
                                     <img src={item?.img} alt={`img/${item?.h3}`} />
                                 </picture>
 
-                                {!loading &&
-                                    <div className="img_content">
-                                        <h3>{item?.h3}</h3>
-                                        <p>{item?.p}</p>
-                                    </div>
-                                }
+                                <div className="img_content">
+                                    <h3>{item?.h3}</h3>
+                                    <p>{item?.p}</p>
+                                </div>
                             </Link>
                         ))}
                     </SwiperSlide>

@@ -6,27 +6,17 @@ import { ContentInt, DataInt } from "../../interfaces/services.model";
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
-import { useEffect, useState } from "react";
+import { Skeleton } from "@mui/material";
 
 interface Props {
-    sliderPage1: DataInt;
-    sliderPage2?: ContentInt[];
-    sliderPage3?: ContentInt[];
+    loading: boolean;
+    sliderPage1: DataInt | undefined;
+    sliderPage2?: ContentInt[] | undefined;
+    sliderPage3?: ContentInt[] | undefined;
 }
 
 export const Services = (props: Props) => {
-    const { sliderPage1, sliderPage2, sliderPage3 } = props;
-    const [loading, setLoading] = useState<boolean>(true);
-
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            setLoading(false);
-        }, 500)
-
-        return () => {
-            clearTimeout(timeout)
-        }
-    }, [])
+    const { loading, sliderPage1, sliderPage2, sliderPage3 } = props;
 
     return (
         <div className="services">
@@ -46,7 +36,9 @@ export const Services = (props: Props) => {
                 style={{ padding: "15px 3%" }}
             >
 
-                {sliderPage1?.content?.map((item: ContentInt, index: number) => (
+                {
+                loading ?
+                    sliderPage1?.content?.map((item: ContentInt, index: number) => (
                     <SwiperSlide className="services_conteiner" style={{ gap: "70px" }}>
                         <Link key={index} className="services_img" to={item?.link}>
                             <picture>
@@ -54,15 +46,22 @@ export const Services = (props: Props) => {
                                 <img src={item?.img} alt={`img/${item?.h3}`} />
                             </picture>
 
-                            {!loading &&
                                 <div className="img_content">
                                     <h3>{item?.h3}</h3>
                                     <p>{item?.p}</p>
                                 </div>
-                            }
                         </Link>
                     </SwiperSlide>
-                ))}
+                    ))
+                    :
+                    sliderPage1?.content?.map((_item: ContentInt, index: number) => (
+                        <SwiperSlide className="services_conteiner" style={{ gap: "70px" }}>
+                            <Skeleton key={index} className="services_img" sx={{ borderRadius: "20px", bgcolor: "rgba(255, 255, 255, .2)"}}>
+
+                            </Skeleton>
+                        </SwiperSlide>
+                    ))
+                }
 
                 {sliderPage2?.map((item: ContentInt, index: number) => (
                     <SwiperSlide className="services_conteiner" style={{ gap: "70px" }}>
@@ -72,12 +71,10 @@ export const Services = (props: Props) => {
                                 <img src={item?.img} alt={`img/${item?.h3}`} />
                             </picture>
 
-                            {!loading &&
                                 <div className="img_content">
                                     <h3>{item?.h3}</h3>
                                     <p>{item?.p}</p>
                                 </div>
-                            }
                         </Link>
                     </SwiperSlide>
                 ))}
@@ -90,12 +87,10 @@ export const Services = (props: Props) => {
                                 <img src={item?.img} alt={`img/${item?.h3}`} />
                             </picture>
 
-                            {!loading &&
                                 <div className="img_content">
                                     <h3>{item?.h3}</h3>
                                     <p>{item?.p}</p>
                                 </div>
-                            }
                         </Link>
                     </SwiperSlide>
                 ))}

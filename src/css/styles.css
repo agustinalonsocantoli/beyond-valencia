@@ -202,6 +202,7 @@ video::-webkit-media-controls {
 }
 .services .services_conteiner {
   display: flex;
+  position: relative;
 }
 @media (max-width: 480px) {
   .services .services_conteiner {
@@ -544,6 +545,7 @@ video::-webkit-media-controls {
   position: relative;
   border: 1px solid #FFF;
   border-radius: 20px;
+  height: 560px;
 }
 @media (max-width: 480px) {
   .exposure .grid-1 {

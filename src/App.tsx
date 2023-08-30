@@ -22,7 +22,7 @@ function App() {
           <Route path="experiences/*" element={<Experiences />} />
           <Route path="experiences/:slug" element={<Details title="Experiences" />} />
           <Route path="daytrips/*" element={<Daytrips />} />
-          <Route path="daytrips/:slug" element={<Details title="DayTrips"/>} />
+          <Route path="daytrips/:slug" element={<Details title="DayTrips" />} />
           {/* <Route path="food/*" element={<Food />} /> */}
           <Route path="lockers/*" element={<Lockers />} />
           <Route path="bikes/*" element={<Bikes />} />

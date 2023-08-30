@@ -4,7 +4,7 @@ export interface DataInt {
     h1: string;
     h2: string;
     navigate?: string;
-    content: ContentInt[]
+    content: ContentInt[] | undefined;
 }
 
 export interface ContentInt {
