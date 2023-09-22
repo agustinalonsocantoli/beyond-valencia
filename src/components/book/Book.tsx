@@ -17,6 +17,8 @@ import { notifyError, notifySuccess } from "../../shared/notify";
 import { ExperiencesInt } from "../../data/Api/experiences";
 import { OrdersGroupsInt, PricesInt } from "../../interfaces/books.model";
 import { DaystripsInt } from "../../data/Api/daytrips";
+import { getCode } from "../../middlewares/codes.middlewares";
+import { AxiosResponse } from "axios";
 ;
 
 interface Props {
@@ -43,10 +45,6 @@ export const Book = (props: Props) => {
     const [isDiscountAdd, setIsDescountAdd] = useState<boolean>(false);
     const [codeDiscount, setCodeDiscount] = useState<string | null>(null);
     const [prices, setPrices] = useState<PricesInt>()
-
-    const codesFive = import.meta.env.VITE_BASE_DISCOUNT_FIVE.split(',')
-    const codesTen = import.meta.env.VITE_BASE_DISCOUNT_TEN.split(',')
-    const codesTwenty = import.meta.env.VITE_BASE_DISCOUNT_TWENTY.split(',')
 
     // Modal Book
     const [openBook, setOpenBook] = useState<boolean>(false);
@@ -125,19 +123,22 @@ export const Book = (props: Props) => {
     };
 
     const validateCode = () => {
-        if (!isDiscountAdd && codeDiscount) {
-            if (codesFive?.includes(codeDiscount)) {
-                addedDiscount(5, codeDiscount)
+        if(!isDiscountAdd && codeDiscount) {
+            getCode(codeDiscount)
+            .then((response: AxiosResponse) => {
+                const codes = response?.data?.data
+                
+                if(codes?.length === 0) {
+                    notifyError("The code entered is not valid")
+                    return
+                } else {
+                    codes[0]?.state
+                    ? addedDiscount(codes[0].discount, codes[0].code)
+                    : notifyError("The code entered is inactive")
+                }   
+            })
+            .catch(() => notifyError("The code entered is not valid"));
 
-            } else if (codesTen?.includes(codeDiscount)) {
-                addedDiscount(10, codeDiscount)
-
-            } else if (codesTwenty?.includes(codeDiscount)) {
-                addedDiscount(20, codeDiscount)
-
-            } else {
-                notifyError("The code entered is not valid");
-            }
         } else {
             notifyError("Just one code per order");
         }

@@ -23,8 +23,9 @@ import { BsCheck2 } from 'react-icons/bs';
 import { sendEmail } from '../shared/emails';
 import { notifySuccess } from '../shared/notify';
 import { OrdersDataInt, ProductInt } from '../interfaces/orders.model';
-import { lockersProducts } from '../data/Api/lockers';
 import { getProdruct } from '../shared/getProduct';
+import { AxiosResponse } from 'axios';
+import { getAllLockers } from '../middlewares/lockers.middlewares';
 
 export const Lockers = () => {
     const dateNow = new Date();
@@ -39,6 +40,7 @@ export const Lockers = () => {
     const [totalPay, setTotalPay] = useState<number>(0);
     const [paymentVisible, setPaymentVisible] = useState<boolean>(false);
     const navigate = useNavigate();
+    const [lockersProducts, setLockersProducts] = useState<ProductInt[]>()
     const [selectedProduct, setSelectedProduct] = useState<ProductInt>()
 
     const data: OrdersDataInt = {
@@ -60,11 +62,17 @@ export const Lockers = () => {
     }
 
     useEffect(() => {
-        const product = getProdruct(lockersProducts, time)
+        getAllLockers()
+        .then((response: AxiosResponse) => {
+            setLockersProducts(response?.data?.data)
+        })
+    }, [])
 
+    useEffect(() => {
+        lockersProducts && 
+            setSelectedProduct(getProdruct(lockersProducts, time))
 
-        setSelectedProduct(product)
-    }, [time])
+    }, [time, lockersProducts])
 
     const handleSubmit = (e: any) => {
         const { name, email, phone, comment } = e;

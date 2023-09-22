@@ -1,17 +1,21 @@
 // Interfaces
+import { Skeleton } from "@mui/material";
 import { MultimediaInt } from "../../interfaces/exposure.model";
 // React
 import { Link } from "react-router-dom";
 
 interface Props {
+    loading: boolean;
     data: MultimediaInt[] | undefined;
 }
 
-export const Exposure = ({ data }: Props) => {
+export const Exposure = ({ data, loading }: Props) => {
 
     return (
         <div className="exposure">
-            {data?.map((item: MultimediaInt, index: number) => (
+            {
+            !loading ?
+            data?.map((item: MultimediaInt, index: number) => (
                 <div key={index} className={`grid-${index + 1}`}>
                     <Link to={item?.navigate ? item?.navigate : ""}>
                         {item?.type === "video" &&
@@ -35,7 +39,19 @@ export const Exposure = ({ data }: Props) => {
                         </div>
                     </Link>
                 </div>
-            ))}
+            ))
+            :
+            data?.map((_item: MultimediaInt, index: number) => (
+                <Skeleton 
+                    key={index} 
+                    className={`grid-${index + 1}`} 
+                    sx={{bgcolor: "rgba(255, 255, 255, .2)"}}
+                    variant="rectangular"
+                >
+
+                </Skeleton>
+            ))
+        }
         </div>
     );
 }

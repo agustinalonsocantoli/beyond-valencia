@@ -25,8 +25,9 @@ import { notifySuccess } from '../shared/notify';
 // Emails
 import { sendEmail } from '../shared/emails';
 import { OrdersDataInt, ProductInt } from '../interfaces/orders.model';
-import { bikesProducts } from '../data/Api/bikes';
 import { getProdruct } from '../shared/getProduct';
+import { getAllBikes } from '../middlewares/bikes.middlewares';
+import { AxiosResponse } from 'axios';
 
 export const Bikes = () => {
     const dateNow = new Date();
@@ -42,6 +43,7 @@ export const Bikes = () => {
     const [totalPay, setTotalPay] = useState<number>(0);
     const [paymentVisible, setPaymentVisible] = useState<boolean>(false);
     const navigate = useNavigate();
+    const [bikesProducts, setBikesProducts] = useState<ProductInt[]>()
     const [selectedProduct, setSelectedProduct] = useState<ProductInt>()
 
     const data: OrdersDataInt = {
@@ -62,11 +64,17 @@ export const Bikes = () => {
     }
 
     useEffect(() => {
-        const product = getProdruct(bikesProducts, time)
+        getAllBikes()
+        .then((response: AxiosResponse) => {
+            setBikesProducts(response?.data?.data)
+        })
+    }, [])
 
+    useEffect(() => {
+        bikesProducts &&
+            setSelectedProduct(getProdruct(bikesProducts, time))
 
-        setSelectedProduct(product)
-    }, [time])
+    }, [time, bikesProducts])
 
     const handleSubmit = (e: any) => {
         const { name, email, phone, comment } = e;

@@ -34,6 +34,7 @@
         position: relative;
         border: 1px solid #FFF;
         border-radius: 20px;
+        height: 560px;
 
         @include m.phone {
             grid-column: 1 / 1;
