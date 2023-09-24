@@ -37,7 +37,7 @@ export const Services = (props: Props) => {
             >
 
                 {
-                loading ?
+                !loading ?
                     sliderPage1?.content?.map((item: ContentInt, index: number) => (
                     <SwiperSlide className="services_conteiner" style={{ gap: "70px" }}>
                         <Link key={index} className="services_img" to={item?.link}>
